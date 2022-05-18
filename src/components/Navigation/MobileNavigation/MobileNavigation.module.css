@@ -1,0 +1,17 @@
+.container{
+    width: 50vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: yellow;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform: translateX(20rem);/*teraz dołożyłem transform*/
+    transition: transform 2s ease-out;
+}
+
+.active{
+    transform: translateY(0);
+}
