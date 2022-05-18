@@ -1,6 +1,16 @@
 .navigation-items{
+    height: 20%;
     list-style: none;
-    margin: 0;
     display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
     justify-content: space-around;
+    
+}
+
+@media(min-width: 576px){
+    .navigation-items{
+        flex-wrap: nowrap;
+        flex-direction: row;
+    }
 }

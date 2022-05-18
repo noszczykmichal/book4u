@@ -2,8 +2,8 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 
 import Layout from "./components/Layout";
-import BooksSearch from "./components/pages/BooksSearch";
-import FavoriteBooks from "./components/pages/FavoriteBooks";
+import BooksSearch from "./pages/BooksSearch";
+import FavoriteBooks from "./pages/FavoriteBooks";
 
 function App() {
   return (
