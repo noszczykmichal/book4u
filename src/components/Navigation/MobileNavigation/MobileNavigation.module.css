@@ -4,12 +4,13 @@
     position: fixed;
     top: 0;
     right: 0;
-    background-color: yellow;
+    background-color: #fff;
+    z-index: 200;
     display: flex;
     justify-content: center;
     align-items: center;
-    transform: translateX(20rem);/*teraz dołożyłem transform*/
-    transition: transform 2s ease-out;
+    transform: translateX(100%);
+    transition: transform .5s ease-out;
 }
 
 .active{

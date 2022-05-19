@@ -1,7 +1,9 @@
+import {useState} from 'react';
+
 import MobileNavigation from "./Navigation/MobileNavigation/MobileNavigation";
 import Toolbar from "./Navigation/Toolbar/Toolbar";
+import Backdrop from './ui/Backdrop';
 
-import {useState} from 'react';
 
 function Layout(props) {
   const [isVisible, setVisibility]=useState(false);
@@ -12,6 +14,7 @@ function Layout(props) {
 
   return (
     <div>
+        <Backdrop show={isVisible} clicked={visiblityHandler}/>
         <Toolbar toggleClicked={visiblityHandler}/>
         <MobileNavigation show={isVisible}/>
       <main>{props.children}</main>
