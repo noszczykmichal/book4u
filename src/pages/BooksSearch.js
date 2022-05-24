@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 
+import BookList from "../components/books/BookList";
+
 function BooksSearch() {
   const [isLoading, setIsLoading] = useState(false);
   const [loadedBooks, setLoadedBooks]=useState([]);
@@ -11,7 +13,7 @@ function BooksSearch() {
         setIsLoading(false);
         let currentlyLoaded=data.results;
         console.log(currentlyLoaded)
-        // setLoadedBooks(currentlyLoaded);
+        setLoadedBooks(currentlyLoaded);
       });
   }, []);
 
@@ -19,11 +21,13 @@ function BooksSearch() {
 
   if (isLoading) {
     currentContent = <div>It's loading</div>;
+  }else{
+    currentContent= <BookList data={loadedBooks}/>
   }
 
   return (
     <div>
-      <h1>Search for a new book</h1>
+      <h1>Pick up something new to read:</h1>
       {currentContent}
     </div>
   );
