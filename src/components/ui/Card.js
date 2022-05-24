@@ -1,14 +1,9 @@
-function Card(){
-    return <div>
-        <h2>Book title</h2>
-        <h3>Book author</h3>
-        <hX>It's about:</hX>
-        <ul>
-            <li>cars</li>
-            <li>buses</li>
-            <li>bicycles</li>
-        </ul>
-    </div>
+import classes from "./Card.module.css";
+
+function Card(props) {
+  return (
+    <div className={classes['card']}>{props.children}</div>
+  );
 }
 
 export default Card;
