@@ -5,8 +5,8 @@ import TablePagination from "../components/ui/TablePagination/TablePagination";
 
 function BooksSearch() {
   const [isLoading, setIsLoading] = useState(false);
-  const [loadedBooks, setLoadedBooks]=useState([]);
-  const [totalPagesAvail, setPagesAvailable]=useState(0);
+  const [loadedBooks, setLoadedBooks] = useState([]);
+  const [totalPagesAvail, setPagesAvailable] = useState(0);
   useEffect(() => {
     setIsLoading(true);
     fetch("https://gnikdroy.pythonanywhere.com/api/book/")
@@ -14,28 +14,28 @@ function BooksSearch() {
       .then((data) => {
         setPagesAvailable(data.count);
         setIsLoading(false);
-        let currentlyLoaded=data.results;
-        console.log(data)
+        let currentlyLoaded = data.results;
+        // console.log(data.results);
         setLoadedBooks(currentlyLoaded);
       });
   }, []);
 
   let currentContent;
-  let pagination=false;
+  let pagination = false;
 
   if (isLoading) {
     currentContent = <div>It's loading</div>;
-  }else{
-    currentContent= <BookList data={loadedBooks}/>
-    pagination=true;
+  } else {
+    currentContent = <BookList data={loadedBooks} />;
+    pagination = true;
   }
 
   return (
-    <div>
+    <section>
       <h1>Pick up something new to read:</h1>
       {currentContent}
-      {pagination? <TablePagination/> : null}
-    </div>
+      {pagination ? <TablePagination totalPagesCount={totalPagesAvail}/> : null}
+    </section>
   );
 }
 
