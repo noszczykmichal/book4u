@@ -1,0 +1,12 @@
+.arrow{
+    fill: rgb(0, 162, 255);
+    /* margin: 0 0.5rem; */
+}
+
+.arrow--left{
+    transform: rotate(180deg);
+}
+
+.arrow--right{
+    
+}

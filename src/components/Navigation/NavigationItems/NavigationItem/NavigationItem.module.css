@@ -1,16 +1,18 @@
-.navigation-item{
-    padding: 0 2rem;
-}
-
-.navigation-item a{
-    text-decoration: none;
-    color: inherit;
-    font-weight: 700;
+.navigation-item a {
+  text-decoration: none;
+  color: inherit;
+  font-weight: 700;
 }
 
 .navigation-item a:hover,
-.navigation-item a:active{
-    text-decoration: none;
-    color: #fff;
-    border-bottom: 5px solid #fff;
+.navigation-item a:active {
+  text-decoration: none;
+  color: #fff;
+  border-bottom: 5px solid #fff;
+}
+
+@media (min-width: 576px) {
+  .navigation-item {
+    padding: 0 2rem;
+  }
 }
