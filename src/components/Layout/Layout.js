@@ -16,7 +16,7 @@ function Layout(props) {
     <div>
       <Backdrop show={isVisible} clicked={visiblityHandler} />
       <Toolbar toggleClicked={visiblityHandler} />
-      <MobileNavigation show={isVisible} />
+      <MobileNavigation show={isVisible} linkClicked={visiblityHandler}/>
       <main className={classes["main"]}>{props.children}</main>
     </div>
   );
