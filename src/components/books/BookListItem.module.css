@@ -1,37 +1,57 @@
-.list__item{
-    margin: 1rem 0;
+.list__item {
+  margin: 1rem 0;
 }
 
-.book__title{
-    font-style: italic;
+.book__title {
+  font-style: italic;
 }
 
-.book__subjects::before{
-    content: attr(aria-label);
-    font-size: 1rem;
-    font-weight: 700;
-    margin-left: -1rem;
+.book__subjects::before {
+  content: attr(aria-label);
+  font-size: 1rem;
+  font-weight: 700;
+  margin-left: -1rem;
 }
 
-.book__subjects{
-    text-align: left;
+.book__subjects {
+  text-align: left;
 }
 
-.book__subject{
-    line-height: 1.5;
+.book__subject {
+  line-height: 1.5;
 }
 
-.button{
-    background-color: transparent;
-    border: 1px solid rgb(0, 162, 255);
-    border-radius: 4px;
-    color: rgb(0, 162, 255);
-    cursor: pointer;
-    font: inherit;
-    padding: 0.5rem 1.5rem;
+.book__cover{
+    display: block;
+    margin: 0 auto;
 }
 
-.button:hover{
-    background-color: rgb(0, 162, 255);
-    color: #fff;
+.book__button {
+  background-color: transparent;
+  border: 1px solid rgb(0, 162, 255);
+  border-radius: 4px;
+  color: rgb(0, 162, 255);
+  cursor: pointer;
+  font: inherit;
+  padding: 0.5rem 1.5rem;
+  margin: 2rem auto;
+}
+
+.book__button:hover {
+  background-color: rgb(0, 162, 255);
+  color: #fff;
+}
+
+.book__button--link {
+  text-decoration: none;
+  display: inline-block;
+  margin: 2rem 0;
+  border: 1px solid rgb(164, 53, 240);
+  color: rgb(164, 53, 240);
+}
+
+.book__button--link:hover {
+  border: 1px solid rgb(164, 53, 240);
+  background-color: rgb(164, 53, 240);
+  color: #fff;
 }

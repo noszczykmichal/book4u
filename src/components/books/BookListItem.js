@@ -8,13 +8,22 @@ function BookListItem(props) {
   const favBooksContext = useContext(GlobalContext);
   const bookIsFavorite = favBooksContext.bookIsFavorite(props.bookInfo.id);
 
-  function toggleFavoriteStatus() {
+  const toggleFavoriteStatus = () => {
     if (bookIsFavorite === false) {
       return favBooksContext.addFavorite(props.bookInfo);
     } else {
       return favBooksContext.removeFavorite(props.bookInfo.id);
     }
-  }
+  };
+
+  const resourceFinder = (typeRegEx, uriRegEx) => {
+    const bookResources = [...props.bookInfo.resources];
+    const filteredResource = bookResources.find((resource) => {
+      return resource.type.match(typeRegEx) && resource.uri.match(uriRegEx);
+    });
+
+    return filteredResource? filteredResource.uri : null;
+  };
 
   return (
     <li className={classes["list__item"]}>
@@ -32,9 +41,28 @@ function BookListItem(props) {
               </li>
             );
           })}
+          <a
+            href={resourceFinder("text", "htm")}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={[
+              classes["book__button"],
+              classes["book__button--link"],
+            ].join(" ")}
+          >
+            Read this book
+          </a>
+          <img
+            className={classes["book__cover"]}
+            src={resourceFinder("image", "medium")}
+            alt="book cover"
+          />
         </ul>
 
-        <button className={classes["button"]} onClick={toggleFavoriteStatus}>
+        <button
+          className={classes["book__button"]}
+          onClick={toggleFavoriteStatus}
+        >
           {bookIsFavorite ? "Remove from Favorites" : "To Favorites"}
         </button>
       </Card>
