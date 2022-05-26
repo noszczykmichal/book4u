@@ -1,9 +1,9 @@
 .table-pagination{
-    width: 30%;
+    width: 50%;
     margin: 0 auto;
     display: flex;
     justify-content: space-around;
-    text-align: center;
+    align-items: center;
 }
 
 .table-pagination__input{
