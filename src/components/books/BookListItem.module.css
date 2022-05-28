@@ -24,6 +24,7 @@
 .book__cover{
     display: block;
     margin: 0 auto;
+    height: 100%;
 }
 
 .book__button {

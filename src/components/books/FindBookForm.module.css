@@ -1,0 +1,44 @@
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form__label {
+  align-self: flex-start;
+  font-weight: 700;
+}
+
+.form__input {
+  font: inherit;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.form__label,
+.form__input {
+  margin-bottom: 0.5rem;
+}
+
+.range-container{
+  display: flex;
+}
+
+.range-container__input{
+  width: 20%;
+}
+
+.form__button {
+  background-color: transparent;
+  border: 1px solid rgb(0, 162, 255);
+  border-radius: 4px;
+  color: rgb(0, 162, 255);
+  cursor: pointer;
+  font: inherit;
+  padding: 0.5rem 1.5rem;
+  margin: 2rem auto;
+}
+
+.form__button:hover {
+  background-color: rgb(0, 162, 255);
+  color: #fff;
+}

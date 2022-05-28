@@ -40,7 +40,7 @@ function AllBooks() {
         setPagesAvailable(data.count);
         setIsLoading(false);
         let currentlyLoaded = data.results;
-        // console.log(data.results);
+        console.log(data.results);
         setLoadedBooks(currentlyLoaded);
       });
   }, [currentPage]);
