@@ -16,20 +16,29 @@ function BookListItem(props) {
     }
   };
 
+  const authorFinder = () => {
+    const bookAgents = [...props.bookInfo.agents];
+    const authorRegex = /Author/;
+    const filteredAgents = bookAgents.find((agent) =>
+      agent.type.match(authorRegex)
+    );
+    return filteredAgents ? filteredAgents.person : "Unknown Author";
+  };
+
   const resourceFinder = (typeRegEx, uriRegEx) => {
     const bookResources = [...props.bookInfo.resources];
     const filteredResource = bookResources.find((resource) => {
       return resource.type.match(typeRegEx) && resource.uri.match(uriRegEx);
     });
 
-    return filteredResource? filteredResource.uri : null;
+    return filteredResource ? filteredResource.uri : null;
   };
 
   return (
     <li className={classes["list__item"]}>
       <Card>
         <h3 className={classes["book__title"]}>{props.bookInfo.title} by</h3>
-        <h4>{props.bookInfo.agents[0]["person"]}</h4>
+        <h4>{authorFinder()}</h4>
         <p>Bookshelves: {props.bookInfo.bookshelves.join(", ")}</p>
         <ul aria-label="It's about:" className={classes["book__subjects"]}>
           {props.bookInfo.subjects.map((subject) => {
@@ -52,13 +61,12 @@ function BookListItem(props) {
           >
             Read this book
           </a>
-          <img
-            className={classes["book__cover"]}
-            src={resourceFinder("image", "medium")}
-            alt="book cover"
-          />
         </ul>
-
+        <img
+          className={classes["book__cover"]}
+          src={resourceFinder("image", "medium")}
+          alt="book cover"
+        />
         <button
           className={classes["book__button"]}
           onClick={toggleFavoriteStatus}

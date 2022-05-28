@@ -4,6 +4,7 @@ import { Routes, Route } from "react-router-dom";
 import Layout from "./components/Layout/Layout";
 import AllBooks from "./pages/AllBooks";
 import FavoriteBooks from "./pages/FavoriteBooks";
+import FindBook from "./pages/FindBook";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Routes>
         <Route path="/" exact element={<AllBooks/>}/>
         <Route path="/favorite-books" element={<FavoriteBooks/>}/>
+        <Route path="/find-book" element={<FindBook/>}></Route>
       </Routes>
     </Layout>
   );

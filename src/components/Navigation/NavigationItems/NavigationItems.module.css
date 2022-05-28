@@ -1,11 +1,12 @@
 .navigation-items{
     height: 20%;
+    width: 100%;
     list-style: none;
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;
     justify-content: space-around;
-    padding-left: 1rem;
+    padding-left: 0.5rem;
 }
 
 @media(min-width: 576px){
