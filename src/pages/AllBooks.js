@@ -39,31 +39,15 @@ function AllBooks() {
   };
 
   const searchHandler = (query) => {
+    setCurrentPage(1);
     setCurrentQuery(query);
     setIsLoading(true);
     setLoadedData([]);
-    fetch(`https://gnikdroy.pythonanywhere.com/api/book/?${query}`)
-      .then((response) => {
-        // console.log(response.json())
-        if (!response.ok) {
-          throw new Error("Sorry, We've run into issues. Please try again.");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        setTotalBooksAvail(data.count);
-        const results = [...data.results];
-        setIsLoading(false);
-        setLoadedData(results);
-        setIsQuerySuccessful(true);
-      })
-      .catch((error) => alert(error.message));
   };
 
   useEffect(() => {
-    let url = `https://gnikdroy.pythonanywhere.com/api/book/?${currentQuery}&page=${currentPage}`;
+    let url = currentQuery? `https://gnikdroy.pythonanywhere.com/api/book/?${currentQuery}&page=${currentPage}` : `https://gnikdroy.pythonanywhere.com/api/book/?page=${currentPage}`
     setIsLoading(true);
-    // setLoadedData([]);
     fetch(`${url}`)
       .then((response) => {
         // console.log(response.json())
@@ -80,7 +64,7 @@ function AllBooks() {
         setIsQuerySuccessful(true);
       })
       .catch((error) => alert(error.message));
-  }, [currentPage]);
+  }, [currentPage, currentQuery]);
 
   return (
     <section>
