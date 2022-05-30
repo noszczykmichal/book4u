@@ -10,7 +10,6 @@ function NavigationItems(props) {
       <NavigationItem link="favorite-books" clicked={props.linkClicked}>
         Favorite Books
       </NavigationItem>
-      <NavigationItem link="/find-book" clicked={props.linkClicked}>Find Book</NavigationItem>
     </ul>
   );
 }

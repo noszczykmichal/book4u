@@ -8,4 +8,11 @@
 
 .table-pagination__input{
     width: 20%;
+    -moz-appearance: textfield;
+}
+
+.table-pagination__input::-webkit-outer-spin-button,
+.table-pagination__input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }

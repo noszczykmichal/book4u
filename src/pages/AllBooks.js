@@ -1,67 +1,97 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 
+import FindBookForm from "../components/books/FindBookForm";
 import BookList from "../components/books/BookList";
 import TablePagination from "../components/ui/TablePagination/TablePagination";
-import "./AllBooks.module.css";
 
 function AllBooks() {
   const [isLoading, setIsLoading] = useState(false);
-  const [loadedBooks, setLoadedBooks] = useState([]);
-  const [totalPagesAvail, setPagesAvailable] = useState(0);
+  const [loadedData, setLoadedData] = useState([]);
+  const [isQuerySuccessful, setIsQuerySuccessful] = useState(false);
+  const [totalBooksAvail, setTotalBooksAvail] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
+  const [currentQuery, setCurrentQuery] = useState("");
 
   const paginationArrowHandler = (buttonId) => {
-    if (buttonId === "right" && currentPage <= totalPagesAvail) {
-      return setCurrentPage((prevState) => prevState + 1);
-    } else if (buttonId === "left" && currentPage >= 0) {
-      return setCurrentPage((prevState) => prevState - 1);
+    if (buttonId === "right") {
+      return setCurrentPage((prevState) =>
+        prevState !== Math.ceil(totalBooksAvail / 10)
+          ? prevState + 1
+          : Math.ceil(totalBooksAvail / 10)
+      );
+    } else {
+      return setCurrentPage((prevState) =>
+        prevState <= 1 ? 1 : prevState - 1
+      );
     }
   };
 
   const paginationInputHandler = (event) => {
     const paginationInputValue = +event.target.value;
 
-    if (paginationInputValue && (paginationInputValue>0 &&paginationInputValue<=totalPagesAvail)) {
+    if (
+      paginationInputValue &&
+      paginationInputValue > 0 &&
+      paginationInputValue <= Math.ceil(totalBooksAvail / 10)
+    ) {
       setCurrentPage(paginationInputValue);
     }
   };
 
-  useEffect(() => {
-    const fetchHandler = () => {
-      let url = `https://gnikdroy.pythonanywhere.com/api/book/?page=${currentPage}`;
-
-      return fetch(url);
-    };
-
+  const searchHandler = (query) => {
+    setCurrentQuery(query);
     setIsLoading(true);
-    fetchHandler()
-      .then((response) => response.json())
+    setLoadedData([]);
+    fetch(`https://gnikdroy.pythonanywhere.com/api/book/?${query}`)
+      .then((response) => {
+        // console.log(response.json())
+        if (!response.ok) {
+          throw new Error("Sorry, We've run into issues. Please try again.");
+        }
+        return response.json();
+      })
       .then((data) => {
-        setPagesAvailable(data.count);
+        setTotalBooksAvail(data.count);
+        const results = [...data.results];
         setIsLoading(false);
-        let currentlyLoaded = data.results;
-        console.log(data.results);
-        setLoadedBooks(currentlyLoaded);
-      });
+        setLoadedData(results);
+        setIsQuerySuccessful(true);
+      })
+      .catch((error) => alert(error.message));
+  };
+
+  useEffect(() => {
+    let url = `https://gnikdroy.pythonanywhere.com/api/book/?${currentQuery}&page=${currentPage}`;
+    setIsLoading(true);
+    // setLoadedData([]);
+    fetch(`${url}`)
+      .then((response) => {
+        // console.log(response.json())
+        if (!response.ok) {
+          throw new Error("Sorry, We've run into issues. Please try again.");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        setTotalBooksAvail(data.count);
+        const results = [...data.results];
+        setIsLoading(false);
+        setLoadedData(results);
+        setIsQuerySuccessful(true);
+      })
+      .catch((error) => alert(error.message));
   }, [currentPage]);
-
-  let currentContent;
-  let pagination = false;
-
-  if (isLoading) {
-    currentContent = <div>It's loading</div>;
-  } else {
-    currentContent = <BookList data={loadedBooks} />;
-    pagination = true;
-  }
 
   return (
     <section>
-      <h1>Pick up something new to read:</h1>
-      {currentContent}
-      {pagination ? (
+      {/* <h1>Haven't found something matching?</h1>
+      <p>Browse the PG catalogue to find something interesting.</p> */}
+      <FindBookForm onSearchHandler={searchHandler} />
+      {isLoading && <p>Give us a second, we're loading your data...</p>}
+      {isQuerySuccessful && <BookList data={loadedData} />}
+      {totalBooksAvail > 10 ? (
         <TablePagination
-          totalPagesCount={totalPagesAvail}
+          totalPagesCount={Math.ceil(totalBooksAvail / 10)}
           value={currentPage}
           paginationArrowHandler={paginationArrowHandler}
           inputChangeHandler={paginationInputHandler}
