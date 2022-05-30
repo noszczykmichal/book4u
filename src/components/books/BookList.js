@@ -4,7 +4,7 @@ import BookListItem from "./BookListItem";
 
 function BookList(props) {
   return <ul className={classes['book-list']}>
-      {props.data.map(book=><BookListItem key={book.id} bookInfo={book}/>)}
+      {props.data.map(book=><BookListItem key={Math.random()*book.id} bookInfo={book}/>)}
   </ul>;
 }
 
