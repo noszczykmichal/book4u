@@ -1,6 +1,6 @@
 # Books Search App
 
-> An app using the Project Gutenberg's API for browsing PG catalogue
+> An app using the Project Gutenberg's API for browsing PG catalogue.    
 > You can check live demo [_here_](https://books-search-app-a9b46.web.app/).
 
 ## Table of Contents
@@ -10,7 +10,6 @@
 * [Screenshots](#screenshots)
 * [Setup](#setup)
 * [Project Status](#project-status)
-* [Room for Improvement](#room-for-improvement)
 * [Contact](#contact)
 
 
