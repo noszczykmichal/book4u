@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 
+import classes from './AllBooks.module.css'
 import FindBookForm from "../components/books/FindBookForm";
 import BookList from "../components/books/BookList";
 import TablePagination from "../components/ui/TablePagination/TablePagination";
@@ -67,9 +68,9 @@ function AllBooks() {
   }, [currentPage, currentQuery]);
 
   return (
-    <section>
-      {/* <h1>Haven't found something matching?</h1>
-      <p>Browse the PG catalogue to find something interesting.</p> */}
+    <section className={classes['section']}>
+      <h1>Haven't found something matching?</h1>
+      <p>Browse the PG catalogue to find something interesting.</p>
       <FindBookForm onSearchHandler={searchHandler} />
       {isLoading && <p>Give us a second, we're loading your data...</p>}
       {isQuerySuccessful && <BookList data={loadedData} />}
