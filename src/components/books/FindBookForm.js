@@ -56,9 +56,6 @@ function FindBookForm(props) {
 
   return (
     <Card>
-      <h1>Haven't found something matching?</h1>
-      <p>Browse the PG catalogue to find something interesting.</p>
-    
       <form className={classes["form"]} onSubmit={formHandler}>
         <label htmlFor="title" className={classes["form__label"]}>Title Contains:</label>
         <input type="text" id="title" className={classes["form__input"]}ref={titleRef}/>
