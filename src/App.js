@@ -1,17 +1,20 @@
-import React from "react";
+import React, { Suspense } from "react";
 import { Routes, Route } from "react-router-dom";
 
 import Layout from "./components/Layout/Layout";
-import AllBooks from "./pages/AllBooks";
-import FavoriteBooks from "./pages/FavoriteBooks";
+
+const AllBooks = React.lazy(() => import("./pages/AllBooks"));
+const FavoriteBooks = React.lazy(() => import("./pages/FavoriteBooks"));
 
 function App() {
   return (
     <Layout>
-      <Routes>
-        <Route path="/" exact element={<AllBooks/>}/>
-        <Route path="/favorite-books" element={<FavoriteBooks/>}/>
-      </Routes>
+      <Suspense>
+        <Routes>
+          <Route path="/" exact element={<AllBooks />} />
+          <Route path="/favorite-books" element={<FavoriteBooks />} />
+        </Routes>
+      </Suspense>
     </Layout>
   );
 }
