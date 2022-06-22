@@ -9,10 +9,19 @@
   font-weight: 700;
 }
 
-.form__input {
+.form__input,
+.form__select {
   font: inherit;
   border-radius: 4px;
   border: 1px solid #ccc;
+}
+
+.form__input:active,
+.form__input:focus,
+.form__select:active,
+.form__select:focus {
+  border: 1px solid rgb(0, 162, 255);
+  outline: none;
 }
 
 .form__label,
@@ -20,11 +29,11 @@
   margin-bottom: 0.5rem;
 }
 
-.range-container{
+.range-container {
   display: flex;
 }
 
-.range-container__input{
+.range-container__input {
   width: 20%;
 }
 
