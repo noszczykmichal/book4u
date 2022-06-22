@@ -1,23 +1,11 @@
 import { useRef } from 'react';
 
+import { agentTypeArray, languagesArray } from './FormData';
 import classes from './FindBookForm.module.css';
 import Card from '../ui/Card';
 
 function FindBookForm(props) {
-  const agentTypeArray = [
-    '',
-    'Annotator',
-    'Author',
-    'Commentator',
-    'Compiler',
-    'Composer',
-    'Contributor',
-    'Editor',
-    'Illustrator',
-    'Other',
-    'Photographer',
-    'Translator',
-  ]
+
   const titleRef = useRef();
   const descriptionRef = useRef();
   const agentsTypeRef = useRef();
@@ -28,6 +16,7 @@ function FindBookForm(props) {
   const agentsDeathDateMaxRef = useRef();
   const downloadRangeMinRef = useRef();
   const downloadRangeMaxRef = useRef();
+  const languageRef=useRef();
 
   const formHandler = (event) => {
     event.preventDefault();
@@ -42,6 +31,7 @@ function FindBookForm(props) {
     const enteredAgentsDeathDateMax = agentsDeathDateMaxRef.current.value;
     const enteredDownloadRangeMin = downloadRangeMinRef.current.value;
     const enteredDownloadRangeMax = downloadRangeMaxRef.current.value;
+    const enteredLanguage=languageRef.current.value;
 
     if (enteredTitle) {
       query += `title_contains=${enteredTitle}&`;
@@ -72,6 +62,9 @@ function FindBookForm(props) {
     }
     if (enteredDownloadRangeMax) {
       query += `downloads_range_max=${enteredDownloadRangeMax}&`;
+    }
+    if(enteredLanguage){
+      query += `languages=${enteredLanguage}&`;
     }
 
     props.onSearchHandler(query);
@@ -195,6 +188,17 @@ function FindBookForm(props) {
             ref={downloadRangeMaxRef}
           />
         </div>
+
+        <label htmlFor="language" className={classes['form__label']}>
+          Select language:
+        </label>
+        <select className={classes['form__select']} name="language" id="language" ref={languageRef}>
+          {languagesArray.map((type) => {
+            const key = Math.random().toString();
+
+            return <option className={classes['select__option']} key={key} value={type}>{type}</option>
+          })}
+        </select>
 
         <button className={classes['form__button']}>Search</button>
       </form>
