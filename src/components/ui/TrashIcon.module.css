@@ -1,0 +1,35 @@
+.container {
+    background-color: rgb(204, 32, 98);
+    border-radius: 0.75rem;
+    height: 1.5rem;
+    width: 2rem;
+    margin-left: 0.5rem;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .container__icon {
+    fill: #fff;
+    transform: scale(0.8);
+    height: 1.5rem;
+    color: white;
+    margin-left: 0.25rem;
+  }
+  
+  .container__icon:hover,
+  .container__icon:active,
+  .container__icon:focus {
+    transform: scale(0.8);
+  }
+  
+  @media (min-width: 768px) {
+    .container{
+      background-color: rgb(119, 0, 46);
+    }
+  
+    .container__icon {
+      transform: scale(1);
+    }
+  }
+  

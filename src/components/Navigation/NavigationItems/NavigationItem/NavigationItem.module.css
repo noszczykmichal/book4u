@@ -2,8 +2,10 @@
   text-decoration: none;
   color: inherit;
   font-weight: 700;
-  padding: 0.5rem 1.5rem;
-  border: 1px solid transparent
+  padding: 0.5rem 0;
+  border: 1px solid transparent;
+  display: flex;
+  align-items: center;
 }
 
 .navigation-item a:hover,
@@ -12,11 +14,13 @@
   border-radius: 4px;
 }
 
-@media(min-width: 576px) {
+@media(min-width: 360px) {
   .navigation-item {
     padding: 0 2rem;
   }
+}
 
+@media(min-width: 576px) {
   .navigation-item a{
     border: 5px solid transparent;
   }
@@ -28,5 +32,3 @@
     border-radius: 0;
   }
 }
-
-/* border-bottom: 5px solid #fff; */
