@@ -1,11 +1,15 @@
+.navigation-item {
+  padding: 1.5rem 0;
+}
+
 .navigation-item a {
   text-decoration: none;
   color: inherit;
   font-weight: 700;
-  padding: 0.5rem 0;
   border: 1px solid transparent;
-  display: flex;
+  display: inline-flex;
   align-items: center;
+  padding: 0.5rem 0rem;
 }
 
 .navigation-item a:hover,
@@ -16,19 +20,30 @@
 
 @media(min-width: 360px) {
   .navigation-item {
-    padding: 0 2rem;
+    padding-left: 2rem;
+  }
+  .navigation-item a {
+    padding: 0.5rem 1rem;
   }
 }
 
 @media(min-width: 576px) {
+  .navigation-item {
+    padding: 0rem 2rem;
+  }
+
   .navigation-item a{
-    border: 5px solid transparent;
+    padding: 0.2rem 0;
+    border: unset;
+    border-radius: 0;
+    border-bottom: 5px solid transparent;
   }
 
   .navigation-item a:hover,
   .navigation-item a:active {
-    border: 5px solid transparent;
-    border-bottom: 5px solid white;
+    border: unset;
     border-radius: 0;
+    border-bottom: 5px solid #fff;
+    color: #fff;
   }
 }

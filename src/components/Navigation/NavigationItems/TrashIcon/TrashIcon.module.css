@@ -20,16 +20,12 @@
   .container__icon:hover,
   .container__icon:active,
   .container__icon:focus {
-    transform: scale(0.8);
+    transform: scale(0.6);
   }
   
   @media (min-width: 768px) {
-    .container{
-      background-color: rgb(119, 0, 46);
-    }
-  
     .container__icon {
-      transform: scale(1);
+      transform: scale(0.8);
     }
   }
   

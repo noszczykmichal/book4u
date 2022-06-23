@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import GlobalContext from '../../store/global-context';
+import GlobalContext from '../../../../store/global-context';
 
 import classes from './Counter.module.css';
 
