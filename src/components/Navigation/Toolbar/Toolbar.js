@@ -6,11 +6,11 @@ import Logo from './Logo/Logo';
 
 function Toolbar(props) {
   return <header className={classes['toolbar']}>
-      <Logo/>
-      <nav className={classes['toolbar__desktop-navigation']}>
-      <NavigationItems/>
-      </nav>
-      <ToggleButton className={classes['toolbar__toggle']} clickHandler={props.toggleClicked}/>
+    <Logo />
+    <nav className={classes['toolbar__desktop-navigation']}>
+      <NavigationItems />
+    </nav>
+    <ToggleButton className={classes['toolbar__toggle']} clickHandler={props.toggleClicked} />
   </header>;
 }
 

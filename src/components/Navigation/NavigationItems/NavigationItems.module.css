@@ -9,9 +9,17 @@
     padding-left: 0.5rem;
 }
 
+@media(min-width: 360px){
+    .navigation-items{
+        padding-left: 2.5rem;
+    }
+}
+
 @media(min-width: 576px){
     .navigation-items{
-        flex-wrap: nowrap;
         flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        padding: 0 2rem;
     }
 }

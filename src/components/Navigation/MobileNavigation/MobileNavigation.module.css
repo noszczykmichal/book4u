@@ -1,5 +1,5 @@
 .container{
-    width: 50vw;
+    width: 80vw;
     height: 100vh;
     position: fixed;
     top: 0;
@@ -7,7 +7,6 @@
     background-color: #fff;
     z-index: 200;
     display: flex;
-    justify-content: center;
     align-items: center;
     transform: translateX(100%);
     transition: transform .5s ease-out;
