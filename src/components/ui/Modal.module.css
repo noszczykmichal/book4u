@@ -1,0 +1,67 @@
+.modal-container {
+    width: 100vw; 
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 0;
+  }
+  
+  .modal {
+    background-color: #fff;
+    height: 25%;
+    width: 90%;
+    max-width: 430px;
+    max-height: 200px;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: fixed;
+    z-index: 500;
+    top: 20%;
+    transform: translateY(-30rem);
+    opacity: 0;
+    transition: opacity .8s ease-out, transform .8s ease-out;
+  }
+  
+  .modal--active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  .modal__actions {
+    width: 80%;
+    padding: 0.5rem 0 1.5rem 0;
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .modal__action {
+    color: #fff;
+    padding: 0.5rem 1.5rem;
+    border-radius: 6px;
+  }
+  
+  .modal__action--confirm {
+    background-color: #0e4f1f;
+    border-color: #0e4f1f;
+  }
+  
+  .modal__action--confirm:hover,
+  .modal__action--confirm:active {
+    background-color: #2ddf5c;
+    border-color: #2ddf5c;
+  }
+  
+  .modal__action--cancel {
+    background-color: #ff0000;
+    border-color: #ff0000;
+  }
+  
+  .modal__action--cancel:hover,
+  .modal__action--cancel:active{
+    background-color: #ff5454;
+    border-color: #ff5454;
+  }

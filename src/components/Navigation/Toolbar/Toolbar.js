@@ -8,7 +8,7 @@ function Toolbar(props) {
   return <header className={classes['toolbar']}>
     <Logo />
     <nav className={classes['toolbar__desktop-navigation']}>
-      <NavigationItems />
+      <NavigationItems trashIconClicked={props.trashIconClicked}/>
     </nav>
     <ToggleButton className={classes['toolbar__toggle']} clickHandler={props.toggleClicked} />
   </header>;

@@ -9,11 +9,13 @@ function NavigationItems(props) {
       <NavigationItem link="/" clicked={props.linkClicked}>
         All Books
       </NavigationItem>
-      <NavigationItem link="favorite-books" clicked={props.linkClicked}>
-        Favorite Books
-        <Counter/>
-        <TrashIcon/>
-      </NavigationItem>
+      <div className={classes['navigation-item--badges']}>
+        <NavigationItem link="favorite-books" clicked={props.linkClicked}>
+          Favorite Books
+        </NavigationItem>
+        <Counter />
+        <TrashIcon trashIconClicked={props.trashIconClicked} />
+      </div>
     </ul>
   );
 }

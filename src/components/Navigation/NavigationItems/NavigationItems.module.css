@@ -9,6 +9,10 @@
     padding-left: 0.5rem;
 }
 
+.navigation-item--badges{
+    display: flex;
+}
+
 @media(min-width: 360px){
     .navigation-items{
         padding-left: 2.5rem;
