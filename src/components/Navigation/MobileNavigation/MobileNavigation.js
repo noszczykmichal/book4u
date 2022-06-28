@@ -10,7 +10,7 @@ function MobileNavigation(props){
     }
 
     return <div className={attachedClasses.join(' ')}>
-        <NavigationItems linkClicked={props.linkClicked}/>
+        <NavigationItems linkClicked={props.linkClicked} trashIconClicked={props.trashIconClicked}/>
     </div>
 }
 

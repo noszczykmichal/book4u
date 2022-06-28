@@ -5,6 +5,7 @@ const GlobalContext = createContext({
   totalFavorites: 0,
   addFavorite: (favoriteBook) => {},
   removeFavorite: (bookId)=>{},
+  removeAllFavorites: ()=>{},
   bookIsFavorite: (bookId)=>Boolean,
 });
 
@@ -21,6 +22,10 @@ export function GlobalContextProvider(props) {
     setUserFavorites(prevState=> prevState.filter(book=> book.id!==bookId))
   }
 
+  function removeAllFavoritesHandler(){
+    setUserFavorites([]);
+  }
+
   function bookIsFavoriteHandler(bookId){
     return userFavorites.some(book => book.id===bookId);
   }
@@ -30,6 +35,7 @@ export function GlobalContextProvider(props) {
     totalFavorites: userFavorites.length,
     addFavorite: addFavoriteHandler,
     removeFavorite: removeFavoriteHandler,
+    removeAllFavorites: removeAllFavoritesHandler,
     bookIsFavorite: bookIsFavoriteHandler,
   };
 
