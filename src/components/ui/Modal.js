@@ -20,7 +20,7 @@ function Modal(props) {
                             classes["modal__action"],
                             classes["modal__action--confirm"],
                         ].join(" ")}
-                        onClick={props.confirmButtonHandler}
+                        onClick={props.confirmButtonClick}
                     >
                         YES
                     </button>
@@ -29,7 +29,7 @@ function Modal(props) {
                             classes["modal__action"],
                             classes["modal__action--cancel"],
                         ].join(" ")}
-                        onClick={props.cancelButtonHandler}
+                        onClick={props.cancelButtonClick}
                     >
                         NO
                     </button>
