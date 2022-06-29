@@ -1,8 +1,13 @@
+import { useContext } from "react";
+import GlobalContext from "../../../../store/global-context";
+
 import classes from "./TrashIcon.module.css";
 
-function TrashIcon(props) {
+function TrashIcon() {
+  const globalCtx = useContext(GlobalContext);
+  
   return (
-    <div className={classes['container']} onClick={props.trashIconClicked}>
+    <div className={classes['container']} onClick={globalCtx.trashIconOnClick}>
       <svg
       xmlns="http://www.w3.org/2000/svg"
       fillRule="evenodd"
