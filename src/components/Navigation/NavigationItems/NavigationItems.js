@@ -3,18 +3,18 @@ import NavigationItem from "./NavigationItem/NavigationItem";
 import Counter from "./Counter/Counter";
 import TrashIcon from "./TrashIcon/TrashIcon";
 
-function NavigationItems(props) {
+function NavigationItems() {
   return (
     <ul className={classes["navigation-items"]}>
-      <NavigationItem link="/" clicked={props.linkClicked}>
+      <NavigationItem link="/" >
         All Books
       </NavigationItem>
       <div className={classes['navigation-item--badges']}>
-        <NavigationItem link="favorite-books" clicked={props.linkClicked}>
+        <NavigationItem link="favorite-books" >
           Favorite Books
         </NavigationItem>
         <Counter />
-        <TrashIcon trashIconClicked={props.trashIconClicked} />
+        <TrashIcon />
       </div>
     </ul>
   );

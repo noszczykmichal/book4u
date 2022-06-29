@@ -1,9 +1,13 @@
+import { useContext } from "react";
+
+import GlobalContext from "../../store/global-context";
 import classes from "./Modal.module.css";
 
-function Modal(props) {
+function Modal() {
+    const globalCtx = useContext(GlobalContext);
     let attachedClasses = [classes["modal"]];
 
-    if (props.show) {
+    if (globalCtx.modalVisible) {
         attachedClasses = [classes["modal"], classes["modal--active"]];
     }
 
@@ -20,7 +24,7 @@ function Modal(props) {
                             classes["modal__action"],
                             classes["modal__action--confirm"],
                         ].join(" ")}
-                        onClick={props.confirmButtonClick}
+                        onClick={globalCtx.confirmButtonOnClick}
                     >
                         YES
                     </button>
@@ -29,7 +33,7 @@ function Modal(props) {
                             classes["modal__action"],
                             classes["modal__action--cancel"],
                         ].join(" ")}
-                        onClick={props.cancelButtonClick}
+                        onClick={globalCtx.cancelButtonOnClick}
                     >
                         NO
                     </button>

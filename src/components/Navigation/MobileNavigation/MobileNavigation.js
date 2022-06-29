@@ -1,16 +1,19 @@
+import { useContext } from 'react';
+
 import classes from './MobileNavigation.module.css';
-
 import NavigationItems from "../NavigationItems/NavigationItems";
+import GlobalContext from '../../../store/global-context';
 
-function MobileNavigation(props){
+function MobileNavigation(){
+    const globalCtx = useContext(GlobalContext);
     let attachedClasses=[classes['container']];
     
-    if(props.show){
+    if(globalCtx.mobileNavVisible){
         attachedClasses=[classes['container'], classes['active']];
     }
 
     return <div className={attachedClasses.join(' ')}>
-        <NavigationItems linkClicked={props.linkClicked} trashIconClicked={props.trashIconClicked}/>
+        <NavigationItems />
     </div>
 }
 
