@@ -5,8 +5,6 @@ import Modal from "../ui/Modal";
 import classes from "./Layout.module.css";
 
 function Layout(props) {
- 
-
   return (
     <div>
       <Backdrop />
