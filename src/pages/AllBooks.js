@@ -47,9 +47,11 @@ function AllBooks() {
     setLoadedData([]);
   };
 
+
   useEffect(() => {
-    let url = currentQuery? `https://gnikdroy.pythonanywhere.com/api/book/?${currentQuery}&page=${currentPage}` : `https://gnikdroy.pythonanywhere.com/api/book/?page=${currentPage}`
+    let url = currentQuery ? `https://gnikdroy.pythonanywhere.com/api/book/?${currentQuery}&page=${currentPage}` : `https://gnikdroy.pythonanywhere.com/api/book/?page=${currentPage}`
     setIsLoading(true);
+
     fetch(`${url}`)
       .then((response) => {
         // console.log(response.json())
@@ -73,7 +75,7 @@ function AllBooks() {
       <h1>Haven't found something matching?</h1>
       <p>Browse the PG catalogue to find something interesting.</p>
       <FindBookForm onSearchHandler={searchHandler} />
-      {isLoading && <Preloader/>}
+      {isLoading && <Preloader />}
       {isQuerySuccessful && <BookList data={loadedData} />}
       {totalBooksAvail > 10 ? (
         <TablePagination

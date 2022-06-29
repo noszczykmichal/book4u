@@ -1,0 +1,10 @@
+.anchor{
+    position: fixed;
+    bottom: 2rem;
+    right: 0.5rem;
+    background-color: rgba(204, 32, 98, 0.9);
+    border: rgb(204, 32, 98);
+    border-radius: 50%;
+    padding: 1rem;
+    color: #fff;
+}

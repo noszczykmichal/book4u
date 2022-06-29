@@ -15,8 +15,9 @@ const GlobalContext = createContext({
   closeAllModals: () => Boolean,
   openMobileNav: () => Boolean,
   trashIconOnClick: () => Boolean,
-  confirmButtonOnClick: ()=>{},
-  cancelButtonOnClick: ()=>Boolean
+  confirmButtonOnClick: () => { },
+  cancelButtonOnClick: () => Boolean,
+  scrollToTop: () => null
 });
 
 export function GlobalContextProvider(props) {
@@ -71,6 +72,16 @@ export function GlobalContextProvider(props) {
     closeAllHandler();
   }
 
+  function scrollHandler() {
+    const top = document.getElementById('book-list');
+    if (top) {
+      window.scrollTo({
+        top: top.offsetTop,
+        behavior: "smooth"
+      })
+    }
+  }
+
   const context = {
     favorites: userFavorites,
     totalFavorites: userFavorites.length,
@@ -87,7 +98,8 @@ export function GlobalContextProvider(props) {
     openMobileNav: openMobileNavHandler,
     trashIconOnClick: trashIconOnClickHandler,
     confirmButtonOnClick: confirmButtonHandler,
-    cancelButtonOnClick: cancelButtonHandler
+    cancelButtonOnClick: cancelButtonHandler,
+    scrollToTop: scrollHandler
   };
 
   return (
