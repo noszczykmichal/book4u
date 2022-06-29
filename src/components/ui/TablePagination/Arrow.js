@@ -4,14 +4,12 @@ function Arrow(props) {
   let attachedClasses = [classes["arrow"]];
   if (props.left) {
     attachedClasses = [classes["arrow"], classes["arrow--left"]];
-  } else {
-    attachedClasses = [classes["arrow"], classes["arrow--right"]];
   }
 
   const clickHandler = (event) => {
     const elementsClasses = event.currentTarget.getAttribute("class");
-    const regexRight = /right/;
-    const whichArrow=elementsClasses.match(regexRight)? 'right' : 'left'
+    const regexRight = /left/;
+    const whichArrow=elementsClasses.match(regexRight)? 'left' : 'right'
     return props.paginationHandler(whichArrow);
   };
 

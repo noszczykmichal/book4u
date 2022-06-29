@@ -6,7 +6,6 @@ import classes from "./Backdrop.module.css";
 function Backdrop() {
   const globalCtx = useContext(GlobalContext);
 
-
   let attachedClasses = [classes["backdrop"]];
   if (globalCtx.backdropVisible) {
     attachedClasses = [classes["backdrop"], classes["active"]];

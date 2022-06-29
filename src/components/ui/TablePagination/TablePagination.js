@@ -14,7 +14,7 @@ function TablePagination(props) {
       />
       <span>z</span>
       <span>{props.totalPagesCount}</span>
-      <Arrow right="true" paginationHandler={props.paginationArrowHandler} />
+      <Arrow paginationHandler={props.paginationArrowHandler} />
     </div>
   );
 }
