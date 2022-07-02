@@ -17,7 +17,8 @@ const GlobalContext = createContext({
   trashIconOnClick: () => Boolean,
   confirmButtonOnClick: () => { },
   cancelButtonOnClick: () => Boolean,
-  scrollToTop: () => null
+  takeToTopPaginationArrows: () => null,
+  takeToTopButton: () => null,
 });
 
 export function GlobalContextProvider(props) {
@@ -72,11 +73,25 @@ export function GlobalContextProvider(props) {
     closeAllHandler();
   }
 
-  function scrollHandler() {
-    const top = document.getElementById('book-list');
-    if (top) {
+  function takeToTopPaginationArrowsHandler() {
+    const booklistTop = document.getElementById('book-list');
+    if (booklistTop) {
+      const position = booklistTop.offsetTop - 240;
+
       window.scrollTo({
-        top: top.offsetTop,
+        top: position,
+        behavior: "smooth"
+      })
+    }
+  }
+
+  function takeToTopButtonHandler() {
+    const booklistTop = document.getElementById('book-list');
+    if (booklistTop) {
+      const position = booklistTop.offsetTop - 80;
+
+      window.scrollTo({
+        top: position,
         behavior: "smooth"
       })
     }
@@ -99,7 +114,8 @@ export function GlobalContextProvider(props) {
     trashIconOnClick: trashIconOnClickHandler,
     confirmButtonOnClick: confirmButtonHandler,
     cancelButtonOnClick: cancelButtonHandler,
-    scrollToTop: scrollHandler
+    takeToTopPaginationArrows: takeToTopPaginationArrowsHandler,
+    takeToTopButton: takeToTopButtonHandler,
   };
 
   return (

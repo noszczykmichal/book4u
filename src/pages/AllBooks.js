@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext, useRef } from "react";
 
 import classes from './AllBooks.module.css'
 import FindBookForm from "../components/books/FindBookForm";
 import BookList from "../components/books/BookList";
 import TablePagination from "../components/ui/TablePagination/TablePagination";
 import Preloader from "../components/ui/Preloader";
+import GlobalContext from "../store/global-context";
 
 function AllBooks() {
   const [isLoading, setIsLoading] = useState(false);
@@ -13,6 +14,8 @@ function AllBooks() {
   const [totalBooksAvail, setTotalBooksAvail] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const [currentQuery, setCurrentQuery] = useState("");
+
+  const globalCtx = useContext(GlobalContext);
 
   const paginationArrowHandler = (buttonId) => {
     if (buttonId === "right") {
@@ -47,6 +50,7 @@ function AllBooks() {
     setLoadedData([]);
   };
 
+  const takeToTop = useRef(globalCtx);
 
   useEffect(() => {
     let url = currentQuery ? `https://gnikdroy.pythonanywhere.com/api/book/?${currentQuery}&page=${currentPage}` : `https://gnikdroy.pythonanywhere.com/api/book/?page=${currentPage}`
@@ -66,6 +70,7 @@ function AllBooks() {
         setIsLoading(false);
         setLoadedData(results);
         setIsQuerySuccessful(true);
+        takeToTop.current.takeToTopPaginationArrows();
       })
       .catch((error) => alert(error.message));
   }, [currentPage, currentQuery]);
