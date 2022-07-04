@@ -16,7 +16,7 @@ function FindBookForm(props) {
   const agentsDeathDateMaxRef = useRef();
   const downloadRangeMinRef = useRef();
   const downloadRangeMaxRef = useRef();
-  const languageRef=useRef();
+  const languageRef = useRef();
 
   const formHandler = (event) => {
     event.preventDefault();
@@ -31,7 +31,7 @@ function FindBookForm(props) {
     const enteredAgentsDeathDateMax = agentsDeathDateMaxRef.current.value;
     const enteredDownloadRangeMin = downloadRangeMinRef.current.value;
     const enteredDownloadRangeMax = downloadRangeMaxRef.current.value;
-    const enteredLanguage=languageRef.current.value;
+    const enteredLanguage = languageRef.current.value;
 
     if (enteredTitle) {
       query += `title_contains=${enteredTitle}&`;
@@ -63,7 +63,7 @@ function FindBookForm(props) {
     if (enteredDownloadRangeMax) {
       query += `downloads_range_max=${enteredDownloadRangeMax}&`;
     }
-    if(enteredLanguage){
+    if (enteredLanguage) {
       query += `languages=${enteredLanguage}&`;
     }
 
@@ -73,29 +73,13 @@ function FindBookForm(props) {
   return (
     <Card>
       <form className={classes['form']} onSubmit={formHandler}>
-        <label htmlFor="title" className={classes['form__label']}>
-          Title Contains:
-        </label>
-        <input
-          type="text"
-          id="title"
-          className={classes['form__input']}
-          ref={titleRef}
-        />
+        <label htmlFor="title" className={classes['form__label']}>Title Contains:</label>
+        <input type="text" id="title" className={classes['form__input']} ref={titleRef} />
 
-        <label htmlFor="description" className={classes['form__label']}>
-          Description Contains:
-        </label>
-        <input
-          type="text"
-          id="description"
-          className={classes['form__input']}
-          ref={descriptionRef}
-        />
+        <label htmlFor="description" className={classes['form__label']}>Description Contains:</label>
+        <input type="text" id="description" className={classes['form__input']} ref={descriptionRef} />
 
-        <label htmlFor="agents_type" className={classes['form__label']}>
-          Agents type:
-        </label>
+        <label htmlFor="agents_type" className={classes['form__label']}>Agents type:</label>
         <select className={classes['form__select']} name="agents_type" id="agents_type" ref={agentsTypeRef}>
           {agentTypeArray.map((type) => {
             const key = Math.random().toString();
@@ -104,94 +88,31 @@ function FindBookForm(props) {
           })}
         </select>
 
-        <label htmlFor="agents_name" className={classes['form__label']}>
-          Agents person name contains:
-        </label>
-        <input
-          type="text"
-          id="agents_name"
-          className={classes['form__input']}
-          ref={agentsNameRef}
-        />
+        <label htmlFor="agents_name" className={classes['form__label']}>Agents person name contains:</label>
+        <input type="text" id="agents_name" className={classes['form__input']} ref={agentsNameRef} />
 
-        <label className={classes['form__label']}>
-          Agents person birth date is in range:
-        </label>
+        <label className={classes['form__label']}>Agents person birth date is in range:</label>
         <div className={classes['range-container']}>
-          <input
-            type="text"
-            className={[
-              classes['form__input'],
-              classes['range-container__input'],
-            ].join(' ')}
-            placeholder="min"
-            ref={agentsBirthDateMinRef}
-          />
+          <input type="text" className={[classes['form__input'], classes['range-container__input']].join(' ')} placeholder="min" ref={agentsBirthDateMinRef} />
           <span>-</span>
-          <input
-            type="text"
-            className={[
-              classes['form__input'],
-              classes['range-container__input'],
-            ].join(' ')}
-            placeholder="max"
-            ref={agentsBirthDateMaxRef}
-          />
+          <input type="text" className={[classes['form__input'], classes['range-container__input']].join(' ')} placeholder="max" ref={agentsBirthDateMaxRef} />
         </div>
 
-        <label className={classes['form__label']}>
-          Agents person death date is in range:
-        </label>
+        <label className={classes['form__label']}>Agents person death date is in range:</label>
         <div className={classes['range-container']}>
-          <input
-            type="text"
-            className={[
-              classes['form__input'],
-              classes['range-container__input'],
-            ].join(' ')}
-            placeholder="min"
-            ref={agentsDeathDateMinRef}
-          />
+          <input type="text" className={[classes['form__input'], classes['range-container__input']].join(' ')} placeholder="min" ref={agentsDeathDateMinRef} />
           <span>-</span>
-          <input
-            type="text"
-            className={[
-              classes['form__input'],
-              classes['range-container__input'],
-            ].join(' ')}
-            placeholder="max"
-            ref={agentsDeathDateMaxRef}
-          />
+          <input type="text" className={[classes['form__input'], classes['range-container__input']].join(' ')} placeholder="max" ref={agentsDeathDateMaxRef} />
         </div>
 
-        <label className={classes['form__label']}>
-          Downloads is in range:
-        </label>
+        <label className={classes['form__label']}>Downloads is in range:</label>
         <div className={classes['range-container']}>
-          <input
-            type="text"
-            className={[
-              classes['form__input'],
-              classes['range-container__input'],
-            ].join(' ')}
-            placeholder="min"
-            ref={downloadRangeMinRef}
-          />
+          <input type="text" className={[classes['form__input'], classes['range-container__input']].join(' ')} placeholder="min" ref={downloadRangeMinRef} />
           <span>-</span>
-          <input
-            type="text"
-            className={[
-              classes['form__input'],
-              classes['range-container__input'],
-            ].join(' ')}
-            placeholder="max"
-            ref={downloadRangeMaxRef}
-          />
+          <input type="text" className={[classes['form__input'], classes['range-container__input']].join(' ')} placeholder="max" ref={downloadRangeMaxRef} />
         </div>
 
-        <label htmlFor="language" className={classes['form__label']}>
-          Select language:
-        </label>
+        <label htmlFor="language" className={classes['form__label']}>Select language:</label>
         <select className={classes['form__select']} name="language" id="language" ref={languageRef}>
           {languagesArray.map((type) => {
             const key = Math.random().toString();
