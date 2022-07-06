@@ -1,8 +1,8 @@
 import { useRef } from 'react';
 
-import { agentTypeArray, languagesArray } from './FormData';
+import { agentsTypeArray, languagesArray, validationHandler } from './FormDataAndValidation';
 import classes from './FindBookForm.module.css';
-import Card from '../ui/Card';
+import Card from '../../ui/Card';
 
 function FindBookForm(props) {
 
@@ -18,54 +18,23 @@ function FindBookForm(props) {
   const downloadRangeMaxRef = useRef();
   const languageRef = useRef();
 
+  const inputsRefObj = {
+    title: titleRef,
+    description: descriptionRef,
+    agentsType: agentsTypeRef,
+    agentsName: agentsNameRef,
+    agentsBirthDateMin: agentsBirthDateMinRef,
+    agentsBirthDateMax: agentsBirthDateMaxRef,
+    agentsDeathDateMin: agentsDeathDateMinRef,
+    agentsDeathDateMax: agentsDeathDateMaxRef,
+    downloadRangeMin: downloadRangeMinRef,
+    downloadRangeMax: downloadRangeMaxRef,
+    language: languageRef
+  }
+
   const formHandler = (event) => {
     event.preventDefault();
-    let query = '';
-    const enteredTitle = titleRef.current.value;
-    const enteredDescription = descriptionRef.current.value;
-    const enteredAgentsType = agentsTypeRef.current.value;
-    const enteredAgentName = agentsNameRef.current.value;
-    const enteredAgentsBirthDateMin = agentsBirthDateMinRef.current.value;
-    const enteredAgentsBirthDateMax = agentsBirthDateMaxRef.current.value;
-    const enteredAgentsDeathDateMin = agentsDeathDateMinRef.current.value;
-    const enteredAgentsDeathDateMax = agentsDeathDateMaxRef.current.value;
-    const enteredDownloadRangeMin = downloadRangeMinRef.current.value;
-    const enteredDownloadRangeMax = downloadRangeMaxRef.current.value;
-    const enteredLanguage = languageRef.current.value;
-
-    if (enteredTitle) {
-      query += `title_contains=${enteredTitle}&`;
-    }
-    if (enteredDescription) {
-      query += `description_contains=${enteredDescription}&`;
-    }
-    if (enteredAgentsType) {
-      query += `has_agent_type=${enteredAgentsType}&`;
-    }
-    if (enteredAgentName) {
-      query += `agent_name_contains=${enteredAgentName}&`;
-    }
-    if (enteredAgentsBirthDateMin) {
-      query += `agent_birth_date_range_min=${enteredAgentsBirthDateMin}&`;
-    }
-    if (enteredAgentsBirthDateMax) {
-      query += `agent_birth_date_range_max=${enteredAgentsBirthDateMax}&`;
-    }
-    if (enteredAgentsDeathDateMin) {
-      query += `agent_death_date_range_min=${enteredAgentsDeathDateMin}&`;
-    }
-    if (enteredAgentsDeathDateMax) {
-      query += `agent_death_date_range_max=${enteredAgentsDeathDateMax}&`;
-    }
-    if (enteredDownloadRangeMin) {
-      query += `downloads_range_min=${enteredDownloadRangeMin}&`;
-    }
-    if (enteredDownloadRangeMax) {
-      query += `downloads_range_max=${enteredDownloadRangeMax}&`;
-    }
-    if (enteredLanguage) {
-      query += `languages=${enteredLanguage}&`;
-    }
+    let query = validationHandler(inputsRefObj)
 
     props.onSearchHandler(query);
   }
@@ -81,7 +50,7 @@ function FindBookForm(props) {
 
         <label htmlFor="agents_type" className={classes['form__label']}>Agents type:</label>
         <select className={classes['form__select']} name="agents_type" id="agents_type" ref={agentsTypeRef}>
-          {agentTypeArray.map((type) => {
+          {agentsTypeArray.map((type) => {
             const key = Math.random().toString();
 
             return <option className={classes['select__option']} key={key} value={type}>{type}</option>
