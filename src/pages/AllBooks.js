@@ -1,7 +1,7 @@
 import { useEffect, useState, useContext, useRef } from "react";
 
 import classes from './AllBooks.module.css'
-import FindBookForm from "../components/books/FindBookForm";
+import FindBookForm from "../components/books/FindBookForm/FindBookForm";
 import BookList from "../components/books/BookList";
 import TablePagination from "../components/ui/TablePagination/TablePagination";
 import Preloader from "../components/ui/Preloader";
