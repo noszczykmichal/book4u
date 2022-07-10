@@ -1,10 +1,12 @@
-import { useRef } from 'react';
+import { useContext, useRef, useEffect } from 'react';
 
 import { agentsTypeArray, languagesArray, validationHandler } from './FormDataAndValidation';
 import classes from './FindBookForm.module.css';
 import Card from '../../ui/Card';
+import GlobalContext from '../../../store/global-context';
 
 function FindBookForm(props) {
+  const globalCtx = useContext(GlobalContext);
 
   const titleRef = useRef();
   const descriptionRef = useRef();
@@ -17,6 +19,9 @@ function FindBookForm(props) {
   const downloadRangeMinRef = useRef();
   const downloadRangeMaxRef = useRef();
   const languageRef = useRef();
+
+  const toggleBarRef = useRef();
+  const formRef = useRef();
 
   const inputsRefObj = {
     title: titleRef,
@@ -39,9 +44,21 @@ function FindBookForm(props) {
     props.onSearchHandler(query);
   }
 
+  const setElementHeight = useRef(globalCtx);
+
+  useEffect(() => {
+    setElementHeight.current.toggleBarHeightSetter(toggleBarRef);
+    setElementHeight.current.formHeightSetter(formRef);
+  }, [])
+
   return (
-    <Card>
-      <form className={classes['form']} onSubmit={formHandler}>
+    <Card animated="true">
+      <div className={classes['toggle-bar']} ref={toggleBarRef}>
+        <button className={classes['toggle-bar__toggle']} onClick={globalCtx.findBookFormVisibilitySetter}>Filters</button>
+        <p className={classes['toggle-bar__text']}>Haven't found something matching?<br />Use ours filters to browse the PG
+          catalogue.</p>
+      </div>
+      <form className={classes['form']} onSubmit={formHandler} ref={formRef}>
         <label htmlFor="title" className={classes['form__label']}>Title Contains:</label>
         <input type="text" id="title" className={classes['form__input']} ref={titleRef} />
 

@@ -11,6 +11,9 @@ const GlobalContext = createContext({
   backdropVisible: false,
   mobileNavVisible: false,
   modalVisible: false,
+  findBookFormVisible: false,
+  toggleBarHeight: 0,
+  formHeight: 0,
   //Components Handlers
   closeAllModals: () => Boolean,
   openMobileNav: () => Boolean,
@@ -19,6 +22,9 @@ const GlobalContext = createContext({
   cancelButtonOnClick: () => Boolean,
   takeToTopPaginationArrows: () => null,
   takeToTopButton: () => null,
+  findBookFormVisibilitySetter: () => Boolean,
+  toggleBarHeightSetter: () => Number,
+  formHeightSetter: () => Number,
 });
 
 export function GlobalContextProvider(props) {
@@ -27,6 +33,9 @@ export function GlobalContextProvider(props) {
   const [isBackdropVisible, setBackdropVisibilty] = useState(false);
   const [isMobileNavVisible, setMobileNavVisibilty] = useState(false);
   const [isModalVisible, setModalVisibility] = useState(false);
+  const [isFindBookFormVisible, setFindBookFormVisibility] = useState(false);
+  const [toggleBarCurrentHeight, setToggleBarCurrentHeight] = useState(0);
+  const [formCurrentHeight, setFormCurrentHeight] = useState(0);
 
   function addFavoriteHandler(favoriteBook) {
     setUserFavorites((prevFavoriteBooks) =>
@@ -97,6 +106,18 @@ export function GlobalContextProvider(props) {
     }
   }
 
+  function findBookFormVisibilityHandler() {
+    setFindBookFormVisibility(prevState => !prevState);
+  }
+
+  function toggleBarHeightHandler(referenceObj) {
+    setToggleBarCurrentHeight(referenceObj.current.clientHeight);
+  }
+
+  function formHeightHandler(referenceObj) {
+    setFormCurrentHeight(referenceObj.current.clientHeight);
+  }
+
   const context = {
     favorites: userFavorites,
     totalFavorites: userFavorites.length,
@@ -108,6 +129,9 @@ export function GlobalContextProvider(props) {
     backdropVisible: isBackdropVisible,
     mobileNavVisible: isMobileNavVisible,
     modalVisible: isModalVisible,
+    findBookFormVisible: isFindBookFormVisible,
+    toggleBarHeight: toggleBarCurrentHeight,
+    formHeight: formCurrentHeight,
     //Components Handlers
     closeAllModals: closeAllHandler,
     openMobileNav: openMobileNavHandler,
@@ -116,6 +140,9 @@ export function GlobalContextProvider(props) {
     cancelButtonOnClick: cancelButtonHandler,
     takeToTopPaginationArrows: takeToTopPaginationArrowsHandler,
     takeToTopButton: takeToTopButtonHandler,
+    findBookFormVisibilitySetter: findBookFormVisibilityHandler,
+    toggleBarHeightSetter: toggleBarHeightHandler,
+    formHeightSetter: formHeightHandler,
   };
 
   return (
