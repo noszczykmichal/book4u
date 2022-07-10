@@ -1,7 +1,27 @@
+.toggle-bar{
+  width: 100%;
+  /* margin: 0.5rem auto; */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.toggle-bar__toggle{
+  align-self: flex-end;
+  margin: 0.5rem 0.5rem 0;
+}
+
+.toggle-bar__text{
+  line-height: 1.5;
+}
+
 .form {
   display: flex;
   flex-direction: column;
   text-align: left;
+  margin: 0.5rem auto;
 }
 
 .form__label {
