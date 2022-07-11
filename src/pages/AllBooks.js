@@ -77,8 +77,7 @@ function AllBooks() {
 
   return (
     <section className={classes['section']}>
-      <h1>Haven't found something matching?</h1>
-      <p>Browse the PG catalogue to find something interesting.</p>
+      <h1>Let's find a good read for you.</h1>
       <FindBookForm onSearchHandler={searchHandler} />
       {isLoading && <Preloader />}
       {isQuerySuccessful && <BookList data={loadedData} />}

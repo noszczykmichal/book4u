@@ -1,0 +1,12 @@
+.icon{
+    width: 100%;
+    margin-right: 0.25rem;
+    fill: rgb(0, 162, 255);
+    transform: rotate(0);
+    transition: transform .5s ease-out;
+  }
+  
+  button:hover .icon,
+  button:active .icon{
+    transform: rotate(180deg);
+  }

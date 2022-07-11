@@ -4,6 +4,7 @@ import { agentsTypeArray, languagesArray, validationHandler } from './FormDataAn
 import classes from './FindBookForm.module.css';
 import Card from '../../ui/Card';
 import GlobalContext from '../../../store/global-context';
+import GearIcon from './GearIcon';
 
 function FindBookForm(props) {
   const globalCtx = useContext(GlobalContext);
@@ -54,7 +55,7 @@ function FindBookForm(props) {
   return (
     <Card animated="true">
       <div className={classes['toggle-bar']} ref={toggleBarRef}>
-        <button className={classes['toggle-bar__toggle']} onClick={globalCtx.findBookFormVisibilitySetter}>Filters</button>
+        <button className={classes['toggle-bar__toggle']} onClick={globalCtx.findBookFormVisibilitySetter}><GearIcon />Filters</button>
         <p className={classes['toggle-bar__text']}>Haven't found something matching?<br />Use ours filters to browse the PG
           catalogue.</p>
       </div>
@@ -69,7 +70,7 @@ function FindBookForm(props) {
         <select className={classes['form__select']} name="agents_type" id="agents_type" ref={agentsTypeRef}>
           {agentsTypeArray.map((type) => {
             const key = Math.random().toString();
-
+            
             return <option className={classes['select__option']} key={key} value={type}>{type}</option>
           })}
         </select>
