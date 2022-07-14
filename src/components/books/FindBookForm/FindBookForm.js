@@ -6,6 +6,7 @@ import Card from '../../ui/Card';
 import GlobalContext from '../../../store/global-context';
 import GearIcon from './GearIcon';
 import Select from './Select';
+import RefreshIcon from './RefreshIcon';
 
 function FindBookForm(props) {
   const globalCtx = useContext(GlobalContext);
@@ -42,8 +43,15 @@ function FindBookForm(props) {
   const formHandler = (event) => {
     event.preventDefault();
     let query = validationHandler(inputsRefObj)
-    console.log(query);
+  
+    // console.log(query);
     props.onSearchHandler(query);
+  }
+
+  const clearInputHandle=()=>{
+    for(let input in inputsRefObj){
+      inputsRefObj[input].current.value='';
+    }
   }
 
   const setElementHeight = useRef(globalCtx);
@@ -56,7 +64,10 @@ function FindBookForm(props) {
   return (
     <Card animated="true">
       <div className={classes['toggle-bar']} ref={toggleBarRef}>
-        <button className={classes['toggle-bar__toggle']} onClick={globalCtx.findBookFormVisibilitySetter}><GearIcon />Filters</button>
+        <div className={classes['actions']}>
+        <button className={[classes['actions__button'], classes['actions__button--animated']].join(' ')} onClick={clearInputHandle}><RefreshIcon/>Clear</button>
+        <button className={classes['actions__button']} onClick={globalCtx.findBookFormVisibilitySetter}><GearIcon />Filters</button>
+        </div>
         <p className={classes['toggle-bar__text']}>Haven't found something matching?<br />Use ours filters to browse the PG
           catalogue.</p>
       </div>
