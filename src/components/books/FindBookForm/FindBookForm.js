@@ -5,6 +5,7 @@ import classes from './FindBookForm.module.css';
 import Card from '../../ui/Card';
 import GlobalContext from '../../../store/global-context';
 import GearIcon from './GearIcon';
+import Select from './Select';
 
 function FindBookForm(props) {
   const globalCtx = useContext(GlobalContext);
@@ -41,7 +42,7 @@ function FindBookForm(props) {
   const formHandler = (event) => {
     event.preventDefault();
     let query = validationHandler(inputsRefObj)
-
+    console.log(query);
     props.onSearchHandler(query);
   }
 
@@ -67,13 +68,7 @@ function FindBookForm(props) {
         <input type="text" id="description" name="description_contains" className={classes['form__input']} ref={descriptionRef} />
 
         <label htmlFor="agents_type" className={classes['form__label']}>Agents type:</label>
-        <select className={classes['form__select']} name="has_agent_type" id="agents_type" ref={agentsTypeRef}>
-          {agentsTypeArray.map((type) => {
-            const key = Math.random().toString();
-            
-            return <option className={classes['select__option']} key={key} value={type}>{type}</option>
-          })}
-        </select>
+        <Select nameForSelect="has_agent_type" options={agentsTypeArray} ref={agentsTypeRef}/>
 
         <label htmlFor="agents_name" className={classes['form__label']}>Agents person name contains:</label>
         <input type="text" id="agents_name" name="agent_name_contains" className={classes['form__input']} ref={agentsNameRef} />
@@ -100,13 +95,7 @@ function FindBookForm(props) {
         </div>
 
         <label htmlFor="language" className={classes['form__label']}>Select language:</label>
-        <select className={classes['form__select']} name="languages" id="language" ref={languageRef}>
-          {languagesArray.map((type) => {
-            const key = Math.random().toString();
-
-            return <option className={classes['select__option']} key={key} value={type}>{type}</option>
-          })}
-        </select>
+        <Select nameForSelect="languages" options={languagesArray} ref={languageRef}/>
 
         <button className={classes['form__button']}>Search</button>
       </form>
