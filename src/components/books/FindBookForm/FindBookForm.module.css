@@ -35,17 +35,14 @@
   font-weight: 700;
 }
 
-.form__input,
-.form__select {
+.form__input{
   font: inherit;
   border-radius: 4px;
   border: 1px solid #ccc;
 }
 
 .form__input:active,
-.form__input:focus,
-.form__select:active,
-.form__select:focus {
+.form__input:focus{
   border: 1px solid rgb(0, 162, 255);
   outline: none;
 }

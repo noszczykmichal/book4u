@@ -1,0 +1,11 @@
+.form__select {
+  font: inherit;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.form__select:active,
+.form__select:focus {
+  border: 1px solid rgb(0, 162, 255);
+  outline: none;
+}
