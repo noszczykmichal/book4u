@@ -14,6 +14,7 @@ const GlobalContext = createContext({
   findBookFormVisible: false,
   toggleBarHeight: 0,
   formHeight: 0,
+  inputStoredValueObj: {},
   //Components Handlers
   closeAllModals: () => Boolean,
   openMobileNav: () => Boolean,
@@ -25,6 +26,8 @@ const GlobalContext = createContext({
   findBookFormVisibilitySetter: () => Boolean,
   toggleBarHeightSetter: () => Number,
   formHeightSetter: () => Number,
+  inputValueSetter: () => Object,
+  clearInputValues: () => Object
 });
 
 export function GlobalContextProvider(props) {
@@ -36,6 +39,7 @@ export function GlobalContextProvider(props) {
   const [isFindBookFormVisible, setFindBookFormVisibility] = useState(false);
   const [toggleBarCurrentHeight, setToggleBarCurrentHeight] = useState(0);
   const [formCurrentHeight, setFormCurrentHeight] = useState(0);
+  const [inputValueObj, setInputValueObj] = useState({});
 
   function addFavoriteHandler(favoriteBook) {
     setUserFavorites((prevFavoriteBooks) =>
@@ -118,6 +122,27 @@ export function GlobalContextProvider(props) {
     setFormCurrentHeight(referenceObj.current.clientHeight);
   }
 
+  function inputValueHandler(event) {
+    let inputValuesObj = {};
+    const currentInput = event.target
+    inputValuesObj[currentInput.name] = currentInput.value;
+
+    setInputValueObj(prevInputValuesObj => ({
+      ...prevInputValuesObj,
+      ...inputValuesObj
+    }))
+  }
+
+  function clearInputValuesHandler() {
+    let storedValues = { ...inputValueObj };
+
+    for( let value in storedValues){
+      storedValues[value]='';
+    }
+  //   console.log(storedValues);
+    setInputValueObj(storedValues);
+  }
+
   const context = {
     favorites: userFavorites,
     totalFavorites: userFavorites.length,
@@ -132,6 +157,7 @@ export function GlobalContextProvider(props) {
     findBookFormVisible: isFindBookFormVisible,
     toggleBarHeight: toggleBarCurrentHeight,
     formHeight: formCurrentHeight,
+    inputStoredValueObj: inputValueObj,
     //Components Handlers
     closeAllModals: closeAllHandler,
     openMobileNav: openMobileNavHandler,
@@ -143,6 +169,8 @@ export function GlobalContextProvider(props) {
     findBookFormVisibilitySetter: findBookFormVisibilityHandler,
     toggleBarHeightSetter: toggleBarHeightHandler,
     formHeightSetter: formHeightHandler,
+    inputValueSetter: inputValueHandler,
+    clearInputValues: clearInputValuesHandler,
   };
 
   return (

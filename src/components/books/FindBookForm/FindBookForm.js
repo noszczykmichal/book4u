@@ -48,12 +48,6 @@ function FindBookForm(props) {
     props.onSearchHandler(query);
   }
 
-  const clearInputHandle=()=>{
-    for(let input in inputsRefObj){
-      inputsRefObj[input].current.value='';
-    }
-  }
-
   const setElementHeight = useRef(globalCtx);
 
   useEffect(() => {
@@ -65,7 +59,7 @@ function FindBookForm(props) {
     <Card animated="true">
       <div className={classes['toggle-bar']} ref={toggleBarRef}>
         <div className={classes['actions']}>
-        <button className={[classes['actions__button'], classes['actions__button--animated']].join(' ')} onClick={clearInputHandle}><RefreshIcon/>Clear</button>
+        <button className={[classes['actions__button'], classes['actions__button--animated']].join(' ')} onClick={globalCtx.clearInputValues}><RefreshIcon/>Clear</button>
         <button className={classes['actions__button']} onClick={globalCtx.findBookFormVisibilitySetter}><GearIcon />Filters</button>
         </div>
         <p className={classes['toggle-bar__text']}>Haven't found something matching?<br />Use ours filters to browse the PG
@@ -73,36 +67,36 @@ function FindBookForm(props) {
       </div>
       <form className={classes['form']} onSubmit={formHandler} ref={formRef}>
         <label htmlFor="title" className={classes['form__label']}>Title Contains:</label>
-        <input type="text" id="title" name="title_contains" className={classes['form__input']} ref={titleRef} />
+        <input type="text" id="title" name="title_contains" className={classes['form__input']} onChange={globalCtx.inputValueSetter} ref={titleRef} />
 
         <label htmlFor="description" className={classes['form__label']}>Description Contains:</label>
-        <input type="text" id="description" name="description_contains" className={classes['form__input']} ref={descriptionRef} />
+        <input type="text" id="description" name="description_contains" className={classes['form__input']} onChange={globalCtx.inputValueSetter} ref={descriptionRef} />
 
         <label htmlFor="agents_type" className={classes['form__label']}>Agents type:</label>
         <Select nameForSelect="has_agent_type" options={agentsTypeArray} ref={agentsTypeRef}/>
 
         <label htmlFor="agents_name" className={classes['form__label']}>Agents person name contains:</label>
-        <input type="text" id="agents_name" name="agent_name_contains" className={classes['form__input']} ref={agentsNameRef} />
+        <input type="text" id="agents_name" name="agent_name_contains" className={classes['form__input']} onChange={globalCtx.inputValueSetter} ref={agentsNameRef} />
 
         <label className={classes['form__label']}>Agents person birth date is in range:</label>
         <div className={classes['range-container']}>
-          <input type="text" name="agent_birth_date_range_min" className={[classes['form__input'], classes['range-container__input']].join(' ')} placeholder="min" ref={agentsBirthDateMinRef} />
+          <input type="text" name="agent_birth_date_range_min" className={[classes['form__input'], classes['range-container__input']].join(' ')} placeholder="min" onChange={globalCtx.inputValueSetter} ref={agentsBirthDateMinRef} />
           <span>-</span>
-          <input type="text" name="agent_birth_date_range_max" className={[classes['form__input'], classes['range-container__input']].join(' ')} placeholder="max" ref={agentsBirthDateMaxRef} />
+          <input type="text" name="agent_birth_date_range_max" className={[classes['form__input'], classes['range-container__input']].join(' ')} placeholder="max" onChange={globalCtx.inputValueSetter} ref={agentsBirthDateMaxRef} />
         </div>
 
         <label className={classes['form__label']}>Agents person death date is in range:</label>
         <div className={classes['range-container']}>
-          <input type="text" name="agent_death_date_range_min" className={[classes['form__input'], classes['range-container__input']].join(' ')} placeholder="min" ref={agentsDeathDateMinRef} />
+          <input type="text" name="agent_death_date_range_min" className={[classes['form__input'], classes['range-container__input']].join(' ')} placeholder="min" onChange={globalCtx.inputValueSetter} ref={agentsDeathDateMinRef} />
           <span>-</span>
-          <input type="text" name="agent_death_date_range_max" className={[classes['form__input'], classes['range-container__input']].join(' ')} placeholder="max" ref={agentsDeathDateMaxRef} />
+          <input type="text" name="agent_death_date_range_max" className={[classes['form__input'], classes['range-container__input']].join(' ')} placeholder="max" onChange={globalCtx.inputValueSetter} ref={agentsDeathDateMaxRef} />
         </div>
 
         <label className={classes['form__label']}>Downloads is in range:</label>
         <div className={classes['range-container']}>
-          <input type="text" name="downloads_range_min" className={[classes['form__input'], classes['range-container__input']].join(' ')} placeholder="min" ref={downloadRangeMinRef} />
+          <input type="text" name="downloads_range_min" className={[classes['form__input'], classes['range-container__input']].join(' ')} placeholder="min" onChange={globalCtx.inputValueSetter} ref={downloadRangeMinRef} />
           <span>-</span>
-          <input type="text" name="downloads_range_max" className={[classes['form__input'], classes['range-container__input']].join(' ')} placeholder="max" ref={downloadRangeMaxRef} />
+          <input type="text" name="downloads_range_max" className={[classes['form__input'], classes['range-container__input']].join(' ')} placeholder="max" onChange={globalCtx.inputValueSetter} ref={downloadRangeMaxRef} />
         </div>
 
         <label htmlFor="language" className={classes['form__label']}>Select language:</label>
