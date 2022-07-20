@@ -15,7 +15,7 @@ function Modal() {
         <div className={classes["modal-container"]}>
             <div className={attachedClasses.join(" ")}>
                 <div className={classes["modal__text"]}>
-                    <p>This will delete all you favorite meetups!</p>
+                    <p>This will delete all your favorite books!</p>
                     <p>Do you want to continue?</p>
                 </div>
                 <div className={classes["modal__actions"]}>
