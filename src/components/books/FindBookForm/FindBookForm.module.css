@@ -7,16 +7,25 @@
   text-align: center;
 }
 
-.toggle-bar__toggle{
-  align-self: flex-end;
+.actions{
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+}
+
+.actions__button{
   display: flex;
   justify-content: center;
-  align-items: center;  
+  align-items: center;
   background-color: transparent;
   border-radius: 4px;
   border: 1px solid rgb(128, 128, 128);
   box-shadow: 0 2px 8px rgb(0 0 0 / 20%);
   padding: 0.25rem 0.5rem;
+}
+
+.actions__button--animated{
+  margin-right: 0.25rem;
 }
 
 .toggle-bar__text{
@@ -35,29 +44,12 @@
   font-weight: 700;
 }
 
-.form__input{
-  font: inherit;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-}
-
-.form__input:active,
-.form__input:focus{
-  border: 1px solid rgb(0, 162, 255);
-  outline: none;
-}
-
-.form__label,
-.form__input {
+.form__label{
   margin-bottom: 0.5rem;
 }
 
 .range-container {
   display: flex;
-}
-
-.range-container__input {
-  width: 20%;
 }
 
 .form__button {

@@ -1,21 +1,18 @@
-import { useState, forwardRef } from 'react';
+import { useContext } from 'react';
+import GlobalContext from '../../../store/global-context';
 
 import classes from './Select.module.css';
 
-const Select = forwardRef((props, ref) => {
-    const [selectValue, setSelectValue] = useState('');
+function Select(props) {
+    const globalCtx = useContext(GlobalContext);
 
-    const onChangeHandler = () => {
-        setSelectValue(ref.current.value);
-    }
-
-    return <select className={classes['form__select']}  name={props.nameForSelect} value={selectValue} onChange={onChangeHandler} ref={ref}>
+    return <select className={classes['form__select']} name={props.nameForSelect} onChange={globalCtx.inputValueSetter} value={globalCtx.inputStoredValueObj[props.nameForSelect]} >
         {props.options.map((optionValue) => {
             const key = Math.random().toString();
 
             return <option key={key} value={optionValue}>{optionValue}</option>
         })}
     </select>
-})
+}
 
 export default Select;
