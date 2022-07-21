@@ -7,11 +7,12 @@ import GlobalContext from '../../../store/global-context';
 import GearIcon from './GearIcon';
 import Select from './Select';
 import RefreshIcon from './RefreshIcon';
+import Input from './Input';
 
 function FindBookForm(props) {
   const globalCtx = useContext(GlobalContext);
 
-  const titleRef = useRef();
+  // const titleRef = useRef();
   const descriptionRef = useRef();
   const agentsTypeRef = useRef();
   const agentsNameRef = useRef();
@@ -27,7 +28,7 @@ function FindBookForm(props) {
   const formRef = useRef();
 
   const inputsRefObj = {
-    title: titleRef,
+    // title: titleRef,
     description: descriptionRef,
     agentsType: agentsTypeRef,
     agentsName: agentsNameRef,
@@ -67,7 +68,7 @@ function FindBookForm(props) {
       </div>
       <form className={classes['form']} onSubmit={formHandler} ref={formRef}>
         <label htmlFor="title" className={classes['form__label']}>Title Contains:</label>
-        <input type="text" id="title" name="title_contains" className={classes['form__input']} onChange={globalCtx.inputValueSetter} ref={titleRef} />
+        <Input htmlType="text" htmlId="title" htmlName="title_contains" htmlClass="form__input" />
 
         <label htmlFor="description" className={classes['form__label']}>Description Contains:</label>
         <input type="text" id="description" name="description_contains" className={classes['form__input']} onChange={globalCtx.inputValueSetter} ref={descriptionRef} />

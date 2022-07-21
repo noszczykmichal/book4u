@@ -92,7 +92,6 @@ function AllBooks() {
           paginationArrowHandler={paginationArrowHandler}
           inputChangeHandler={paginationInputHandler}
         />
-
       ) : null}
       {!isLoading && !isQuerySuccessful && <ErrorMessage/>}
     </section>

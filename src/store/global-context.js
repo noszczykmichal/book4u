@@ -123,24 +123,16 @@ export function GlobalContextProvider(props) {
   }
 
   function inputValueHandler(event) {
-    let inputValuesObj = {};
-    const currentInput = event.target
-    inputValuesObj[currentInput.name] = currentInput.value;
+    const { name, value } = event.target;
 
     setInputValueObj(prevInputValuesObj => ({
       ...prevInputValuesObj,
-      ...inputValuesObj
+      [name]: value
     }))
   }
 
   function clearInputValuesHandler() {
-    let storedValues = { ...inputValueObj };
-
-    for( let value in storedValues){
-      storedValues[value]='';
-    }
-  //   console.log(storedValues);
-    setInputValueObj(storedValues);
+    setInputValueObj({});
   }
 
   const context = {
