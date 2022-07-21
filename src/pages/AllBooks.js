@@ -6,6 +6,7 @@ import BookList from "../components/books/BookList";
 import TablePagination from "../components/ui/TablePagination/TablePagination";
 import Preloader from "../components/ui/Preloader";
 import GlobalContext from "../store/global-context";
+import ErrorMessage from "../components/ui/ErrorMessage";
 
 function AllBooks() {
   const [isLoading, setIsLoading] = useState(false);
@@ -72,7 +73,10 @@ function AllBooks() {
         setIsQuerySuccessful(true);
         takeToTop.current.takeToTopPaginationArrows();
       })
-      .catch((error) => alert(error.message));
+      .catch((error) => {
+        setIsQuerySuccessful(false);
+        setIsLoading(false);
+      });
   }, [currentPage, currentQuery]);
 
   return (
@@ -88,7 +92,9 @@ function AllBooks() {
           paginationArrowHandler={paginationArrowHandler}
           inputChangeHandler={paginationInputHandler}
         />
+
       ) : null}
+      {!isLoading && !isQuerySuccessful && <ErrorMessage/>}
     </section>
   );
 }
