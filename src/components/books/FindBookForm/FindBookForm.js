@@ -12,44 +12,18 @@ import Input from './Input';
 function FindBookForm(props) {
   const globalCtx = useContext(GlobalContext);
 
-  // const titleRef = useRef();
-  const descriptionRef = useRef();
-  const agentsTypeRef = useRef();
-  const agentsNameRef = useRef();
-  const agentsBirthDateMinRef = useRef();
-  const agentsBirthDateMaxRef = useRef();
-  const agentsDeathDateMinRef = useRef();
-  const agentsDeathDateMaxRef = useRef();
-  const downloadRangeMinRef = useRef();
-  const downloadRangeMaxRef = useRef();
-  const languageRef = useRef();
-
   const toggleBarRef = useRef();
   const formRef = useRef();
-
-  const inputsRefObj = {
-    // title: titleRef,
-    description: descriptionRef,
-    agentsType: agentsTypeRef,
-    agentsName: agentsNameRef,
-    agentsBirthDateMin: agentsBirthDateMinRef,
-    agentsBirthDateMax: agentsBirthDateMaxRef,
-    agentsDeathDateMin: agentsDeathDateMinRef,
-    agentsDeathDateMax: agentsDeathDateMaxRef,
-    downloadRangeMin: downloadRangeMinRef,
-    downloadRangeMax: downloadRangeMaxRef,
-    language: languageRef
-  }
+  const setElementHeight = useRef(globalCtx);
 
   const formHandler = (event) => {
     event.preventDefault();
-    let query = validationHandler(inputsRefObj)
+    const inputsValueObj = globalCtx.inputStoredValueObj;
+    let query = validationHandler(inputsValueObj);
 
     // console.log(query);
     props.onSearchHandler(query);
   }
-
-  const setElementHeight = useRef(globalCtx);
 
   useEffect(() => {
     setElementHeight.current.toggleBarHeightSetter(toggleBarRef);
@@ -68,16 +42,16 @@ function FindBookForm(props) {
       </div>
       <form className={classes['form']} onSubmit={formHandler} ref={formRef}>
         <label htmlFor="title" className={classes['form__label']}>Title Contains:</label>
-        <Input htmlType="text" htmlId="title" htmlClass={['form__input']} htmlName="title_contains" />
+        <Input htmlType="text" htmlId="title" htmlName="title_contains" htmlClass={['form__input']} />
 
         <label htmlFor="description" className={classes['form__label']}>Description Contains:</label>
-        <Input htmlType="text" htmlId="description" htmlClass={['form__input']} htmlName="description_contains" />
+        <Input htmlType="text" htmlId="description" htmlName="description_contains" htmlClass={['form__input']} />
 
         <label htmlFor="agents_type" className={classes['form__label']}>Agents type:</label>
-        <Select nameForSelect="has_agent_type" options={agentsTypeArray} ref={agentsTypeRef} />
+        <Select nameForSelect="has_agent_type" options={agentsTypeArray} />
 
         <label htmlFor="agents_name" className={classes['form__label']}>Agents person name contains:</label>
-        <Input htmlType="text" htmlId="agents_name" htmlClass={['form__input']} htmlName="agent_name_contains" />
+        <Input htmlType="text" htmlId="agents_name" htmlName="agent_name_contains" htmlClass={['form__input']} />
 
         <label className={classes['form__label']}>Agents person birth date is in range:</label>
         <div className={classes['range-container']}>
@@ -88,7 +62,7 @@ function FindBookForm(props) {
 
         <label className={classes['form__label']}>Agents person death date is in range:</label>
         <div className={classes['range-container']}>
-          <Input htmlType="text" htmlName="agent_death_date_range_min" htmlClass={['form__input','range-container__input']} htmlPlaceholder="min" />
+          <Input htmlType="text" htmlName="agent_death_date_range_min" htmlClass={['form__input', 'range-container__input']} htmlPlaceholder="min" />
           <span>-</span>
           <Input htmlType="text" htmlName="agent_death_date_range_max" htmlClass={['form__input', 'range-container__input']} htmlPlaceholder="max" />
         </div>
@@ -101,7 +75,7 @@ function FindBookForm(props) {
         </div>
 
         <label htmlFor="language" className={classes['form__label']}>Select language:</label>
-        <Select nameForSelect="languages" options={languagesArray} ref={languageRef} />
+        <Select nameForSelect="languages" options={languagesArray} />
 
         <button className={classes['form__button']}>Search</button>
       </form>
