@@ -12,7 +12,7 @@ function TablePagination(props) {
         onChange={props.inputChangeHandler}
         value={props.value}
       />
-      <span>z</span>
+      <span>of</span>
       <span>{props.totalPagesCount}</span>
       <Arrow paginationHandler={props.paginationArrowHandler} />
     </div>

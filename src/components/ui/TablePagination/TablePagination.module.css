@@ -8,7 +8,14 @@
 
 .table-pagination__input{
     width: 20%;
+    text-align: center;
     -moz-appearance: textfield;
+}
+
+.table-pagination__input:active,
+.table-pagination__input:focus{
+  border: 1px solid rgb(0, 162, 255);
+  outline: none;
 }
 
 .table-pagination__input::-webkit-outer-spin-button,
