@@ -21,7 +21,7 @@ function FindBookForm(props) {
     const inputsValueObj = globalCtx.inputStoredValueObj;
     let query = validationHandler(inputsValueObj);
 
-    // console.log(query);
+    console.log(query);
     props.onSearchHandler(query);
   }
 
