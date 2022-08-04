@@ -1,4 +1,4 @@
-import { useRef, useContext, useEffect } from "react";
+import { useRef, useContext } from "react";
 import GlobalContext from "../../../store/global-context";
 
 import classes from "./PaginationArrow.module.css";
@@ -6,13 +6,10 @@ import classes from "./PaginationArrow.module.css";
 function Arrow(props) {
   const globalCtx = useContext(GlobalContext);
   const arrowRef = useRef();
-  let attachedClasses = [classes["arrow"]];
   const totalPagesCount = Math.ceil(globalCtx.totalBooksAvail / 10);
-  let currentPage = globalCtx.displayedPage;
-  let isLeftDisabled = false;
-  let isRightDisabled = false;
+  // const isDisabled = zrobić żeby wyszażały się
 
-
+  let attachedClasses = [classes["arrow"]];
   if (props.left) {
     attachedClasses = [classes["arrow"], classes["arrow--left"]];
   }
@@ -30,24 +27,6 @@ function Arrow(props) {
         prevState <= 1 ? 1 : prevState - 1);
     }
   };
-
-  useEffect(() => {
-    const elementsClasses = arrowRef.current.getAttribute("class");
-    const regexRight = /left/;
-    const whichArrow = elementsClasses.match(regexRight) ? 'left' : 'right';
-
-    if (whichArrow==='left') {
-      arrowRef.current.setAttribute('disabled', isLeftDisabled);
-    } else if(whichArrow === 'right'){
-      arrowRef.current.setAttribute('disabled', isRightDisabled);
-    }
-
-    if (whichArrow === "left" && currentPage === 1) {
-      isLeftDisabled = true;
-    } else if (whichArrow === 'right' && currentPage === totalPagesCount) {
-      isRightDisabled = true;
-    }
-  }, [currentPage])
 
   return (
     <button className={classes['container']}>
