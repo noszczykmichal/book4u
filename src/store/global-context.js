@@ -7,6 +7,10 @@ const GlobalContext = createContext({
   removeFavorite: (bookId) => { },
   removeAllFavorites: () => { },
   bookIsFavorite: (bookId) => Boolean,
+  displayedPage: 1,
+  changeDisplayedPage: (number) => Number,
+  totalBooksAvail: 0,
+  changeNumbOfBooksAvail: (number)=>Number,
   //Components State
   backdropVisible: false,
   mobileNavVisible: false,
@@ -15,6 +19,7 @@ const GlobalContext = createContext({
   toggleBarHeight: 0,
   formHeight: 0,
   inputStoredValueObj: {},
+  paginationValue: 0,
   //Components Handlers
   closeAllModals: () => Boolean,
   openMobileNav: () => Boolean,
@@ -27,19 +32,23 @@ const GlobalContext = createContext({
   toggleBarHeightSetter: () => Number,
   formHeightSetter: () => Number,
   inputValueSetter: () => Object,
-  clearInputValues: () => Object
+  clearInputValues: () => Object,
+  paginationSetter: () => Number
 });
 
 export function GlobalContextProvider(props) {
   const [userFavorites, setUserFavorites] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [booksAvailable, setBooksAvailable] = useState(0);
   //Components State
-  const [isBackdropVisible, setBackdropVisibilty] = useState(false);
-  const [isMobileNavVisible, setMobileNavVisibilty] = useState(false);
+  const [isBackdropVisible, setBackdropVisibility] = useState(false);
+  const [isMobileNavVisible, setMobileNavVisibility] = useState(false);
   const [isModalVisible, setModalVisibility] = useState(false);
   const [isFindBookFormVisible, setFindBookFormVisibility] = useState(false);
   const [toggleBarCurrentHeight, setToggleBarCurrentHeight] = useState(0);
   const [formCurrentHeight, setFormCurrentHeight] = useState(0);
   const [inputValueObj, setInputValueObj] = useState({});
+  const [paginationCurrentVal, setPaginationCurrentVal] = useState(0);
 
   function addFavoriteHandler(favoriteBook) {
     setUserFavorites((prevFavoriteBooks) =>
@@ -59,21 +68,29 @@ export function GlobalContextProvider(props) {
     return userFavorites.some(book => book.id === bookId);
   }
 
+  function displayedPageHandler(number) {
+    setCurrentPage(number);
+  }
+
+  function changeNumbOfBooksAvailHandler(number) {
+    setBooksAvailable(number);
+  }
+
   // Components Handlers
   function closeAllHandler() {
-    setBackdropVisibilty(false);
-    setMobileNavVisibilty(false);
+    setBackdropVisibility(false);
+    setMobileNavVisibility(false);
     setModalVisibility(false);
   }
 
   function openMobileNavHandler() {
-    setBackdropVisibilty(true);
-    setMobileNavVisibilty(true);
+    setBackdropVisibility(true);
+    setMobileNavVisibility(true);
   }
 
   function trashIconOnClickHandler() {
-    setMobileNavVisibilty(false);
-    setBackdropVisibilty(true);
+    setMobileNavVisibility(false);
+    setBackdropVisibility(true);
     setModalVisibility(true);
   }
 
@@ -135,6 +152,10 @@ export function GlobalContextProvider(props) {
     setInputValueObj({});
   }
 
+  function inputPaginationHandler(value) {
+    setPaginationCurrentVal(value);
+  }
+
   const context = {
     favorites: userFavorites,
     totalFavorites: userFavorites.length,
@@ -142,6 +163,10 @@ export function GlobalContextProvider(props) {
     removeFavorite: removeFavoriteHandler,
     removeAllFavorites: removeAllFavoritesHandler,
     bookIsFavorite: bookIsFavoriteHandler,
+    displayedPage: currentPage,
+    changeDisplayedPage: displayedPageHandler,
+    totalBooksAvail: booksAvailable,
+    changeNumbOfBooksAvail: changeNumbOfBooksAvailHandler,
     //Components State
     backdropVisible: isBackdropVisible,
     mobileNavVisible: isMobileNavVisible,
@@ -150,6 +175,7 @@ export function GlobalContextProvider(props) {
     toggleBarHeight: toggleBarCurrentHeight,
     formHeight: formCurrentHeight,
     inputStoredValueObj: inputValueObj,
+    paginationValue: paginationCurrentVal,
     //Components Handlers
     closeAllModals: closeAllHandler,
     openMobileNav: openMobileNavHandler,
@@ -163,6 +189,7 @@ export function GlobalContextProvider(props) {
     formHeightSetter: formHeightHandler,
     inputValueSetter: inputValueHandler,
     clearInputValues: clearInputValuesHandler,
+    inputPaginationSetter: inputPaginationHandler
   };
 
   return (

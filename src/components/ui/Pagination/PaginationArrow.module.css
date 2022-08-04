@@ -1,0 +1,16 @@
+.container{
+    border: 0;
+}
+
+.container:disabled,
+.container[disabled]{
+    filter: grayscale(1);
+}
+
+.arrow{
+    fill: rgb(0, 162, 255);
+}
+
+.arrow--left{
+    transform: rotate(180deg);
+}

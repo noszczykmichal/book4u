@@ -1,4 +1,4 @@
-.table-pagination{
+.pagination{
     width: 50%;
     margin: 0 auto;
     display: flex;
@@ -6,20 +6,20 @@
     align-items: center;
 }
 
-.table-pagination__input{
+.pagination__input{
     width: 20%;
     text-align: center;
     -moz-appearance: textfield;
 }
 
-.table-pagination__input:active,
-.table-pagination__input:focus{
+.pagination__input:active,
+.pagination__input:focus{
   border: 1px solid rgb(0, 162, 255);
   outline: none;
 }
 
-.table-pagination__input::-webkit-outer-spin-button,
-.table-pagination__input::-webkit-inner-spin-button {
+.pagination__input::-webkit-outer-spin-button,
+.pagination__input::-webkit-inner-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }
