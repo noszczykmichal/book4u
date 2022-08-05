@@ -27,7 +27,7 @@ function TablePagination() {
 
   return (
     <div className={classes["pagination"]}>
-      <PaginationArrow left="true" />
+      <PaginationArrow type="left" />
       <input
         type="number"
         className={classes["pagination__input"]}
@@ -36,7 +36,7 @@ function TablePagination() {
       />
       <span>of</span>
       <span>{totalPagesCount}</span>
-      <PaginationArrow />
+      <PaginationArrow type="right"/>
     </div>
   );
 }

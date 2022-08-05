@@ -1,5 +1,11 @@
 .container{
     border: 0;
+    background-color: transparent;
+}
+
+.container:disabled,
+.container[disabled]{
+    filter: grayscale(1);
 }
 
 .arrow{
