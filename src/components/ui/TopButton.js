@@ -6,7 +6,7 @@ import classes from './TopButton.module.css'
 function BubbleAnchor() {
     const globalCtx = useContext(GlobalContext);
 
-    return <button className={classes['anchor']} onClick={globalCtx.takeToTopButton}>Top</button>
+    return <button className={classes['anchor']} onClick={()=>globalCtx.takeToTop('button')}>Top</button>
 }
 
 export default BubbleAnchor;

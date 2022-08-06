@@ -43,7 +43,7 @@ function AllBooks() {
         setIsLoading(false);
         setLoadedData(results);
         setIsQuerySuccessful(true);
-        globalCtxRef.current.takeToTopPaginationArrows();
+        globalCtxRef.current.takeToTop('allBooks');
       })
       .catch((error) => {
         setIsQuerySuccessful(false);
