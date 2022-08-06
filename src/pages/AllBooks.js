@@ -3,58 +3,30 @@ import { useEffect, useState, useContext, useRef } from "react";
 import classes from './AllBooks.module.css'
 import FindBookForm from "../components/books/FindBookForm/FindBookForm";
 import BookList from "../components/books/BookList";
-import TablePagination from "../components/ui/TablePagination/TablePagination";
+import Pagination from "../components/ui/Pagination/Pagination";
 import Preloader from "../components/ui/Preloader";
 import GlobalContext from "../store/global-context";
 import ErrorMessage from "../components/ui/ErrorMessage";
 
 function AllBooks() {
+  const globalCtx = useContext(GlobalContext);
+  const globalCtxRef = useRef(globalCtx);
   const [isLoading, setIsLoading] = useState(false);
   const [loadedData, setLoadedData] = useState([]);
   const [isQuerySuccessful, setIsQuerySuccessful] = useState(false);
-  const [totalBooksAvail, setTotalBooksAvail] = useState(0);
-  const [currentPage, setCurrentPage] = useState(1);
   const [currentQuery, setCurrentQuery] = useState("");
-
-  const globalCtx = useContext(GlobalContext);
-
-  const paginationArrowHandler = (buttonId) => {
-    if (buttonId === "right") {
-      return setCurrentPage((prevState) =>
-        prevState !== Math.ceil(totalBooksAvail / 10)
-          ? prevState + 1
-          : Math.ceil(totalBooksAvail / 10)
-      );
-    } else {
-      return setCurrentPage((prevState) =>
-        prevState <= 1 ? 1 : prevState - 1
-      );
-    }
-  };
-
-  const paginationInputHandler = (event) => {
-    const paginationInputValue = +event.target.value;
-
-    if (
-      paginationInputValue &&
-      paginationInputValue > 0 &&
-      paginationInputValue <= Math.ceil(totalBooksAvail / 10)
-    ) {
-      setCurrentPage(paginationInputValue);
-    }
-  };
+  const displayedPage = globalCtx.displayedPage;
+  const totalBooksAvail = globalCtx.totalBooksAvail;
 
   const searchHandler = (query) => {
-    setCurrentPage(1);
+    globalCtx.changeDisplayedPage(1);
     setCurrentQuery(query);
     setIsLoading(true);
     setLoadedData([]);
   };
 
-  const takeToTop = useRef(globalCtx);
-
   useEffect(() => {
-    let url = currentQuery ? `https://gnikdroy.pythonanywhere.com/api/book/?${currentQuery}&page=${currentPage}` : `https://gnikdroy.pythonanywhere.com/api/book/?page=${currentPage}`
+    let url = currentQuery ? `https://gnikdroy.pythonanywhere.com/api/book/?${currentQuery}&page=${displayedPage}` : `https://gnikdroy.pythonanywhere.com/api/book/?page=${displayedPage}`
     setIsLoading(true);
 
     fetch(`${url}`)
@@ -66,18 +38,18 @@ function AllBooks() {
         return response.json();
       })
       .then((data) => {
-        setTotalBooksAvail(data.count);
+        globalCtxRef.current.changeNumbOfBooksAvail(data.count);
         const results = [...data.results];
         setIsLoading(false);
         setLoadedData(results);
         setIsQuerySuccessful(true);
-        takeToTop.current.takeToTopPaginationArrows();
+        globalCtxRef.current.takeToTopPaginationArrows();
       })
       .catch((error) => {
         setIsQuerySuccessful(false);
         setIsLoading(false);
       });
-  }, [currentPage, currentQuery]);
+  }, [displayedPage, currentQuery]);
 
   return (
     <section className={classes['section']}>
@@ -85,15 +57,8 @@ function AllBooks() {
       <FindBookForm onSearchHandler={searchHandler} />
       {isLoading && <Preloader />}
       {isQuerySuccessful && <BookList data={loadedData} />}
-      {totalBooksAvail > 10 ? (
-        <TablePagination
-          totalPagesCount={Math.ceil(totalBooksAvail / 10)}
-          value={currentPage}
-          paginationArrowHandler={paginationArrowHandler}
-          inputChangeHandler={paginationInputHandler}
-        />
-      ) : null}
-      {!isLoading && !isQuerySuccessful && <ErrorMessage/>}
+      {totalBooksAvail > 10 ? <Pagination /> : null}
+      {!isLoading && !isQuerySuccessful && <ErrorMessage />}
     </section>
   );
 }
