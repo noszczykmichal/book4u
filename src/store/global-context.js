@@ -19,7 +19,7 @@ const GlobalContext = createContext({
   toggleBarHeight: 0,
   formHeight: 0,
   inputStoredValueObj: {},
-  paginationValue: 0,
+  paginationValue: 1,
   //Components Handlers
   closeAllModals: () => Boolean,
   openMobileNav: () => Boolean,
@@ -33,7 +33,7 @@ const GlobalContext = createContext({
   formHeightSetter: () => Number,
   inputValueSetter: () => Object,
   clearInputValues: () => Object,
-  paginationSetter: () => Number
+  inputPaginationSetter: (number) => Number
 });
 
 export function GlobalContextProvider(props) {
@@ -48,7 +48,7 @@ export function GlobalContextProvider(props) {
   const [toggleBarCurrentHeight, setToggleBarCurrentHeight] = useState(0);
   const [formCurrentHeight, setFormCurrentHeight] = useState(0);
   const [inputValueObj, setInputValueObj] = useState({});
-  const [paginationCurrentVal, setPaginationCurrentVal] = useState(0);
+  const [paginationCurrentVal, setPaginationCurrentVal] = useState(1);
 
   function addFavoriteHandler(favoriteBook) {
     setUserFavorites((prevFavoriteBooks) =>
@@ -70,6 +70,7 @@ export function GlobalContextProvider(props) {
 
   function displayedPageHandler(number) {
     setCurrentPage(number);
+    setPaginationCurrentVal(number);
   }
 
   function changeNumbOfBooksAvailHandler(number) {
@@ -152,8 +153,8 @@ export function GlobalContextProvider(props) {
     setInputValueObj({});
   }
 
-  function inputPaginationHandler(value) {
-    setPaginationCurrentVal(value);
+  function inputPaginationHandler(number) {
+    setPaginationCurrentVal(number);
   }
 
   const context = {

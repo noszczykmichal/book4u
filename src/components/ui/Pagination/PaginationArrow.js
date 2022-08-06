@@ -9,9 +9,6 @@ function Arrow(props) {
   let attachedClasses = [classes["arrow"]];
   const totalPagesCount = Math.ceil(globalCtx.totalBooksAvail / 10);
   const currentPage = globalCtx.displayedPage;
-  // let isLeftDisabled = true;
-  // let isRightDisabled = false;
-
 
   if (props.type === "left") {
     attachedClasses = [classes["arrow"], classes["arrow--left"]];
