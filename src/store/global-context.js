@@ -10,7 +10,7 @@ const GlobalContext = createContext({
   displayedPage: 1,
   changeDisplayedPage: (number) => Number,
   totalBooksAvail: 0,
-  changeNumbOfBooksAvail: (number)=>Number,
+  changeNumbOfBooksAvail: (number) => Number,
   //Components State
   backdropVisible: false,
   mobileNavVisible: false,
@@ -26,8 +26,7 @@ const GlobalContext = createContext({
   trashIconOnClick: () => Boolean,
   confirmButtonOnClick: () => { },
   cancelButtonOnClick: () => Boolean,
-  takeToTopPaginationArrows: () => null,
-  takeToTopButton: () => null,
+  takeToTop: () => null,
   findBookFormVisibilitySetter: () => Boolean,
   toggleBarHeightSetter: () => Number,
   formHeightSetter: () => Number,
@@ -104,22 +103,11 @@ export function GlobalContextProvider(props) {
     closeAllHandler();
   }
 
-  function takeToTopPaginationArrowsHandler() {
+  function takeToTopHandler(idOfAgent) {
+    const pixelsToSubtract = idOfAgent === 'button' ? 80 : 240;
     const booklistTop = document.getElementById('book-list');
     if (booklistTop) {
-      const position = booklistTop.offsetTop - 240;
-
-      window.scrollTo({
-        top: position,
-        behavior: "smooth"
-      })
-    }
-  }
-
-  function takeToTopButtonHandler() {
-    const booklistTop = document.getElementById('book-list');
-    if (booklistTop) {
-      const position = booklistTop.offsetTop - 80;
+      const position = booklistTop.offsetTop - pixelsToSubtract;
 
       window.scrollTo({
         top: position,
@@ -183,8 +171,7 @@ export function GlobalContextProvider(props) {
     trashIconOnClick: trashIconOnClickHandler,
     confirmButtonOnClick: confirmButtonHandler,
     cancelButtonOnClick: cancelButtonHandler,
-    takeToTopPaginationArrows: takeToTopPaginationArrowsHandler,
-    takeToTopButton: takeToTopButtonHandler,
+    takeToTop: takeToTopHandler,
     findBookFormVisibilitySetter: findBookFormVisibilityHandler,
     toggleBarHeightSetter: toggleBarHeightHandler,
     formHeightSetter: formHeightHandler,

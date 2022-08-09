@@ -11,6 +11,7 @@ function Card(props) {
 
   useEffect(() => {
     if (props.animated) {
+      cardRef.current.style.display='block';
       cardRef.current.style.height = `${globalCtx.toggleBarHeight + 10}px`;
       cardRef.current.style.transition='min-height 1s ease-out';
       
