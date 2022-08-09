@@ -2,3 +2,11 @@
     list-style: none;
     padding: 0;
 }
+
+@media(min-width: 576px){
+    .book-list{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+}

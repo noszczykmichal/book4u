@@ -1,4 +1,7 @@
 .card{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
     border: 1px solid #ccc7c9;
     border-radius: 6px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
@@ -6,3 +9,21 @@
     text-align: center;
     overflow: hidden;
 }
+
+ @media(min-width: 576px){
+    .card{
+        min-height: 75rem;
+    }
+  } 
+
+  @media(min-width: 768px){
+    .card{
+        min-height: 70rem;
+    }
+  } 
+
+  @media(min-width: 1920px){
+    .card{
+        min-height: 63rem;
+    }
+  } 

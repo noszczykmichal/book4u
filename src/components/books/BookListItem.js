@@ -41,7 +41,7 @@ function BookListItem(props) {
         <h4>{authorFinder()}</h4>
         <p>Bookshelves: {props.bookInfo.bookshelves.join(", ")}</p>
         <ul aria-label="It's about:" className={classes["book__subjects"]}>
-          {props.bookInfo.subjects.map((subject) => {
+          {props.bookInfo.subjects.filter(subject=>subject.length>=3).map((subject) => {
             const subjectId = Math.random().toString();
 
             return (

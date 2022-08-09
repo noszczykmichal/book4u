@@ -1,5 +1,6 @@
 .list__item {
   margin: 1rem 0;
+  word-wrap: break-word;
 }
 
 .book__title {
@@ -15,6 +16,7 @@
 
 .book__subjects {
   text-align: left;
+  padding: 0 1rem;
 }
 
 .book__subject {
@@ -46,6 +48,7 @@
 .book__button--link {
   text-decoration: none;
   display: inline-block;
+  text-align: center;
   margin: 2rem 0;
   border: 1px solid rgb(164, 53, 240);
   color: rgb(164, 53, 240);
@@ -55,4 +58,28 @@
   border: 1px solid rgb(164, 53, 240);
   background-color: rgb(164, 53, 240);
   color: #fff;
+}
+
+@media(min-width: 576px){
+  .list__item {
+    width: 45%;
+  }
+}
+
+@media(min-width: 576px){
+  .list__item {
+    width: 45%;
+  }
+}
+
+@media(min-width: 1024px){
+  .list__item {
+    width: 30%;
+  }
+}
+
+@media(min-width: 1366px){
+  .list__item {
+    width: 22%;
+  }
 }

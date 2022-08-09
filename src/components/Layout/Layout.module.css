@@ -1,6 +1,12 @@
 .main{
-    margin: 3rem auto;
+    margin: 2rem auto;
     width: 90%;
     max-width: 40rem;
     text-align: center;
+}
+
+@media(min-width: 576px){
+    .main{
+        max-width: none;
+    }
 }
