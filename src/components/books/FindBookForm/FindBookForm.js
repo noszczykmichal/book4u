@@ -21,13 +21,13 @@ function FindBookForm(props) {
     const inputsValueObj = globalCtx.inputStoredValueObj;
     let query = validationHandler(inputsValueObj);
 
-    console.log(query);
+    // console.log(query);
     props.onSearchHandler(query);
   }
 
   useEffect(() => {
-    setElementHeight.current.toggleBarHeightSetter(toggleBarRef);
-    setElementHeight.current.formHeightSetter(formRef);
+    setElementHeight.current.elementHeightSetter('toggleBar',toggleBarRef);
+    setElementHeight.current.elementHeightSetter('form',formRef);
   }, [])
 
   return (
