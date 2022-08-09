@@ -24,7 +24,7 @@ function Modal() {
                             classes["modal__action"],
                             classes["modal__action--confirm"],
                         ].join(" ")}
-                        onClick={globalCtx.confirmButtonOnClick}
+                        onClick={()=>globalCtx.actionButtonOnClick('confirm')}
                     >
                         YES
                     </button>
@@ -33,7 +33,7 @@ function Modal() {
                             classes["modal__action"],
                             classes["modal__action--cancel"],
                         ].join(" ")}
-                        onClick={globalCtx.cancelButtonOnClick}
+                        onClick={()=>globalCtx.actionButtonOnClick('cancel')}
                     >
                         NO
                     </button>

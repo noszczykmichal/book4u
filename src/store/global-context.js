@@ -24,12 +24,10 @@ const GlobalContext = createContext({
   closeAllModals: () => Boolean,
   openMobileNav: () => Boolean,
   trashIconOnClick: () => Boolean,
-  confirmButtonOnClick: () => { },
-  cancelButtonOnClick: () => Boolean,
+  actionButtonOnClick: ()=> Boolean,
   takeToTop: () => null,
   findBookFormVisibilitySetter: () => Boolean,
-  toggleBarHeightSetter: () => Number,
-  formHeightSetter: () => Number,
+  elementHeightSetter: () => Number,
   inputValueSetter: () => Object,
   clearInputValues: () => Object,
   inputPaginationSetter: (number) => Number
@@ -94,13 +92,13 @@ export function GlobalContextProvider(props) {
     setModalVisibility(true);
   }
 
-  function confirmButtonHandler() {
-    removeAllFavoritesHandler();
-    closeAllHandler();
-  }
-
-  function cancelButtonHandler() {
-    closeAllHandler();
+  function actionButtonOnClickHandler(id) {
+    if (id === 'confirm') {
+      removeAllFavoritesHandler();
+      closeAllHandler();
+    }else{
+      closeAllHandler();
+    }
   }
 
   function takeToTopHandler(idOfAgent) {
@@ -120,12 +118,12 @@ export function GlobalContextProvider(props) {
     setFindBookFormVisibility(prevState => !prevState);
   }
 
-  function toggleBarHeightHandler(referenceObj) {
-    setToggleBarCurrentHeight(referenceObj.current.clientHeight);
-  }
-
-  function formHeightHandler(referenceObj) {
-    setFormCurrentHeight(referenceObj.current.clientHeight);
+  function elementHeightHandler(elementName, referenceObj) {
+    if (elementName === 'toggleBar') {
+      setToggleBarCurrentHeight(referenceObj.current.clientHeight);
+    } else {
+      setFormCurrentHeight(referenceObj.current.clientHeight);
+    }
   }
 
   function inputValueHandler(event) {
@@ -169,12 +167,10 @@ export function GlobalContextProvider(props) {
     closeAllModals: closeAllHandler,
     openMobileNav: openMobileNavHandler,
     trashIconOnClick: trashIconOnClickHandler,
-    confirmButtonOnClick: confirmButtonHandler,
-    cancelButtonOnClick: cancelButtonHandler,
+    actionButtonOnClick: actionButtonOnClickHandler,
     takeToTop: takeToTopHandler,
     findBookFormVisibilitySetter: findBookFormVisibilityHandler,
-    toggleBarHeightSetter: toggleBarHeightHandler,
-    formHeightSetter: formHeightHandler,
+    elementHeightSetter: elementHeightHandler,
     inputValueSetter: inputValueHandler,
     clearInputValues: clearInputValuesHandler,
     inputPaginationSetter: inputPaginationHandler
