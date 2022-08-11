@@ -5,14 +5,14 @@ import classes from "./BookListItem.module.css";
 import Card from "../ui/Card";
 
 function BookListItem(props) {
-  const favBooksContext = useContext(GlobalContext);
-  const bookIsFavorite = favBooksContext.bookIsFavorite(props.bookInfo.id);
+  const globalCtx = useContext(GlobalContext);
+  const bookIsFavorite = globalCtx.bookIsFavorite(props.bookInfo.id);
 
   const toggleFavoriteStatus = () => {
     if (bookIsFavorite === false) {
-      return favBooksContext.addFavorite(props.bookInfo);
+      return globalCtx.addFavorite(props.bookInfo);
     } else {
-      return favBooksContext.removeFavorite(props.bookInfo.id);
+      return globalCtx.removeFavorite(props.bookInfo.id);
     }
   };
 
@@ -41,7 +41,7 @@ function BookListItem(props) {
         <h4>{authorFinder()}</h4>
         <p>Bookshelves: {props.bookInfo.bookshelves.join(", ")}</p>
         <ul aria-label="It's about:" className={classes["book__subjects"]}>
-          {props.bookInfo.subjects.filter(subject=>subject.length>=3).map((subject) => {
+          {props.bookInfo.subjects.filter(subject => subject.length >= 3).map((subject) => {
             const subjectId = Math.random().toString();
 
             return (

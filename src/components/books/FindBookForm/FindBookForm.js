@@ -11,7 +11,6 @@ import Input from './Input';
 
 function FindBookForm(props) {
   const globalCtx = useContext(GlobalContext);
-
   const toggleBarRef = useRef();
   const formRef = useRef();
   const setElementHeight = useRef(globalCtx);
