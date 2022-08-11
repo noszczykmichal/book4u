@@ -3,6 +3,7 @@ import { createContext, useState } from "react";
 const GlobalContext = createContext({
   favorites: [],
   totalFavorites: 0,
+  loadFavsFromLocStorage: () => { },
   addFavorite: (favoriteBook) => { },
   removeFavorite: (bookId) => { },
   removeAllFavorites: () => { },
@@ -24,7 +25,7 @@ const GlobalContext = createContext({
   closeAllModals: () => Boolean,
   openMobileNav: () => Boolean,
   trashIconOnClick: () => Boolean,
-  actionButtonOnClick: ()=> Boolean,
+  actionButtonOnClick: () => Boolean,
   takeToTop: () => null,
   findBookFormVisibilitySetter: () => Boolean,
   elementHeightSetter: () => Number,
@@ -47,18 +48,33 @@ export function GlobalContextProvider(props) {
   const [inputValueObj, setInputValueObj] = useState({});
   const [paginationCurrentVal, setPaginationCurrentVal] = useState(1);
 
+  function loadFavsFromLocStorageHandler() {
+    let data = localStorage.getItem("FavBooks");
+    if (data) {
+      const savedFavorites = JSON.parse(data);
+      setUserFavorites(savedFavorites);
+    }
+  }
+
   function addFavoriteHandler(favoriteBook) {
-    setUserFavorites((prevFavoriteBooks) =>
-      prevFavoriteBooks.concat(favoriteBook)
-    );
+    setUserFavorites(prevState => {
+      const updatedFavs = prevState.concat(favoriteBook);
+      localStorage.setItem("FavBooks", JSON.stringify(updatedFavs));
+      return updatedFavs;
+    });
   }
 
   function removeFavoriteHandler(bookId) {
-    setUserFavorites(prevState => prevState.filter(book => book.id !== bookId))
+    setUserFavorites(prevState => {
+      const updatedFavs = prevState.filter(book => book.id !== bookId);
+      localStorage.setItem("FavBooks", JSON.stringify(updatedFavs));
+      return updatedFavs;
+    });
   }
 
   function removeAllFavoritesHandler() {
     setUserFavorites([]);
+    localStorage.clear();
   }
 
   function bookIsFavoriteHandler(bookId) {
@@ -96,7 +112,7 @@ export function GlobalContextProvider(props) {
     if (id === 'confirm') {
       removeAllFavoritesHandler();
       closeAllHandler();
-    }else{
+    } else {
       closeAllHandler();
     }
   }
@@ -146,6 +162,7 @@ export function GlobalContextProvider(props) {
   const context = {
     favorites: userFavorites,
     totalFavorites: userFavorites.length,
+    loadFavsFromLocStorage: loadFavsFromLocStorageHandler,
     addFavorite: addFavoriteHandler,
     removeFavorite: removeFavoriteHandler,
     removeAllFavorites: removeAllFavoritesHandler,

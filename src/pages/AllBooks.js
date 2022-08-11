@@ -28,7 +28,7 @@ function AllBooks() {
   useEffect(() => {
     let url = currentQuery ? `https://gnikdroy.pythonanywhere.com/api/book/?${currentQuery}&page=${displayedPage}` : `https://gnikdroy.pythonanywhere.com/api/book/?page=${displayedPage}`
     setIsLoading(true);
-
+    globalCtxRef.current.loadFavsFromLocStorage();
     fetch(`${url}`)
       .then((response) => {
         // console.log(response.json())
