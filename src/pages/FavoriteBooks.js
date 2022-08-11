@@ -1,16 +1,23 @@
-import { useContext } from "react";
+import { useContext, useRef, useEffect } from "react";
 import GlobalContext from "../store/global-context";
 
 import BookList from "../components/books/BookList";
 
+
 function FavoriteBooks() {
-  const favBooksContext = useContext(GlobalContext);
+  const globalCtx = useContext(GlobalContext);
+  const globalCtxRef = useRef(globalCtx);
+
+  useEffect(() => {
+    globalCtxRef.current.loadFavsFromLocStorage();
+  }, [])
+
 
   return (
     <section>
       <h1>Your favorite books</h1>
-      {favBooksContext.totalFavorites? (
-        <BookList data={favBooksContext.favorites} />
+      {globalCtx.totalFavorites ? (
+        <BookList data={globalCtx.favorites} />
       ) : (
         <p>Add something to your favorites.</p>
       )}
