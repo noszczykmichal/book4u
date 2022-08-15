@@ -10,8 +10,9 @@
     background-color: #fff;
     height: 25%;
     width: 90%;
-    max-width: 430px;
-    max-height: 200px;
+    min-height: 10rem;
+    max-width: 26rem;
+    max-height: 13rem;
     border-radius: 6px;
     display: flex;
     flex-direction: column;
