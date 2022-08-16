@@ -1,13 +1,13 @@
 # Book4u
 
 > An app using the Project Gutenberg's API for browsing PG catalogue.    
-> You can check live demo [_here_](https://books-search-app-a9b46.web.app/).
+> You can check live demo [_here_](https://book4u-b0a2a.web.app/).
 
 ## Table of Contents
 
 * [General Info](#general-information)
 * [Technologies Used](#technologies-used)
-* [New Features add in vs 1.1](#new-features-add-in-vs-11)
+* [New Features added in vs 1.1](#new-features-added-in-vs-11)
 * [Screenshots](#screenshots)
 * [Setup](#setup)
 * [Project Status](#project-status)
@@ -47,10 +47,10 @@
 
 ## Screenshots
 
-You can either choose from books downloaded at the app's start up.
+You can either choose from books downloaded at the app's start up.    
 ![Example screenshot](./img/screenshot.png)
 
-or narrow down criteria to find something specific.
+or narrow down criteria to find something specific.    
 ![Example screenshot](./img/screenshot2.png)
 
 ## Setup
@@ -69,7 +69,7 @@ $npm start
 
 ## Project Status
 
-The project is finished yet from time to time I might add some new features.
+The project is finished, yet from time to time I might add some new feature.
 
 
 ## Contact
