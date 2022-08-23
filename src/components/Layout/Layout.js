@@ -8,9 +8,9 @@ function Layout(props) {
   return (
     <div>
       <Backdrop />
+      <Modal />
       <Toolbar />
       <MobileNavigation />
-      <Modal />
       <main className={classes["main"]}>{props.children}</main>
     </div>
   );
