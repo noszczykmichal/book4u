@@ -1,18 +1,10 @@
-.modal-container {
-    width: 100vw; 
-    display: flex;
-    justify-content: center;
-    position: absolute;
-    top: 0;
-  }
-  
-  .modal {
+ .modal {
     background-color: #fff;
     height: 25%;
     width: 90%;
     min-height: 10rem;
-    max-width: 26rem;
-    max-height: 13rem;
+    /* max-width: 26rem;*/
+   max-height: 13rem;
     border-radius: 6px;
     display: flex;
     flex-direction: column;
@@ -22,14 +14,39 @@
     position: fixed;
     z-index: 500;
     top: 20%;
-    transform: translateY(-30rem);
-    opacity: 0;
-    transition: opacity .8s ease-out, transform .8s ease-out;
+    left: 5%;
   }
   
-  .modal--active {
+  .modal--open {
+    animation: modalOpen .5s ease-out forwards;
     opacity: 1;
     transform: translateY(0);
+  }
+
+  .modal--closed{
+    animation: modalClosed .5s ease-out forwards;
+  }
+
+  @keyframes modalOpen {
+    0%{
+      opacity: 0;
+      transform: translateY(-3rem);
+    }
+    100%{
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes modalClosed {
+    0%{
+      opacity: 1;
+      transform: translateX(0);
+    }
+    100%{
+      opacity: 0;
+      transform: translateY(-3rem);
+    }
   }
   
   .modal__actions {
@@ -66,3 +83,38 @@
     background-color: #ff5454;
     border-color: #ff5454;
   }
+
+  @media(min-width: 576px){
+    .modal{
+      width: 70%;
+      left: 15%;
+    }
+  }
+
+  @media(min-width: 768px){
+    .modal{
+        width: 50%;
+        left: 25%;
+    }
+  } 
+
+  @media(min-width: 992px){
+    .modal{
+        width: 40%;
+        left: 30%;
+    }
+  } 
+
+  @media(min-width: 1200px){
+    .modal{
+        width: 30%;
+        left: 35%;
+    }
+  } 
+
+  @media(min-width: 1400px){
+    .modal{
+        width: 26%;
+        left: 37%;
+    }
+  } 
