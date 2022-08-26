@@ -21,8 +21,8 @@
     transition: transform .2s ease-out;
   }
   
-  .container__icon:hover,
-  .container__icon:active,
-  .container__icon:focus {
+  .container__icon:not([disabled]):hover,
+  .container__icon:not([disabled]):active,
+  .container__icon:not([disabled]):focus {
     transform: scale(0.75);
   }

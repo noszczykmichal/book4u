@@ -1,19 +1,28 @@
+import { useRef } from "react";
 import { useContext } from "react";
+import { CSSTransition } from "react-transition-group";
 
 import GlobalContext from "../../store/global-context";
 import classes from "./Modal.module.css";
 
 function Modal() {
     const globalCtx = useContext(GlobalContext);
-    let attachedClasses = [classes["modal"]];
-
-    if (globalCtx.modalVisible) {
-        attachedClasses = [classes["modal"], classes["modal--active"]];
-    }
+    const modalRef = useRef();
 
     return (
-        <div className={classes["modal-container"]}>
-            <div className={attachedClasses.join(" ")}>
+        <CSSTransition
+            nodeRef={modalRef}
+            in={globalCtx.modalVisible} 
+            timeout={500}
+            classNames={{
+                enter: '',
+                enterActive: classes['modal--open'],
+                exit: '',
+                exitActive: classes['modal--closed']
+            }}
+            mountOnEnter
+            unmountOnExit>
+            <div className={classes.modal} ref={modalRef}>
                 <div className={classes["modal__text"]}>
                     <p>This will delete all your favorite books!</p>
                     <p>Do you want to continue?</p>
@@ -24,7 +33,7 @@ function Modal() {
                             classes["modal__action"],
                             classes["modal__action--confirm"],
                         ].join(" ")}
-                        onClick={()=>globalCtx.actionButtonOnClick('confirm')}
+                        onClick={() => globalCtx.actionButtonOnClick('confirm')}
                     >
                         YES
                     </button>
@@ -33,13 +42,13 @@ function Modal() {
                             classes["modal__action"],
                             classes["modal__action--cancel"],
                         ].join(" ")}
-                        onClick={()=>globalCtx.actionButtonOnClick('cancel')}
+                        onClick={() => globalCtx.actionButtonOnClick('cancel')}
                     >
                         NO
                     </button>
                 </div>
             </div>
-        </div>
+        </CSSTransition>
     );
 }
 
