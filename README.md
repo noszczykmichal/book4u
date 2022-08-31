@@ -7,7 +7,7 @@
 
 * [General Info](#general-information)
 * [Technologies Used](#technologies-used)
-* [New Features added in vs 1.1](#new-features-added-in-vs-11)
+* [New Features](#new-features)
 * [Screenshots](#screenshots)
 * [Setup](#setup)
 * [Project Status](#project-status)
@@ -28,9 +28,16 @@
 - [React-DOM](https://www.npmjs.com/package/react-dom)
 - [React-Router](https://github.com/remix-run/react-router)
 - [React Hooks](https://reactjs.org/docs/hooks-intro.html)
+- [React Transition Group](https://reactcommunity.org/react-transition-group/)
 
-## New Features added in vs 1.1
 
+## New Features 
+
+Added in vs 1.2
+- smoother animations thanks to use of the [React Transition Group](https://reactcommunity.org/react-transition-group/)
+- many minor improvements in styling
+
+Added in vs 1.1
 - added new search criteria which allow to narrow down search results further (e.g. search by description of a book, download range and language in which book was written)
 - list of favorite books is now stored locally and the user can go back to it even if he/she closes a browser
 - improved UI: 
