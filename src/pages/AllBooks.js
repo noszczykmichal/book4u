@@ -1,6 +1,6 @@
 import { useEffect, useState, useContext, useRef } from "react";
 
-import classes from './AllBooks.module.css'
+import classes from "./AllBooks.module.css";
 import FindBookForm from "../components/books/FindBookForm/FindBookForm";
 import BookList from "../components/books/BookList";
 import Pagination from "../components/ui/Pagination/Pagination";
@@ -15,8 +15,8 @@ function AllBooks() {
   const [loadedData, setLoadedData] = useState([]);
   const [isQuerySuccessful, setIsQuerySuccessful] = useState(false);
   const [currentQuery, setCurrentQuery] = useState("");
-  const displayedPage = globalCtx.displayedPage;
-  const totalBooksAvail = globalCtx.totalBooksAvail;
+  const { displayedPage } = globalCtx;
+  const { totalBooksAvail } = globalCtx;
 
   const searchHandler = (query) => {
     globalCtx.changeDisplayedPage(1);
@@ -26,7 +26,9 @@ function AllBooks() {
   };
 
   useEffect(() => {
-    let url = currentQuery ? `https://gnikdroy.pythonanywhere.com/api/book/?${currentQuery}&page=${displayedPage}` : `https://gnikdroy.pythonanywhere.com/api/book/?page=${displayedPage}`
+    const url = currentQuery
+      ? `https://gnikdroy.pythonanywhere.com/api/book/?${currentQuery}&page=${displayedPage}`
+      : `https://gnikdroy.pythonanywhere.com/api/book/?page=${displayedPage}`;
     setIsLoading(true);
     globalCtxRef.current.loadFavsFromLocStorage();
     fetch(`${url}`)
@@ -43,7 +45,7 @@ function AllBooks() {
         setIsLoading(false);
         setLoadedData(results);
         setIsQuerySuccessful(true);
-        globalCtxRef.current.takeToTop('allBooks');
+        globalCtxRef.current.takeToTop("allBooks");
       })
       .catch((error) => {
         setIsQuerySuccessful(false);
@@ -52,8 +54,8 @@ function AllBooks() {
   }, [displayedPage, currentQuery]);
 
   return (
-    <section className={classes['section']}>
-      <h1>Let's find a good read for you.</h1>
+    <section className={classes.section}>
+      <h1>Let&apos;s find a good read for you.</h1>
       <FindBookForm onSearchHandler={searchHandler} />
       {isLoading && <Preloader />}
       {isQuerySuccessful && <BookList data={loadedData} />}
