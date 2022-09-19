@@ -34,8 +34,12 @@ function Card({ animated, children }) {
 }
 
 Card.propTypes = {
-  animated: PropTypes.string.isRequired,
+  animated: PropTypes.string,
   children: PropTypes.node.isRequired,
+};
+
+Card.defaultProps = {
+  animated: "",
 };
 
 export default Card;

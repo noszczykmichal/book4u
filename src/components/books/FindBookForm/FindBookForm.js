@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-associated-control */
 import PropTypes from "prop-types";
 import { useContext, useRef, useEffect } from "react";
 
@@ -67,98 +68,103 @@ function FindBookForm({ onSearchHandler }) {
       <form className={classes.form} onSubmit={formHandler} ref={formRef}>
         <label htmlFor="title" className={classes.form__label}>
           Title Contains:
+          <br />
+          <Input
+            htmlType="text"
+            htmlId="title"
+            htmlName="title_contains"
+            htmlClass={["form__input"]}
+          />
         </label>
-        <Input
-          htmlType="text"
-          htmlId="title"
-          htmlName="title_contains"
-          htmlClass={["form__input"]}
-        />
 
         <label htmlFor="description" className={classes.form__label}>
           Description Contains:
+          <br />
+          <Input
+            htmlType="text"
+            htmlId="description"
+            htmlName="description_contains"
+            htmlClass={["form__input"]}
+          />
         </label>
-        <Input
-          htmlType="text"
-          htmlId="description"
-          htmlName="description_contains"
-          htmlClass={["form__input"]}
-        />
 
         <label htmlFor="agents_type" className={classes.form__label}>
           Agents type:
+          <Select nameForSelect="has_agent_type" options={agentsTypeArray} />
         </label>
-        <Select nameForSelect="has_agent_type" options={agentsTypeArray} />
 
         <label htmlFor="agents_name" className={classes.form__label}>
           Agents person name contains:
+          <br />
+          <Input
+            htmlType="text"
+            htmlId="agents_name"
+            htmlName="agent_name_contains"
+            htmlClass={["form__input"]}
+          />
         </label>
-        <Input
-          htmlType="text"
-          htmlId="agents_name"
-          htmlName="agent_name_contains"
-          htmlClass={["form__input"]}
-        />
 
         <label className={classes.form__label}>
           Agents person birth date is in range:
+          <div className={classes["range-container"]}>
+            <Input
+              htmlType="text"
+              htmlName="agent_birth_date_range_min"
+              htmlClass={["form__input", "range-container__input"]}
+              htmlPlaceholder="min"
+            />
+            <span>-</span>
+            <Input
+              htmlType="text"
+              htmlName="agent_birth_date_range_max"
+              htmlClass={["form__input", "range-container__input"]}
+              htmlPlaceholder="max"
+            />
+          </div>
         </label>
-        <div className={classes["range-container"]}>
-          <Input
-            htmlType="text"
-            htmlName="agent_birth_date_range_min"
-            htmlClass={["form__input", "range-container__input"]}
-            htmlPlaceholder="min"
-          />
-          <span>-</span>
-          <Input
-            htmlType="text"
-            htmlName="agent_birth_date_range_max"
-            htmlClass={["form__input", "range-container__input"]}
-            htmlPlaceholder="max"
-          />
-        </div>
 
         <label className={classes.form__label}>
           Agents person death date is in range:
+          <div className={classes["range-container"]}>
+            <Input
+              htmlType="text"
+              htmlName="agent_death_date_range_min"
+              htmlClass={["form__input", "range-container__input"]}
+              htmlPlaceholder="min"
+            />
+            <span>-</span>
+            <Input
+              htmlType="text"
+              htmlName="agent_death_date_range_max"
+              htmlClass={["form__input", "range-container__input"]}
+              htmlPlaceholder="max"
+            />
+          </div>
         </label>
-        <div className={classes["range-container"]}>
-          <Input
-            htmlType="text"
-            htmlName="agent_death_date_range_min"
-            htmlClass={["form__input", "range-container__input"]}
-            htmlPlaceholder="min"
-          />
-          <span>-</span>
-          <Input
-            htmlType="text"
-            htmlName="agent_death_date_range_max"
-            htmlClass={["form__input", "range-container__input"]}
-            htmlPlaceholder="max"
-          />
-        </div>
 
-        <label className={classes.form__label}>Downloads is in range:</label>
-        <div className={classes["range-container"]}>
-          <Input
-            htmlType="text"
-            htmlName="downloads_range_min"
-            htmlClass={["form__input", "range-container__input"]}
-            htmlPlaceholder="min"
-          />
-          <span>-</span>
-          <Input
-            htmlType="text"
-            htmlName="downloads_range_max"
-            htmlClass={["form__input", "range-container__input"]}
-            htmlPlaceholder="max"
-          />
-        </div>
+        <label className={classes.form__label}>
+          Downloads is in range:
+          <div className={classes["range-container"]}>
+            <Input
+              htmlType="text"
+              htmlName="downloads_range_min"
+              htmlClass={["form__input", "range-container__input"]}
+              htmlPlaceholder="min"
+            />
+            <span>-</span>
+            <Input
+              htmlType="text"
+              htmlName="downloads_range_max"
+              htmlClass={["form__input", "range-container__input"]}
+              htmlPlaceholder="max"
+            />
+          </div>
+        </label>
 
         <label htmlFor="language" className={classes.form__label}>
           Select language:
+          <Select nameForSelect="languages" options={languagesArray} />
         </label>
-        <Select nameForSelect="languages" options={languagesArray} />
 
         <button type="submit" className={classes.form__button}>
           Search

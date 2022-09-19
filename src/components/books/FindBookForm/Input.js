@@ -27,8 +27,13 @@ Input.propTypes = {
   htmlName: PropTypes.string.isRequired,
   htmlClass: PropTypes.arrayOf(PropTypes.string).isRequired,
   htmlType: PropTypes.string.isRequired,
-  htmlId: PropTypes.string.isRequired,
-  htmlPlaceholder: PropTypes.string.isRequired,
+  htmlId: PropTypes.string,
+  htmlPlaceholder: PropTypes.string,
+};
+
+Input.defaultProps = {
+  htmlId: "",
+  htmlPlaceholder: "",
 };
 
 export default Input;

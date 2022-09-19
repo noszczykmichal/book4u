@@ -24,6 +24,15 @@
     "react/react-in-jsx-scope": ["off"],
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "react/jsx-props-no-spreading": ["warn"],
-    "no-shadow": "off"
+    "no-shadow": "off",
+    "jsx-a11y/label-has-associated-control": [
+      2,
+      {
+        "labelAttributes": ["htmlFor"],
+        "controlComponents": ["Input", "Select"],
+        "assert": "both",
+        "depth": 3
+      }
+    ]
   }
 }
