@@ -87,9 +87,10 @@ export const languagesArray = [
 export const validationHandler = (inputsObj) => {
   let query = "";
 
-  for (const input in inputsObj) {
-    query += `${input}=${inputsObj[input]}&`;
-  }
-
-  return query;
+  Object.keys(inputsObj).forEach((input) => {
+    if (inputsObj[input].trim() !== "") {
+      query += `${input}=${inputsObj[input].trim()}&`;
+    }
+  });
+  return query !== "" ? query : null;
 };

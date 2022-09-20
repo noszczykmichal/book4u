@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-constructed-context-values */
 /* eslint-disable no-unused-vars */
 import PropTypes from "prop-types";
 import { createContext, useState } from "react";
