@@ -14,20 +14,20 @@ function TablePagination() {
     } else if (event.key === "Enter") {
       globalCtx.changeDisplayedPage(globalCtx.paginationValue);
     }
-  }
+  };
 
   const paginationInputHandler = (event) => {
     if (+event.target.value >= 1 && +event.target.value <= totalPagesCount) {
       globalCtx.inputPaginationSetter(+event.target.value);
     }
-  }
+  };
 
   return (
-    <div className={classes["pagination"]}>
+    <div className={classes.pagination}>
       <PaginationArrow type="left" />
       <input
         type="number"
-        className={classes["pagination__input"]}
+        className={classes.pagination__input}
         onChange={paginationInputHandler}
         value={globalCtx.paginationValue}
         onKeyDown={onKeyDownHandler}

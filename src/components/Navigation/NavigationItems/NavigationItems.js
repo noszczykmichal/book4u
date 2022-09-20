@@ -6,13 +6,9 @@ import TrashIcon from "./TrashIcon/TrashIcon";
 function NavigationItems() {
   return (
     <ul className={classes["navigation-items"]}>
-      <NavigationItem link="/" >
-        All Books
-      </NavigationItem>
-      <div className={classes['navigation-item--badges']}>
-        <NavigationItem link="favorite-books" >
-          Favorite Books
-        </NavigationItem>
+      <NavigationItem link="/">All Books</NavigationItem>
+      <div className={classes["navigation-item--badges"]}>
+        <NavigationItem link="favorite-books">Favorite Books</NavigationItem>
         <Counter />
         <TrashIcon />
       </div>

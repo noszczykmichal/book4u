@@ -1,32 +1,49 @@
 import { useEffect, useState, useContext, useRef } from "react";
 
-import classes from './AllBooks.module.css'
+import classes from "./AllBooks.module.css";
 import FindBookForm from "../components/books/FindBookForm/FindBookForm";
 import BookList from "../components/books/BookList";
 import Pagination from "../components/ui/Pagination/Pagination";
 import Preloader from "../components/ui/Preloader";
 import GlobalContext from "../store/global-context";
-import ErrorMessage from "../components/ui/ErrorMessage";
+import ErrorModal from "../components/ui/ErrorModal";
 
 function AllBooks() {
   const globalCtx = useContext(GlobalContext);
   const globalCtxRef = useRef(globalCtx);
   const [isLoading, setIsLoading] = useState(false);
   const [loadedData, setLoadedData] = useState([]);
-  const [isQuerySuccessful, setIsQuerySuccessful] = useState(false);
   const [currentQuery, setCurrentQuery] = useState("");
-  const displayedPage = globalCtx.displayedPage;
-  const totalBooksAvail = globalCtx.totalBooksAvail;
+  const [errorData, setErrorMessage] = useState({
+    apiError: false,
+    errorMessage: "",
+  });
+  const { displayedPage } = globalCtx;
+  const { totalBooksAvail } = globalCtx;
 
   const searchHandler = (query) => {
-    globalCtx.changeDisplayedPage(1);
-    setCurrentQuery(query);
-    setIsLoading(true);
-    setLoadedData([]);
+    setErrorMessage({
+      apiError: false,
+      errorMessage: "",
+    });
+
+    if (query) {
+      globalCtx.changeDisplayedPage(1);
+      setCurrentQuery(query);
+      setIsLoading(true);
+      setLoadedData([]);
+    } else {
+      setErrorMessage({
+        apiError: false,
+        errorMessage: "Please provide a valid search options.",
+      });
+    }
   };
 
   useEffect(() => {
-    let url = currentQuery ? `https://gnikdroy.pythonanywhere.com/api/book/?${currentQuery}&page=${displayedPage}` : `https://gnikdroy.pythonanywhere.com/api/book/?page=${displayedPage}`
+    const url = currentQuery
+      ? `https://gnikdroy.pythonanywhere.com/api/book/?${currentQuery}&page=${displayedPage}`
+      : `https://gnikdroy.pythonanywhere.com/api/book/?page=${displayedPage}`;
     setIsLoading(true);
     globalCtxRef.current.loadFavsFromLocStorage();
     fetch(`${url}`)
@@ -42,23 +59,25 @@ function AllBooks() {
         const results = [...data.results];
         setIsLoading(false);
         setLoadedData(results);
-        setIsQuerySuccessful(true);
-        globalCtxRef.current.takeToTop('allBooks');
+        globalCtxRef.current.takeToTop("allBooks");
       })
       .catch((error) => {
-        setIsQuerySuccessful(false);
         setIsLoading(false);
+        setErrorMessage({
+          apiError: true,
+          errorMessage: error.message,
+        });
       });
   }, [displayedPage, currentQuery]);
 
   return (
-    <section className={classes['section']}>
-      <h1>Let's find a good read for you.</h1>
+    <section className={classes.section}>
+      <h1>Let&apos;s find a good read for you.</h1>
       <FindBookForm onSearchHandler={searchHandler} />
       {isLoading && <Preloader />}
-      {isQuerySuccessful && <BookList data={loadedData} />}
-      {totalBooksAvail > 10 ? <Pagination /> : null}
-      {!isLoading && !isQuerySuccessful && <ErrorMessage />}
+      {!errorData.errorMessage && <BookList data={loadedData} />}
+      {!errorData.errorMessage && totalBooksAvail > 10 ? <Pagination /> : null}
+      {errorData.errorMessage && <ErrorModal errorDetails={errorData} />}
     </section>
   );
 }

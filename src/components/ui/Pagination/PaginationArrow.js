@@ -1,45 +1,47 @@
+import PropTypes from "prop-types";
 import { useRef, useContext, useEffect } from "react";
 import GlobalContext from "../../../store/global-context";
 
 import classes from "./PaginationArrow.module.css";
 
-function Arrow(props) {
+function Arrow({ type }) {
   const globalCtx = useContext(GlobalContext);
   const buttonRef = useRef();
-  let attachedClasses = [classes["arrow"]];
+  let attachedClasses = [classes.arrow];
   const totalPagesCount = Math.ceil(globalCtx.totalBooksAvail / 10);
   const currentPage = globalCtx.displayedPage;
 
-  if (props.type === "left") {
-    attachedClasses = [classes["arrow"], classes["arrow--left"]];
+  if (type === "left") {
+    attachedClasses = [classes.arrow, classes["arrow--left"]];
   }
 
   const clickHandler = () => {
-    if (props.type === "left") {
-      return globalCtx.changeDisplayedPage(prevState =>
-        prevState === 1 ? 1 : prevState - 1);
-    } else {
-      return globalCtx.changeDisplayedPage(prevState =>
-        prevState < totalPagesCount ? prevState + 1 : totalPagesCount);
+    if (type === "left") {
+      return globalCtx.changeDisplayedPage((prevState) =>
+        prevState === 1 ? 1 : prevState - 1,
+      );
     }
+    return globalCtx.changeDisplayedPage((prevState) =>
+      prevState < totalPagesCount ? prevState + 1 : totalPagesCount,
+    );
   };
 
   useEffect(() => {
-    if (props.type === "left" && currentPage === 1) {
+    if (type === "left" && currentPage === 1) {
       buttonRef.current.setAttribute("disabled", "true");
-    }else if(props.type==="left" && currentPage !==1){
+    } else if (type === "left" && currentPage !== 1) {
       buttonRef.current.removeAttribute("disabled");
     }
 
-    if (props.type === "right" && currentPage === totalPagesCount) {
+    if (type === "right" && currentPage === totalPagesCount) {
       buttonRef.current.setAttribute("disabled", "true");
-    }else if(props.type==="right" && currentPage !==totalPagesCount){
+    } else if (type === "right" && currentPage !== totalPagesCount) {
       buttonRef.current.removeAttribute("disabled");
     }
-  }, [currentPage, props.type, totalPagesCount])
+  }, [currentPage, type, totalPagesCount]);
 
   return (
-    <button className={classes["container"]} ref={buttonRef}>
+    <button type="button" className={classes.container} ref={buttonRef}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"
@@ -53,5 +55,9 @@ function Arrow(props) {
     </button>
   );
 }
+
+Arrow.propTypes = {
+  type: PropTypes.string.isRequired,
+};
 
 export default Arrow;

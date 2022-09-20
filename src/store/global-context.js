@@ -1,18 +1,21 @@
+/* eslint-disable react/jsx-no-constructed-context-values */
+/* eslint-disable no-unused-vars */
+import PropTypes from "prop-types";
 import { createContext, useState } from "react";
 
 const GlobalContext = createContext({
   favorites: [],
   totalFavorites: 0,
-  loadFavsFromLocStorage: () => { },
-  addFavorite: (favoriteBook) => { },
-  removeFavorite: (bookId) => { },
-  removeAllFavorites: () => { },
-  bookIsFavorite: (bookId) => Boolean,
+  loadFavsFromLocStorage: () => {},
+  addFavorite: (_favoriteBook) => {},
+  removeFavorite: (_bookId) => {},
+  removeAllFavorites: () => {},
+  bookIsFavorite: (_bookId) => Boolean,
   displayedPage: 1,
-  changeDisplayedPage: (number) => Number,
+  changeDisplayedPage: (_number) => Number,
   totalBooksAvail: 0,
-  changeNumbOfBooksAvail: (number) => Number,
-  //Components State
+  changeNumbOfBooksAvail: (_number) => Number,
+  // Components State
   backdropVisible: false,
   mobileNavVisible: false,
   modalVisible: false,
@@ -21,7 +24,7 @@ const GlobalContext = createContext({
   formHeight: 0,
   inputStoredValueObj: {},
   paginationValue: 1,
-  //Components Handlers
+  // Components Handlers
   closeAllModals: () => Boolean,
   openMobileNav: () => Boolean,
   trashIconOnClick: () => Boolean,
@@ -31,14 +34,14 @@ const GlobalContext = createContext({
   elementHeightSetter: () => Number,
   inputValueSetter: () => Object,
   clearInputValues: () => Object,
-  inputPaginationSetter: (number) => Number
+  inputPaginationSetter: (_number) => Number,
 });
 
-export function GlobalContextProvider(props) {
+export function GlobalContextProvider({ children }) {
   const [userFavorites, setUserFavorites] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [booksAvailable, setBooksAvailable] = useState(0);
-  //Components State
+  // Components State
   const [isBackdropVisible, setBackdropVisibility] = useState(false);
   const [isMobileNavVisible, setMobileNavVisibility] = useState(false);
   const [isModalVisible, setModalVisibility] = useState(false);
@@ -49,7 +52,7 @@ export function GlobalContextProvider(props) {
   const [paginationCurrentVal, setPaginationCurrentVal] = useState(1);
 
   function loadFavsFromLocStorageHandler() {
-    let data = localStorage.getItem("FavBooks");
+    const data = localStorage.getItem("FavBooks");
     if (data) {
       const savedFavorites = JSON.parse(data);
       setUserFavorites(savedFavorites);
@@ -57,7 +60,7 @@ export function GlobalContextProvider(props) {
   }
 
   function addFavoriteHandler(favoriteBook) {
-    setUserFavorites(prevState => {
+    setUserFavorites((prevState) => {
       const updatedFavs = prevState.concat(favoriteBook);
       localStorage.setItem("FavBooks", JSON.stringify(updatedFavs));
       return updatedFavs;
@@ -65,8 +68,8 @@ export function GlobalContextProvider(props) {
   }
 
   function removeFavoriteHandler(bookId) {
-    setUserFavorites(prevState => {
-      const updatedFavs = prevState.filter(book => book.id !== bookId);
+    setUserFavorites((prevState) => {
+      const updatedFavs = prevState.filter((book) => book.id !== bookId);
       localStorage.setItem("FavBooks", JSON.stringify(updatedFavs));
       return updatedFavs;
     });
@@ -78,7 +81,7 @@ export function GlobalContextProvider(props) {
   }
 
   function bookIsFavoriteHandler(bookId) {
-    return userFavorites.some(book => book.id === bookId);
+    return userFavorites.some((book) => book.id === bookId);
   }
 
   function displayedPageHandler(number) {
@@ -109,7 +112,7 @@ export function GlobalContextProvider(props) {
   }
 
   function actionButtonOnClickHandler(id) {
-    if (id === 'confirm') {
+    if (id === "confirm") {
       removeAllFavoritesHandler();
       closeAllHandler();
     } else {
@@ -118,24 +121,24 @@ export function GlobalContextProvider(props) {
   }
 
   function takeToTopHandler(idOfAgent) {
-    const pixelsToSubtract = idOfAgent === 'button' ? 80 : 240;
-    const booklistTop = document.getElementById('book-list');
+    const pixelsToSubtract = idOfAgent === "button" ? 80 : 240;
+    const booklistTop = document.getElementById("book-list");
     if (booklistTop) {
       const position = booklistTop.offsetTop - pixelsToSubtract;
 
       window.scrollTo({
         top: position,
-        behavior: "smooth"
-      })
+        behavior: "smooth",
+      });
     }
   }
 
   function findBookFormVisibilityHandler() {
-    setFindBookFormVisibility(prevState => !prevState);
+    setFindBookFormVisibility((prevState) => !prevState);
   }
 
   function elementHeightHandler(elementName, referenceObj) {
-    if (elementName === 'toggleBar') {
+    if (elementName === "toggleBar") {
       setToggleBarCurrentHeight(referenceObj.current.clientHeight);
     } else {
       setFormCurrentHeight(referenceObj.current.clientHeight);
@@ -145,10 +148,10 @@ export function GlobalContextProvider(props) {
   function inputValueHandler(event) {
     const { name, value } = event.target;
 
-    setInputValueObj(prevInputValuesObj => ({
+    setInputValueObj((prevInputValuesObj) => ({
       ...prevInputValuesObj,
-      [name]: value
-    }))
+      [name]: value,
+    }));
   }
 
   function clearInputValuesHandler() {
@@ -171,7 +174,7 @@ export function GlobalContextProvider(props) {
     changeDisplayedPage: displayedPageHandler,
     totalBooksAvail: booksAvailable,
     changeNumbOfBooksAvail: changeNumbOfBooksAvailHandler,
-    //Components State
+    // Components State
     backdropVisible: isBackdropVisible,
     mobileNavVisible: isMobileNavVisible,
     modalVisible: isModalVisible,
@@ -180,7 +183,7 @@ export function GlobalContextProvider(props) {
     formHeight: formCurrentHeight,
     inputStoredValueObj: inputValueObj,
     paginationValue: paginationCurrentVal,
-    //Components Handlers
+    // Components Handlers
     closeAllModals: closeAllHandler,
     openMobileNav: openMobileNavHandler,
     trashIconOnClick: trashIconOnClickHandler,
@@ -190,14 +193,16 @@ export function GlobalContextProvider(props) {
     elementHeightSetter: elementHeightHandler,
     inputValueSetter: inputValueHandler,
     clearInputValues: clearInputValuesHandler,
-    inputPaginationSetter: inputPaginationHandler
+    inputPaginationSetter: inputPaginationHandler,
   };
 
   return (
-    <GlobalContext.Provider value={context}>
-      {props.children}
-    </GlobalContext.Provider>
+    <GlobalContext.Provider value={context}>{children}</GlobalContext.Provider>
   );
 }
+
+GlobalContextProvider.propTypes = {
+  children: PropTypes.node.isRequired,
+};
 
 export default GlobalContext;
