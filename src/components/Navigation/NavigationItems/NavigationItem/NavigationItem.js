@@ -2,7 +2,7 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import PropTypes from "prop-types";
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import classes from "./NavigationItem.module.css";
 import GlobalContext from "../../../../store/global-context";
@@ -15,7 +15,7 @@ function NavigationItem({ link, children }) {
       className={classes["navigation-item"]}
       onClick={globalCtx.closeAllModals}
     >
-      <Link to={link}>{children}</Link>
+      <NavLink to={link}>{children}</NavLink>
     </li>
   );
 }
