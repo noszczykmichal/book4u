@@ -5,20 +5,22 @@
   border: 1px solid transparent;
   display: inline-flex;
   align-items: center;
+  padding: 0.25rem;
 }
 
 .navigation-item a:hover,
-.navigation-item a:active {
+.navigation-item a:active,
+.navigation-item a[class="active"] {
   border: 1px solid #000;
   border-radius: 4px;
 }
 
-@media(min-width: 576px) {
-  .navigation-item{
+@media (min-width: 576px) {
+  .navigation-item {
     margin-left: 2rem;
   }
 
-  .navigation-item a{
+  .navigation-item a {
     padding: 0.2rem 0;
     border: unset;
     border-radius: 0;
@@ -26,7 +28,8 @@
   }
 
   .navigation-item a:hover,
-  .navigation-item a:active {
+  .navigation-item a:active,
+  .navigation-item a[class="active"] {
     border: unset;
     border-radius: 0;
     border-bottom: 5px solid #fff;
