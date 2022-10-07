@@ -1,19 +1,22 @@
-.toggle{
-    height: 2rem;
-    width: 2rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
+.toggle {
+  height: 2rem;
+  width: 2rem;
+  padding: 0;
+  background-color: transparent;
+  border: transparent;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 }
 
-.toggle__bar{
-    background-color: #fff;
-    width: 100%;
-    height: 0.2rem;
+.toggle__bar {
+  background-color: #fff;
+  width: 100%;
+  height: 0.2rem;
 }
 
-@media(min-width:576px){
-    .toggle{
-        display: none;
-    }
+@media (min-width: 576px) {
+  .toggle {
+    display: none;
+  }
 }
