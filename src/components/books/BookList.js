@@ -9,7 +9,7 @@ function BookList({ data }) {
   return (
     <ul className={classes["book-list"]} id="book-list">
       {data.map((book) => (
-        <BookListItem key={Math.random() * book.id} bookInfo={book} />
+        <BookListItem key={book.id} bookInfo={book} />
       ))}
       <BubbleAnchor />
     </ul>
