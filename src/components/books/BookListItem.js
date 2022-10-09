@@ -7,12 +7,13 @@ import Card from "../ui/Card";
 
 function BookListItem({ bookInfo }) {
   const globalCtx = useContext(GlobalContext);
-  const bookIsFavorite = globalCtx.bookIsFavorite(bookInfo.id);
+  const { bookIsFavorite, addFavorite, removeFavorite } = globalCtx;
+  const isBookFavorite = bookIsFavorite(bookInfo.id);
   const toggleFavoriteStatus = () => {
-    if (bookIsFavorite === false) {
-      return globalCtx.addFavorite(bookInfo);
+    if (isBookFavorite === false) {
+      return addFavorite(bookInfo);
     }
-    return globalCtx.removeFavorite(bookInfo.id);
+    return removeFavorite(bookInfo.id);
   };
 
   const authorFinder = () => {
@@ -77,7 +78,7 @@ function BookListItem({ bookInfo }) {
           className={classes.book__button}
           onClick={toggleFavoriteStatus}
         >
-          {bookIsFavorite ? "Remove from Favorites" : "To Favorites"}
+          {isBookFavorite ? "Remove from Favorites" : "To Favorites"}
         </button>
       </Card>
     </li>

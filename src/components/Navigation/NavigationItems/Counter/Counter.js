@@ -4,9 +4,10 @@ import GlobalContext from "../../../../store/global-context";
 import classes from "./Counter.module.css";
 
 function Counter() {
-  const favBooksContext = useContext(GlobalContext);
+  const globalCtx = useContext(GlobalContext);
+  const { totalFavorites } = globalCtx;
 
-  return <p className={classes.counter}>{favBooksContext.totalFavorites}</p>;
+  return <p className={classes.counter}>{totalFavorites}</p>;
 }
 
 export default Counter;

@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
 import { useContext } from "react";
 import GlobalContext from "../../../../store/global-context";
 
@@ -7,13 +5,13 @@ import classes from "./ToggleButton.module.css";
 
 function ToggleButton() {
   const globalCtx = useContext(GlobalContext);
-
+  const { openMobileNav } = globalCtx;
   return (
-    <div className={classes.toggle} onClick={globalCtx.openMobileNav}>
+    <button type="button" className={classes.toggle} onClick={openMobileNav}>
       <div className={classes.toggle__bar} />
       <div className={classes.toggle__bar} />
       <div className={classes.toggle__bar} />
-    </div>
+    </button>
   );
 }
 

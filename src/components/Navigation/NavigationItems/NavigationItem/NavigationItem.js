@@ -9,12 +9,10 @@ import GlobalContext from "../../../../store/global-context";
 
 function NavigationItem({ link, children }) {
   const globalCtx = useContext(GlobalContext);
+  const { closeAllModals } = globalCtx;
 
   return (
-    <li
-      className={classes["navigation-item"]}
-      onClick={globalCtx.closeAllModals}
-    >
+    <li className={classes["navigation-item"]} onClick={closeAllModals}>
       <NavLink to={link}>{children}</NavLink>
     </li>
   );

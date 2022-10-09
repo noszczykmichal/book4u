@@ -5,6 +5,7 @@ import classes from "./TrashIcon.module.css";
 
 function TrashIcon() {
   const globalCtx = useContext(GlobalContext);
+  const { trashIconOnClick } = globalCtx;
   const isDisabled = globalCtx.favorites.length === 0;
   let attachedClasses = [classes.container];
 
@@ -16,7 +17,7 @@ function TrashIcon() {
     <button
       type="button"
       className={attachedClasses.join(" ")}
-      onClick={globalCtx.trashIconOnClick}
+      onClick={trashIconOnClick}
       disabled={isDisabled}
     >
       <svg

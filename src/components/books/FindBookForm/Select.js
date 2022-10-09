@@ -6,13 +6,14 @@ import classes from "./Select.module.css";
 
 function Select({ nameForSelect, options }) {
   const globalCtx = useContext(GlobalContext);
+  const { inputValueSetter, inputStoredValueObj } = globalCtx;
 
   return (
     <select
       className={classes.form__select}
       name={nameForSelect}
-      onChange={globalCtx.inputValueSetter}
-      value={globalCtx.inputStoredValueObj[nameForSelect]}
+      onChange={inputValueSetter}
+      value={inputStoredValueObj[nameForSelect]}
     >
       {options.map((optionValue) => {
         const key = Math.random().toString();

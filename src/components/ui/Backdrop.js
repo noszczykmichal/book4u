@@ -8,12 +8,13 @@ import classes from "./Backdrop.module.css";
 
 function Backdrop() {
   const globalCtx = useContext(GlobalContext);
+  const { backdropVisible, closeAllModals } = globalCtx;
   const nodeRef = useRef();
 
   return (
     <CSSTransition
       nodeRef={nodeRef}
-      in={globalCtx.backdropVisible}
+      in={backdropVisible}
       timeout={300}
       classNames={{
         enter: "",
@@ -26,7 +27,7 @@ function Backdrop() {
     >
       <div
         className={classes.backdrop}
-        onClick={globalCtx.closeAllModals}
+        onClick={closeAllModals}
         ref={nodeRef}
       />
     </CSSTransition>

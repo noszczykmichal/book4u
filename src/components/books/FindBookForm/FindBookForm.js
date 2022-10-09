@@ -17,14 +17,18 @@ import Input from "./Input";
 
 function FindBookForm({ onSearchHandler }) {
   const globalCtx = useContext(GlobalContext);
+  const {
+    inputStoredValueObj,
+    clearInputValues,
+    findBookFormVisibilitySetter,
+  } = globalCtx;
   const toggleBarRef = useRef();
   const formRef = useRef();
   const setElementHeight = useRef(globalCtx);
 
   const formHandler = (event) => {
     event.preventDefault();
-    const inputsValueObj = globalCtx.inputStoredValueObj;
-    const query = validationHandler(inputsValueObj);
+    const query = validationHandler(inputStoredValueObj);
 
     // console.log(query);
     onSearchHandler(query);
@@ -45,7 +49,7 @@ function FindBookForm({ onSearchHandler }) {
               classes.actions__button,
               classes["actions__button--animated"],
             ].join(" ")}
-            onClick={globalCtx.clearInputValues}
+            onClick={clearInputValues}
           >
             <RefreshIcon />
             Clear
@@ -53,7 +57,7 @@ function FindBookForm({ onSearchHandler }) {
           <button
             type="button"
             className={classes.actions__button}
-            onClick={globalCtx.findBookFormVisibilitySetter}
+            onClick={findBookFormVisibilitySetter}
           >
             <GearIcon />
             Filters

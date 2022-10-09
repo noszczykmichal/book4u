@@ -6,22 +6,21 @@ import classes from "./Card.module.css";
 
 function Card({ animated, children }) {
   const globalCtx = useContext(GlobalContext);
+  const { toggleBarHeight, findBookFormVisible, formHeight } = globalCtx;
   const cardRef = useRef();
 
   useEffect(() => {
     if (animated) {
       cardRef.current.style.display = "block";
-      cardRef.current.style.height = `${globalCtx.toggleBarHeight + 10}px`;
+      cardRef.current.style.height = `${toggleBarHeight + 10}px`;
       cardRef.current.style.transition = "min-height 1s ease-out";
 
-      if (globalCtx.findBookFormVisible) {
+      if (findBookFormVisible) {
         cardRef.current.style["min-height"] = `${
-          globalCtx.toggleBarHeight + globalCtx.formHeight + 10
+          toggleBarHeight + formHeight + 10
         }px`;
       } else {
-        cardRef.current.style["min-height"] = `${
-          globalCtx.toggleBarHeight + 10
-        }px`;
+        cardRef.current.style["min-height"] = `${toggleBarHeight + 10}px`;
       }
     }
   });

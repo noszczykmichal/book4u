@@ -6,10 +6,10 @@ import classes from "./PaginationArrow.module.css";
 
 function Arrow({ type }) {
   const globalCtx = useContext(GlobalContext);
+  const { totalBooksAvail, displayedPage, changeDisplayedPage } = globalCtx;
   const buttonRef = useRef();
   let attachedClasses = [classes.arrow];
-  const totalPagesCount = Math.ceil(globalCtx.totalBooksAvail / 10);
-  const currentPage = globalCtx.displayedPage;
+  const totalPagesCount = Math.ceil(totalBooksAvail / 10);
 
   if (type === "left") {
     attachedClasses = [classes.arrow, classes["arrow--left"]];
@@ -17,28 +17,28 @@ function Arrow({ type }) {
 
   const clickHandler = () => {
     if (type === "left") {
-      return globalCtx.changeDisplayedPage((prevState) =>
+      return changeDisplayedPage((prevState) =>
         prevState === 1 ? 1 : prevState - 1,
       );
     }
-    return globalCtx.changeDisplayedPage((prevState) =>
+    return changeDisplayedPage((prevState) =>
       prevState < totalPagesCount ? prevState + 1 : totalPagesCount,
     );
   };
 
   useEffect(() => {
-    if (type === "left" && currentPage === 1) {
+    if (type === "left" && displayedPage === 1) {
       buttonRef.current.setAttribute("disabled", "true");
-    } else if (type === "left" && currentPage !== 1) {
+    } else if (type === "left" && displayedPage !== 1) {
       buttonRef.current.removeAttribute("disabled");
     }
 
-    if (type === "right" && currentPage === totalPagesCount) {
+    if (type === "right" && displayedPage === totalPagesCount) {
       buttonRef.current.setAttribute("disabled", "true");
-    } else if (type === "right" && currentPage !== totalPagesCount) {
+    } else if (type === "right" && displayedPage !== totalPagesCount) {
       buttonRef.current.removeAttribute("disabled");
     }
-  }, [currentPage, type, totalPagesCount]);
+  }, [displayedPage, type, totalPagesCount]);
 
   return (
     <button type="button" className={classes.container} ref={buttonRef}>
