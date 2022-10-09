@@ -6,19 +6,25 @@ import PaginationArrow from "./PaginationArrow";
 
 function TablePagination() {
   const globalCtx = useContext(GlobalContext);
-  const totalPagesCount = Math.ceil(globalCtx.totalBooksAvail / 10);
+  const {
+    totalBooksAvail,
+    inputPaginationSetter,
+    changeDisplayedPage,
+    paginationValue,
+  } = globalCtx;
+  const totalPagesCount = Math.ceil(totalBooksAvail / 10);
 
   const onKeyDownHandler = (event) => {
     if (event.key === "Backspace") {
-      globalCtx.inputPaginationSetter("");
+      inputPaginationSetter("");
     } else if (event.key === "Enter") {
-      globalCtx.changeDisplayedPage(globalCtx.paginationValue);
+      changeDisplayedPage(paginationValue);
     }
   };
 
   const paginationInputHandler = (event) => {
     if (+event.target.value >= 1 && +event.target.value <= totalPagesCount) {
-      globalCtx.inputPaginationSetter(+event.target.value);
+      inputPaginationSetter(+event.target.value);
     }
   };
 
@@ -29,7 +35,7 @@ function TablePagination() {
         type="number"
         className={classes.pagination__input}
         onChange={paginationInputHandler}
-        value={globalCtx.paginationValue}
+        value={paginationValue}
         onKeyDown={onKeyDownHandler}
       />
       <span>of</span>

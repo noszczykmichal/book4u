@@ -6,7 +6,8 @@ import GlobalContext from "../../../store/global-context";
 
 function Input({ htmlName, htmlClass, htmlType, htmlId, htmlPlaceholder }) {
   const globalCtx = useContext(GlobalContext);
-  const inputValue = globalCtx.inputStoredValueObj[htmlName];
+  const { inputStoredValueObj, inputValueSetter } = globalCtx;
+  const inputValue = inputStoredValueObj[htmlName];
   const currentValue = inputValue || "";
   const [classA, classB] = htmlClass;
 
@@ -18,7 +19,7 @@ function Input({ htmlName, htmlClass, htmlType, htmlId, htmlPlaceholder }) {
       className={[classes[classA], classes[classB]].join(" ")}
       placeholder={htmlPlaceholder}
       value={currentValue}
-      onChange={globalCtx.inputValueSetter}
+      onChange={inputValueSetter}
     />
   );
 }

@@ -1,10 +1,11 @@
 import { useContext, useRef, useEffect } from "react";
-import GlobalContext from "../store/global-context";
 
+import GlobalContext from "../store/global-context";
 import BookList from "../components/books/BookList";
 
 function FavoriteBooks() {
   const globalCtx = useContext(GlobalContext);
+  const { totalFavorites, favorites } = globalCtx;
   const globalCtxRef = useRef(globalCtx);
 
   useEffect(() => {
@@ -14,8 +15,8 @@ function FavoriteBooks() {
   return (
     <section>
       <h1>Your favorite books</h1>
-      {globalCtx.totalFavorites ? (
-        <BookList data={globalCtx.favorites} />
+      {totalFavorites ? (
+        <BookList data={favorites} />
       ) : (
         <p>Add something to your favorites.</p>
       )}

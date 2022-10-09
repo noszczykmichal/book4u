@@ -5,13 +5,9 @@ import classes from "./ToggleButton.module.css";
 
 function ToggleButton() {
   const globalCtx = useContext(GlobalContext);
-
+  const { openMobileNav } = globalCtx;
   return (
-    <button
-      type="button"
-      className={classes.toggle}
-      onClick={globalCtx.openMobileNav}
-    >
+    <button type="button" className={classes.toggle} onClick={openMobileNav}>
       <div className={classes.toggle__bar} />
       <div className={classes.toggle__bar} />
       <div className={classes.toggle__bar} />

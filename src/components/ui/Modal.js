@@ -1,5 +1,4 @@
 import { useRef, useContext } from "react";
-
 import { CSSTransition } from "react-transition-group";
 
 import GlobalContext from "../../store/global-context";
@@ -7,12 +6,13 @@ import classes from "./Modal.module.css";
 
 function Modal() {
   const globalCtx = useContext(GlobalContext);
+  const { modalVisible, actionButtonOnClick } = globalCtx;
   const modalRef = useRef();
 
   return (
     <CSSTransition
       nodeRef={modalRef}
-      in={globalCtx.modalVisible}
+      in={modalVisible}
       timeout={500}
       classNames={{
         enter: "",
@@ -35,7 +35,7 @@ function Modal() {
               classes.modal__action,
               classes["modal__action--confirm"],
             ].join(" ")}
-            onClick={() => globalCtx.actionButtonOnClick("confirm")}
+            onClick={() => actionButtonOnClick("confirm")}
           >
             YES
           </button>
@@ -45,7 +45,7 @@ function Modal() {
               classes.modal__action,
               classes["modal__action--cancel"],
             ].join(" ")}
-            onClick={() => globalCtx.actionButtonOnClick("cancel")}
+            onClick={() => actionButtonOnClick("cancel")}
           >
             NO
           </button>

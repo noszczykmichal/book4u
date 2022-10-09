@@ -7,12 +7,13 @@ import GlobalContext from "../../../store/global-context";
 
 function MobileNavigation() {
   const globalCtx = useContext(GlobalContext);
+  const { mobileNavVisible } = globalCtx;
   const nodeRef = useRef();
 
   return (
     <CSSTransition
       nodeRef={nodeRef}
-      in={globalCtx.mobileNavVisible}
+      in={mobileNavVisible}
       timeout={500}
       classNames={{
         enter: "",

@@ -10,6 +10,7 @@ import ErrorModal from "../components/ui/ErrorModal";
 
 function AllBooks() {
   const globalCtx = useContext(GlobalContext);
+  const { displayedPage, totalBooksAvail, changeDisplayedPage } = globalCtx;
   const globalCtxRef = useRef(globalCtx);
   const [isLoading, setIsLoading] = useState(false);
   const [loadedData, setLoadedData] = useState([]);
@@ -18,8 +19,6 @@ function AllBooks() {
     apiError: false,
     errorMessage: "",
   });
-  const { displayedPage } = globalCtx;
-  const { totalBooksAvail } = globalCtx;
 
   const searchHandler = (query) => {
     setErrorMessage({
@@ -28,7 +27,7 @@ function AllBooks() {
     });
 
     if (query) {
-      globalCtx.changeDisplayedPage(1);
+      changeDisplayedPage(1);
       setCurrentQuery(query);
       setIsLoading(true);
       setLoadedData([]);
