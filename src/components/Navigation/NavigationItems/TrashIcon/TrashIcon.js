@@ -29,7 +29,6 @@ function TrashIcon() {
         clipRule="evenodd"
         className={classes.container__icon}
         alt="delete favorite books"
-        disabled={isDisabled}
       >
         <path
           className={classes.path}
