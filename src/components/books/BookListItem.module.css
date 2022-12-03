@@ -23,10 +23,10 @@
   line-height: 1.5;
 }
 
-.book__cover{
-    display: block;
-    margin: 0 auto;
-    height: 100%;
+.book__cover {
+  display: block;
+  margin: 0 auto;
+  height: 100%;
 }
 
 .book__button {
@@ -58,28 +58,4 @@
   border: 1px solid rgb(164, 53, 240);
   background-color: rgb(164, 53, 240);
   color: #fff;
-}
-
-@media(min-width: 576px){
-  .list__item {
-    width: 45%;
-  }
-}
-
-@media(min-width: 576px){
-  .list__item {
-    width: 45%;
-  }
-}
-
-@media(min-width: 1024px){
-  .list__item {
-    width: 30%;
-  }
-}
-
-@media(min-width: 1366px){
-  .list__item {
-    width: 22%;
-  }
 }

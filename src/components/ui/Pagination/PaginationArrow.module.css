@@ -1,17 +1,19 @@
-.container{
-    border: 0;
-    background-color: transparent;
+.container {
+  border: 0;
+  background-color: transparent;
+  cursor: pointer;
 }
 
 .container:disabled,
-.container[disabled]{
-    filter: grayscale(1);
+.container[disabled] {
+  filter: grayscale(1);
+  cursor: unset;
 }
 
-.arrow{
-    fill: rgb(0, 162, 255);
+.arrow {
+  fill: rgb(0, 162, 255);
 }
 
-.arrow--left{
-    transform: rotate(180deg);
+.arrow--left {
+  transform: rotate(180deg);
 }

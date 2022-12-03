@@ -8,11 +8,13 @@
   display: inline-flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
   transition: filter 0.2s ease-out;
 }
 
 .container--inactive {
   filter: grayscale(1);
+  cursor: unset;
 }
 
 .container__icon {
@@ -21,8 +23,8 @@
   transition: transform 0.2s ease-out;
 }
 
-.container__icon:not([disabled]):hover,
-.container__icon:not([disabled]):active,
-.container__icon:not([disabled]):focus {
+.container:not([disabled]) .container__icon:hover,
+.container:not([disabled]) .container__icon:active,
+.container:not([disabled]) .container__icon:focus {
   transform: scale(0.75, 0.75);
 }

@@ -1,19 +1,21 @@
-.anchor{
-    position: fixed;
-    bottom: 5rem;
-    right: 0.5rem;
-    background-color: rgba(204, 32, 98, 0.9);
-    border: 1px solid rgb(204, 32, 98);
-    box-shadow: 0 2px 8px rgba(204, 32, 98, 0.9);
-    border-radius: 50%;
-    padding: 1rem;
-    color: #fff;
-    transition: background-color .2s ease-out, color .2s ease-out, border .2s ease-out;
+.anchor {
+  position: fixed;
+  bottom: 5rem;
+  right: 0.5rem;
+  background-color: rgba(204, 32, 98, 0.9);
+  border: 1px solid rgb(204, 32, 98);
+  box-shadow: 0 2px 8px rgba(204, 32, 98, 0.9);
+  border-radius: 50%;
+  padding: 1rem;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.2s ease-out, color 0.2s ease-out,
+    border 0.2s ease-out;
 }
 
 .anchor:hover,
-.anchor:active{
-    background-color: #fff;
-    color:rgb(0, 162, 255);
-    border: 1px solid rgb(0, 162, 255);
+.anchor:active {
+  background-color: #fff;
+  color: rgb(0, 162, 255);
+  border: 1px solid rgb(0, 162, 255);
 }
