@@ -1,12 +1,27 @@
-.book-list{
-    list-style: none;
-    padding: 0;
+.book-list {
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 100%;
+  gap: 1rem;
+  justify-content: center;
 }
 
-@media(min-width: 576px){
-    .book-list{
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-around;
-    }
+@media (min-width: 576px) {
+  .book-list {
+    grid-template-columns: repeat(2, 50%);
+  }
+}
+
+@media (min-width: 1024px) {
+  .book-list {
+    grid-template-columns: repeat(3, 32%);
+    justify-content: space-between;
+  }
+}
+
+@media (min-width: 1366px) {
+  .book-list {
+    grid-template-columns: repeat(4, 24%);
+  }
 }

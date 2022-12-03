@@ -8,11 +8,13 @@
   display: inline-flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
   transition: filter 0.2s ease-out;
 }
 
 .container--inactive {
   filter: grayscale(1);
+  cursor: unset;
 }
 
 .container__icon {
