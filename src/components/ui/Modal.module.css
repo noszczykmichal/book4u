@@ -1,119 +1,120 @@
- .modal {
-    background-color: #fff;
-    height: 25%;
-    width: 90%;
-    min-height: 10rem;
-    max-height: 13rem;
-    border-radius: 6px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    position: fixed;
-    z-index: 500;
-    top: 20%;
-    left: 5%;
+.modal {
+  background-color: #fff;
+  height: 25%;
+  width: 90%;
+  min-height: 10rem;
+  max-height: 13rem;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  position: fixed;
+  z-index: 500;
+  top: 20%;
+  left: 5%;
+}
+
+.modal--open {
+  animation: modalOpen 0.5s ease-out forwards;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.modal--closed {
+  animation: modalClosed 0.5s ease-out forwards;
+}
+
+@keyframes modalOpen {
+  0% {
+    opacity: 0;
+    transform: translateY(-3rem);
   }
-  
-  .modal--open {
-    animation: modalOpen .5s ease-out forwards;
+  100% {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(0);
   }
+}
 
-  .modal--closed{
-    animation: modalClosed .5s ease-out forwards;
+@keyframes modalClosed {
+  0% {
+    opacity: 1;
+    transform: translateX(0);
   }
+  100% {
+    opacity: 0;
+    transform: translateY(-3rem);
+  }
+}
 
-  @keyframes modalOpen {
-    0%{
-      opacity: 0;
-      transform: translateY(-3rem);
-    }
-    100%{
-      opacity: 1;
-      transform: translateX(0);
-    }
-  }
+.modal__actions {
+  width: 80%;
+  padding: 0.5rem 0 1.5rem 0;
+  display: flex;
+  justify-content: space-around;
+}
 
-  @keyframes modalClosed {
-    0%{
-      opacity: 1;
-      transform: translateX(0);
-    }
-    100%{
-      opacity: 0;
-      transform: translateY(-3rem);
-    }
-  }
-  
-  .modal__actions {
-    width: 80%;
-    padding: 0.5rem 0 1.5rem 0;
-    display: flex;
-    justify-content: space-around;
-  }
-  
-  .modal__action {
-    color: #fff;
-    padding: 0.5rem 1.5rem;
-    border-radius: 6px;
-  }
-  
-  .modal__action--confirm {
-    background-color: #0e4f1f;
-    border-color: #0e4f1f;
-  }
-  
-  .modal__action--confirm:hover,
-  .modal__action--confirm:active {
-    background-color: #2ddf5c;
-    border-color: #2ddf5c;
-  }
-  
-  .modal__action--cancel {
-    background-color: #ff0000;
-    border-color: #ff0000;
-  }
-  
-  .modal__action--cancel:hover,
-  .modal__action--cancel:active{
-    background-color: #ff5454;
-    border-color: #ff5454;
-  }
+.modal__action {
+  color: #fff;
+  padding: 0.5rem 1.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
 
-  @media(min-width: 576px){
-    .modal{
-      width: 70%;
-      left: 15%;
-    }
+.modal__action--confirm {
+  background-color: #0e4f1f;
+  border-color: #0e4f1f;
+}
+
+.modal__action--confirm:hover,
+.modal__action--confirm:active {
+  background-color: #2ddf5c;
+  border-color: #2ddf5c;
+}
+
+.modal__action--cancel {
+  background-color: #ff0000;
+  border-color: #ff0000;
+}
+
+.modal__action--cancel:hover,
+.modal__action--cancel:active {
+  background-color: #ff5454;
+  border-color: #ff5454;
+}
+
+@media (min-width: 576px) {
+  .modal {
+    width: 70%;
+    left: 15%;
   }
+}
 
-  @media(min-width: 768px){
-    .modal{
-        width: 50%;
-        left: 25%;
-    }
-  } 
+@media (min-width: 768px) {
+  .modal {
+    width: 50%;
+    left: 25%;
+  }
+}
 
-  @media(min-width: 992px){
-    .modal{
-        width: 40%;
-        left: 30%;
-    }
-  } 
+@media (min-width: 992px) {
+  .modal {
+    width: 40%;
+    left: 30%;
+  }
+}
 
-  @media(min-width: 1200px){
-    .modal{
-        width: 30%;
-        left: 35%;
-    }
-  } 
+@media (min-width: 1200px) {
+  .modal {
+    width: 30%;
+    left: 35%;
+  }
+}
 
-  @media(min-width: 1400px){
-    .modal{
-        width: 26%;
-        left: 37%;
-    }
-  } 
+@media (min-width: 1400px) {
+  .modal {
+    width: 26%;
+    left: 37%;
+  }
+}
