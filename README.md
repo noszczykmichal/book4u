@@ -22,8 +22,7 @@
 
 ## Technologies Used
 
-- [React 18](https://reactjs.org/blog/2022/03/29/react-v18.html)
-- [React-DOM](https://www.npmjs.com/package/react-dom)
+- [React](https://reactjs.org/blog/2022/03/29/react-v18.html)
 - [React-Router](https://github.com/remix-run/react-router)
 - [React Hooks](https://reactjs.org/docs/hooks-intro.html)
 - [React Transition Group](https://reactcommunity.org/react-transition-group/)
