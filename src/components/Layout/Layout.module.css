@@ -1,12 +1,12 @@
-.main{
-    margin: 2rem auto;
-    width: 90%;
-    max-width: 40rem;
-    text-align: center;
+.main {
+  margin: 6.5rem auto 2rem;
+  width: 90%;
+  max-width: 40rem;
+  text-align: center;
 }
 
-@media(min-width: 576px){
-    .main{
-        max-width: none;
-    }
+@media (min-width: 576px) {
+  .main {
+    max-width: none;
+  }
 }
