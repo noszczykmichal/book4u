@@ -31,6 +31,10 @@
 
 ## New Features
 
+Added in vs 1.3
+
+-navbar show & hide on scroll
+
 Added in vs 1.2
 
 - smoother animations thanks to use of the [React Transition Group](https://reactcommunity.org/react-transition-group/)
