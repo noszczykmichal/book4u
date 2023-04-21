@@ -34,6 +34,7 @@
 Added in vs 1.3
 
 -navbar show & hide on scroll
+-custom scrollbar
 
 Added in vs 1.2
 
@@ -67,14 +68,27 @@ or narrow down criteria to find something specific.
 
 To run this project locally:
 
-```
-#Clone this repository
+1.Clone this repository
+
+```sh
 $git clone https://github.com/noszczykmichal/books-search-app
-#Go into the repository
+```
+
+2.Go into the repository
+
+```sh
 $cd books-search-app
-#Install dependencies
+```
+
+3.Install dependencies
+
+```sh
 $npm install
-#Run the app
+```
+
+4.Start the development server
+
+```sh
 $npm start
 ```
 
@@ -84,4 +98,4 @@ The project is finished, yet from time to time I might add some new feature.
 
 ## Contact
 
-Created by [@noszczykmichal](https://noszczykmichal.github.io/portfolio/index.html#contact) - feel free to contact me!
+Created by [@noszczykmichal](https://michalnoszczyk.com/) - feel free to contact me!
