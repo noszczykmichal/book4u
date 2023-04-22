@@ -4,6 +4,24 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+  scrollbar-width: thin;
+  scrollbar-color: #00a2ff #fff;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+::-webkit-scrollbar-track {
+  background: #fff;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #00a2ff;
+  border: 3px solid #fff;
+  border-radius: 10px;
+}
+
 body {
   margin: 0;
   font-family: "Montserrat", sans-serif;
