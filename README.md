@@ -1,6 +1,6 @@
 # Book4u
 
-> An app using the Project Gutenberg's API for browsing PG catalogue.  
+> An app that utilises an API built upon Project Gutenberg's database for browsing PG's catalogue.  
 > You can check live demo [_here_](https://book4u-b0a2a.web.app/).
 
 ## Table of Contents
@@ -15,9 +15,9 @@
 
 ## General Information
 
-- The app uses Project Gutenberg's API to provide the user with access to PG's database - full documentation of the API can be found [here](https://gnikdroy.pythonanywhere.com/docs/).
-- At start the app downloads the list of books available in the database. The user can jump between pages and manually search for something to read or use filters to narrow down the criteria of the books he/she is interested in (e.g user can search for the books of given author, or having certain word in a title).
-- When user finds book he/she is interested in, it can be marked as a favorite one.
+- The app uses an API built upon Project Gutenberg's database to provide the user with access to the PG database. Full documentation of the API can be found [here](https://gnikdroy.pythonanywhere.com/docs/).
+- At start, the app downloads the list of books available in the database. The user can jump between pages and manually search for something to read or use filters to narrow down the criteria of the books he/she is interested in (e.g., the user can search for the books of a given author or with a certain word in the title).
+- When the user finds a book he/she is interested in, it can be marked as a favorite.
 - The app enables user to read books online.
 
 ## Technologies Used
@@ -33,32 +33,32 @@
 
 Added in vs 1.3
 
--navbar show & hide on scroll
--custom scrollbar
+- Navbar show & hide on scroll
+- Custom scrollbar
 
 Added in vs 1.2
 
-- smoother animations thanks to use of the [React Transition Group](https://reactcommunity.org/react-transition-group/)
-- many minor improvements in styling
+- Smoother animations thanks to the use of the [React Transition Group](https://reactcommunity.org/react-transition-group/).
+- Many minor improvements in styling.
 
 Added in vs 1.1
 
-- added new search criteria which allow to narrow down search results further (e.g. search by description of a book, download range and language in which book was written)
-- list of favorite books is now stored locally and the user can go back to it even if he/she closes a browser
-- improved UI:
-  - some of the search options that have fixed values have been replaced by a drop-down list
-  - animated form with search criteria that appears only on user's click
-  - button for deleting all entered search criteria
-  - counter for monitoring number of user's favorite books and button for deleting all at once
-  - the 'jump to top' button and 'jump to the top after load' functionality
-- fixed issue with pagination input
-- improved RWD for all devices
-- improved styling of the whole app
-- and many more smaller improvements
+- Added new search criteria that allow narrowing down search results further (e.g., search by book description, download range, and language in which the book was written).
+- The list of favorite books is now stored locally, and the user can go back to it even if he/she closes the browser.
+- Improved UI:
+  - Some of the search options that have fixed values have been replaced by a drop-down list.
+  - Animated form with search criteria that appears only on the user's click.
+  - Button for deleting all entered search criteria.
+  - Counter for monitoring the number of user's favorite books and a button for deleting all at once.
+  - The 'jump to top' button and 'jump to the top after load' functionality.
+- Fixed issue with pagination input.
+- Improved RWD for all devices.
+- Improved styling of the whole app.
+- And many more smaller improvements.
 
 ## Screenshots
 
-You can either choose from books downloaded at the app's start up.  
+You can either choose from books downloaded at the app's start up  
 ![Example screenshot](./img/screenshot.png)
 
 or narrow down criteria to find something specific.  
@@ -71,13 +71,13 @@ To run this project locally:
 1.Clone this repository
 
 ```sh
-$git clone https://github.com/noszczykmichal/books-search-app
+$git clone https://github.com/noszczykmichal/book4u
 ```
 
 2.Go into the repository
 
 ```sh
-$cd books-search-app
+$cd book4u
 ```
 
 3.Install dependencies
@@ -94,7 +94,7 @@ $npm start
 
 ## Project Status
 
-The project is finished, yet from time to time I might add some new feature.
+The project is finished, but from time to time, I might add some new features.
 
 ## Contact
 
