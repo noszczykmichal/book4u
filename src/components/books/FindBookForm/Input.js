@@ -4,7 +4,7 @@ import { useContext } from "react";
 import classes from "./Input.module.css";
 import UIContext from "../../../store-context/uiContext";
 
-function Input({ htmlName, htmlClass, htmlType, htmlId, htmlPlaceholder }) {
+function Input({ htmlName, htmlClass, htmlType, htmlPlaceholder }) {
   const uiContext = useContext(UIContext);
   const { inputStoredValueObj, inputValueSetter } = uiContext;
   const inputValue = inputStoredValueObj[htmlName];
@@ -14,7 +14,6 @@ function Input({ htmlName, htmlClass, htmlType, htmlId, htmlPlaceholder }) {
   return (
     <input
       type={htmlType}
-      id={htmlId}
       name={htmlName}
       className={[classes[classA], classes[classB]].join(" ")}
       placeholder={htmlPlaceholder}
@@ -28,12 +27,10 @@ Input.propTypes = {
   htmlName: PropTypes.string.isRequired,
   htmlClass: PropTypes.arrayOf(PropTypes.string).isRequired,
   htmlType: PropTypes.string.isRequired,
-  htmlId: PropTypes.string,
   htmlPlaceholder: PropTypes.string,
 };
 
 Input.defaultProps = {
-  htmlId: "",
   htmlPlaceholder: "",
 };
 

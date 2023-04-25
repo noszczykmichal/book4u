@@ -66,27 +66,23 @@ function FindBookForm({ onSearchHandler }) {
         <p className={classes["toggle-bar__text"]}>
           Haven&apos;t found something matching?
           <br />
-          Use ours filters to browse the PG catalogue.
+          Use our filters to browse the PG catalogue.
         </p>
       </div>
       <form className={classes.form} onSubmit={formHandler} ref={formRef}>
-        <label htmlFor="title" className={classes.form__label}>
+        <label className={classes.form__label}>
           Title Contains:
-          <br />
           <Input
             htmlType="text"
-            htmlId="title"
             htmlName="title_contains"
             htmlClass={["form__input"]}
           />
         </label>
 
-        <label htmlFor="description" className={classes.form__label}>
+        <label className={classes.form__label}>
           Description Contains:
-          <br />
           <Input
             htmlType="text"
-            htmlId="description"
             htmlName="description_contains"
             htmlClass={["form__input"]}
           />
@@ -97,12 +93,10 @@ function FindBookForm({ onSearchHandler }) {
           <Select nameForSelect="has_agent_type" options={agentsTypeArray} />
         </label>
 
-        <label htmlFor="agents_name" className={classes.form__label}>
+        <label className={classes.form__label}>
           Agents person name contains:
-          <br />
           <Input
             htmlType="text"
-            htmlId="agents_name"
             htmlName="agent_name_contains"
             htmlClass={["form__input"]}
           />
@@ -165,7 +159,7 @@ function FindBookForm({ onSearchHandler }) {
           </div>
         </label>
 
-        <label htmlFor="language" className={classes.form__label}>
+        <label className={classes.form__label}>
           Select language:
           <Select nameForSelect="languages" options={languagesArray} />
         </label>
