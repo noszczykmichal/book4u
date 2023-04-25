@@ -9,22 +9,22 @@ import {
 } from "./FormDataAndValidation";
 import classes from "./FindBookForm.module.css";
 import Card from "../../ui/Card";
-import GlobalContext from "../../../store/global-context";
+import UIContext from "../../../store-context/uiContext";
 import GearIcon from "./GearIcon";
 import Select from "./Select";
 import RefreshIcon from "./RefreshIcon";
 import Input from "./Input";
 
 function FindBookForm({ onSearchHandler }) {
-  const globalCtx = useContext(GlobalContext);
+  const uiContext = useContext(UIContext);
   const {
     inputStoredValueObj,
     clearInputValues,
     findBookFormVisibilitySetter,
-  } = globalCtx;
+  } = uiContext;
   const toggleBarRef = useRef();
   const formRef = useRef();
-  const setElementHeight = useRef(globalCtx);
+  const setElementHeight = useRef(uiContext);
 
   const formHandler = (event) => {
     event.preventDefault();

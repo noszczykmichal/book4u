@@ -1,15 +1,15 @@
 import { useContext, useRef, useEffect } from "react";
 
-import GlobalContext from "../store/global-context";
+import UIContext from "../store-context/uiContext";
 import BookList from "../components/books/BookList";
 
 function FavoriteBooks() {
-  const globalCtx = useContext(GlobalContext);
-  const { totalFavorites, favorites } = globalCtx;
-  const globalCtxRef = useRef(globalCtx);
+  const uiContext = useContext(UIContext);
+  const { totalFavorites, favorites } = uiContext;
+  const uiContextRef = useRef(uiContext);
 
   useEffect(() => {
-    globalCtxRef.current.loadFavsFromLocStorage();
+    uiContextRef.current.loadFavsFromLocStorage();
   }, []);
 
   return (

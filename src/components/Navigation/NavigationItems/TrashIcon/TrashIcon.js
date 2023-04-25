@@ -1,12 +1,12 @@
 import { useContext } from "react";
-import GlobalContext from "../../../../store/global-context";
+import UIContext from "../../../../store-context/uiContext";
 
 import classes from "./TrashIcon.module.css";
 
 function TrashIcon() {
-  const globalCtx = useContext(GlobalContext);
-  const { trashIconOnClick } = globalCtx;
-  const isDisabled = globalCtx.favorites.length === 0;
+  const uiContext = useContext(UIContext);
+  const { favorites, trashIconOnClick } = uiContext;
+  const isDisabled = favorites.length === 0;
   let attachedClasses = [classes.container];
 
   if (isDisabled) {

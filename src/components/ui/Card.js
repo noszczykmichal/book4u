@@ -1,12 +1,12 @@
 import { useContext, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
-import GlobalContext from "../../store/global-context";
+import UIContext from "../../store-context/uiContext";
 
 import classes from "./Card.module.css";
 
 function Card({ animated, children }) {
-  const globalCtx = useContext(GlobalContext);
-  const { toggleBarHeight, findBookFormVisible, formHeight } = globalCtx;
+  const uiContext = useContext(UIContext);
+  const { toggleBarHeight, findBookFormVisible, formHeight } = uiContext;
   const cardRef = useRef();
 
   useEffect(() => {
