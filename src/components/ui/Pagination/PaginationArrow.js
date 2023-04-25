@@ -1,12 +1,12 @@
 import PropTypes from "prop-types";
 import { useRef, useContext, useEffect } from "react";
-import GlobalContext from "../../../store/global-context";
+import UIContext from "../../../store-context/uiContext";
 
 import classes from "./PaginationArrow.module.css";
 
 function Arrow({ type }) {
-  const globalCtx = useContext(GlobalContext);
-  const { totalBooksAvail, displayedPage, changeDisplayedPage } = globalCtx;
+  const uiContext = useContext(UIContext);
+  const { totalBooksAvail, displayedPage, changeDisplayedPage } = uiContext;
   const buttonRef = useRef();
   let attachedClasses = [classes.arrow];
   const totalPagesCount = Math.ceil(totalBooksAvail / 10);

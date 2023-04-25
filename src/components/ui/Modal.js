@@ -1,12 +1,12 @@
 import { useRef, useContext } from "react";
 import { CSSTransition } from "react-transition-group";
 
-import GlobalContext from "../../store/global-context";
+import UIContext from "../../store-context/uiContext";
 import classes from "./Modal.module.css";
 
 function Modal() {
-  const globalCtx = useContext(GlobalContext);
-  const { modalVisible, actionButtonOnClick } = globalCtx;
+  const uiContext = useContext(UIContext);
+  const { modalVisible, actionButtonOnClick } = uiContext;
   const modalRef = useRef();
 
   return (

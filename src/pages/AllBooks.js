@@ -5,13 +5,13 @@ import FindBookForm from "../components/books/FindBookForm/FindBookForm";
 import BookList from "../components/books/BookList";
 import Pagination from "../components/ui/Pagination/Pagination";
 import Preloader from "../components/ui/Preloader";
-import GlobalContext from "../store/global-context";
+import UIContext from "../store-context/uiContext";
 import ErrorModal from "../components/ui/ErrorModal";
 
 function AllBooks() {
-  const globalCtx = useContext(GlobalContext);
-  const { displayedPage, totalBooksAvail, changeDisplayedPage } = globalCtx;
-  const globalCtxRef = useRef(globalCtx);
+  const uiContext = useContext(UIContext);
+  const { displayedPage, totalBooksAvail, changeDisplayedPage } = uiContext;
+  const uiContextRef = useRef(uiContext);
   const [isLoading, setIsLoading] = useState(false);
   const [loadedData, setLoadedData] = useState([]);
   const [currentQuery, setCurrentQuery] = useState("");
@@ -44,7 +44,7 @@ function AllBooks() {
       ? `https://gnikdroy.pythonanywhere.com/api/book/?${currentQuery}&page=${displayedPage}`
       : `https://gnikdroy.pythonanywhere.com/api/book/?page=${displayedPage}`;
     setIsLoading(true);
-    globalCtxRef.current.loadFavsFromLocStorage();
+    uiContextRef.current.loadFavsFromLocStorage();
     fetch(`${url}`)
       .then((response) => {
         // console.log(response.json())
@@ -54,11 +54,11 @@ function AllBooks() {
         return response.json();
       })
       .then((data) => {
-        globalCtxRef.current.changeNumbOfBooksAvail(data.count);
+        uiContextRef.current.changeNumbOfBooksAvail(data.count);
         const results = [...data.results];
         setIsLoading(false);
         setLoadedData(results);
-        globalCtxRef.current.takeToTop("allBooks");
+        uiContextRef.current.takeToTop("allBooks");
       })
       .catch((error) => {
         setIsLoading(false);

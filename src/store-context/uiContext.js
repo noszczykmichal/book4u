@@ -3,7 +3,7 @@
 import PropTypes from "prop-types";
 import { createContext, useState } from "react";
 
-const GlobalContext = createContext({
+const UIContext = createContext({
   favorites: [],
   totalFavorites: 0,
   loadFavsFromLocStorage: () => {},
@@ -37,7 +37,7 @@ const GlobalContext = createContext({
   inputPaginationSetter: (_number) => Number,
 });
 
-export function GlobalContextProvider({ children }) {
+export function UIContextProvider({ children }) {
   const [userFavorites, setUserFavorites] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [booksAvailable, setBooksAvailable] = useState(0);
@@ -196,13 +196,11 @@ export function GlobalContextProvider({ children }) {
     inputPaginationSetter: inputPaginationHandler,
   };
 
-  return (
-    <GlobalContext.Provider value={context}>{children}</GlobalContext.Provider>
-  );
+  return <UIContext.Provider value={context}>{children}</UIContext.Provider>;
 }
 
-GlobalContextProvider.propTypes = {
+UIContextProvider.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-export default GlobalContext;
+export default UIContext;

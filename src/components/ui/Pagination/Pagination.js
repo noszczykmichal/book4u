@@ -1,17 +1,17 @@
 import { useContext } from "react";
-import GlobalContext from "../../../store/global-context";
+import UIContext from "../../../store-context/uiContext";
 
 import classes from "./Pagination.module.css";
 import PaginationArrow from "./PaginationArrow";
 
 function TablePagination() {
-  const globalCtx = useContext(GlobalContext);
+  const uiContext = useContext(UIContext);
   const {
     totalBooksAvail,
     inputPaginationSetter,
     changeDisplayedPage,
     paginationValue,
-  } = globalCtx;
+  } = uiContext;
   const totalPagesCount = Math.ceil(totalBooksAvail / 10);
 
   const onKeyDownHandler = (event) => {

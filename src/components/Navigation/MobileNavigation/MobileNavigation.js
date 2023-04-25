@@ -3,11 +3,11 @@ import { CSSTransition } from "react-transition-group";
 
 import classes from "./MobileNavigation.module.css";
 import NavigationItems from "../NavigationItems/NavigationItems";
-import GlobalContext from "../../../store/global-context";
+import UIContext from "../../../store-context/uiContext";
 
 function MobileNavigation() {
-  const globalCtx = useContext(GlobalContext);
-  const { mobileNavVisible } = globalCtx;
+  const uiContext = useContext(UIContext);
+  const { mobileNavVisible } = uiContext;
   const nodeRef = useRef();
 
   return (

@@ -2,11 +2,11 @@ import PropTypes from "prop-types";
 import { useContext } from "react";
 
 import classes from "./Input.module.css";
-import GlobalContext from "../../../store/global-context";
+import UIContext from "../../../store-context/uiContext";
 
 function Input({ htmlName, htmlClass, htmlType, htmlId, htmlPlaceholder }) {
-  const globalCtx = useContext(GlobalContext);
-  const { inputStoredValueObj, inputValueSetter } = globalCtx;
+  const uiContext = useContext(UIContext);
+  const { inputStoredValueObj, inputValueSetter } = uiContext;
   const inputValue = inputStoredValueObj[htmlName];
   const currentValue = inputValue || "";
   const [classA, classB] = htmlClass;

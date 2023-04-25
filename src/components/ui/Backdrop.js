@@ -2,13 +2,13 @@
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { useContext, useRef } from "react";
 import { CSSTransition } from "react-transition-group";
-import GlobalContext from "../../store/global-context";
+import UIContext from "../../store-context/uiContext";
 
 import classes from "./Backdrop.module.css";
 
 function Backdrop() {
-  const globalCtx = useContext(GlobalContext);
-  const { backdropVisible, closeAllModals } = globalCtx;
+  const uiContext = useContext(UIContext);
+  const { backdropVisible, closeAllModals } = uiContext;
   const nodeRef = useRef();
 
   return (

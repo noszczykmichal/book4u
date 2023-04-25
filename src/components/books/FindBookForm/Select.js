@@ -1,12 +1,12 @@
 import PropTypes from "prop-types";
 import { useContext } from "react";
-import GlobalContext from "../../../store/global-context";
+import UIContext from "../../../store-context/uiContext";
 
 import classes from "./Select.module.css";
 
 function Select({ nameForSelect, options }) {
-  const globalCtx = useContext(GlobalContext);
-  const { inputValueSetter, inputStoredValueObj } = globalCtx;
+  const uiContext = useContext(UIContext);
+  const { inputValueSetter, inputStoredValueObj } = uiContext;
 
   return (
     <select

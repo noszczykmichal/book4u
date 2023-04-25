@@ -5,11 +5,11 @@ import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 
 import classes from "./NavigationItem.module.css";
-import GlobalContext from "../../../../store/global-context";
+import UIContext from "../../../../store-context/uiContext";
 
 function NavigationItem({ link, children }) {
-  const globalCtx = useContext(GlobalContext);
-  const { closeAllModals } = globalCtx;
+  const uiContext = useContext(UIContext);
+  const { closeAllModals } = uiContext;
 
   return (
     <li className={classes["navigation-item"]} onClick={closeAllModals}>

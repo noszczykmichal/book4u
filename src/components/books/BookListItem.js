@@ -1,13 +1,13 @@
 import PropTypes from "prop-types";
 import { useContext } from "react";
-import GlobalContext from "../../store/global-context";
+import UIContext from "../../store-context/uiContext";
 
 import classes from "./BookListItem.module.css";
 import Card from "../ui/Card";
 
 function BookListItem({ bookInfo }) {
-  const globalCtx = useContext(GlobalContext);
-  const { bookIsFavorite, addFavorite, removeFavorite } = globalCtx;
+  const uiContext = useContext(UIContext);
+  const { bookIsFavorite, addFavorite, removeFavorite } = uiContext;
   const isBookFavorite = bookIsFavorite(bookInfo.id);
   const toggleFavoriteStatus = () => {
     if (isBookFavorite === false) {
