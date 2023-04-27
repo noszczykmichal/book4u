@@ -1,21 +1,14 @@
-import { useContext, useRef, useEffect } from "react";
+import { useSelector } from "react-redux";
 
-import UIContext from "../store-context/uiContext";
 import BookList from "../components/books/BookList";
 
 function FavoriteBooks() {
-  const uiContext = useContext(UIContext);
-  const { totalFavorites, favorites } = uiContext;
-  const uiContextRef = useRef(uiContext);
-
-  useEffect(() => {
-    uiContextRef.current.loadFavsFromLocStorage();
-  }, []);
+  const favorites = useSelector((state) => state.books.favorites);
 
   return (
     <section>
       <h1>Your favorite books</h1>
-      {totalFavorites ? (
+      {favorites.length ? (
         <BookList data={favorites} />
       ) : (
         <p>Add something to your favorites.</p>

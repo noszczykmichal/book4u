@@ -5,7 +5,6 @@ import BookListItem from "./BookListItem";
 import BubbleAnchor from "../ui/TopButton";
 
 function BookList({ data }) {
-  // console.log(data);
   return (
     <ul className={classes["book-list"]} id="book-list">
       {data.map((book) => (

@@ -1,13 +1,26 @@
 import { useRef, useContext } from "react";
+import { useDispatch } from "react-redux";
 import { CSSTransition } from "react-transition-group";
 
 import UIContext from "../../store-context/uiContext";
 import classes from "./Modal.module.css";
+import { booksActions } from "../../store-redux/books";
 
 function Modal() {
   const uiContext = useContext(UIContext);
-  const { modalVisible, actionButtonOnClick } = uiContext;
+  const { modalVisible, closeAllModals } = uiContext;
+  const { clearFavorites } = booksActions;
+  const dispatch = useDispatch();
   const modalRef = useRef();
+
+  const buttonClickHandler = (buttonID) => {
+    if (buttonID === "confirm") {
+      dispatch(clearFavorites());
+      closeAllModals();
+    } else {
+      closeAllModals();
+    }
+  };
 
   return (
     <CSSTransition
@@ -15,9 +28,7 @@ function Modal() {
       in={modalVisible}
       timeout={500}
       classNames={{
-        enter: "",
         enterActive: classes["modal--open"],
-        exit: "",
         exitActive: classes["modal--closed"],
       }}
       mountOnEnter
@@ -35,7 +46,7 @@ function Modal() {
               classes.modal__action,
               classes["modal__action--confirm"],
             ].join(" ")}
-            onClick={() => actionButtonOnClick("confirm")}
+            onClick={() => buttonClickHandler("confirm")}
           >
             YES
           </button>
@@ -45,7 +56,7 @@ function Modal() {
               classes.modal__action,
               classes["modal__action--cancel"],
             ].join(" ")}
-            onClick={() => actionButtonOnClick("cancel")}
+            onClick={() => buttonClickHandler("cancel")}
           >
             NO
           </button>

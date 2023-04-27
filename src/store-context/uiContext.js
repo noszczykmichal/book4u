@@ -4,13 +4,6 @@ import PropTypes from "prop-types";
 import { createContext, useState } from "react";
 
 const UIContext = createContext({
-  favorites: [],
-  totalFavorites: 0,
-  loadFavsFromLocStorage: () => {},
-  addFavorite: (_favoriteBook) => {},
-  removeFavorite: (_bookId) => {},
-  removeAllFavorites: () => {},
-  bookIsFavorite: (_bookId) => Boolean,
   displayedPage: 1,
   changeDisplayedPage: (_number) => Number,
   totalBooksAvail: 0,
@@ -28,7 +21,6 @@ const UIContext = createContext({
   closeAllModals: () => Boolean,
   openMobileNav: () => Boolean,
   trashIconOnClick: () => Boolean,
-  actionButtonOnClick: () => Boolean,
   takeToTop: () => null,
   findBookFormVisibilitySetter: () => Boolean,
   elementHeightSetter: () => Number,
@@ -38,7 +30,6 @@ const UIContext = createContext({
 });
 
 export function UIContextProvider({ children }) {
-  const [userFavorites, setUserFavorites] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [booksAvailable, setBooksAvailable] = useState(0);
   // Components State
@@ -50,39 +41,6 @@ export function UIContextProvider({ children }) {
   const [formCurrentHeight, setFormCurrentHeight] = useState(0);
   const [inputValueObj, setInputValueObj] = useState({});
   const [paginationCurrentVal, setPaginationCurrentVal] = useState(1);
-
-  function loadFavsFromLocStorageHandler() {
-    const data = localStorage.getItem("FavBooks");
-    if (data) {
-      const savedFavorites = JSON.parse(data);
-      setUserFavorites(savedFavorites);
-    }
-  }
-
-  function addFavoriteHandler(favoriteBook) {
-    setUserFavorites((prevState) => {
-      const updatedFavs = prevState.concat(favoriteBook);
-      localStorage.setItem("FavBooks", JSON.stringify(updatedFavs));
-      return updatedFavs;
-    });
-  }
-
-  function removeFavoriteHandler(bookId) {
-    setUserFavorites((prevState) => {
-      const updatedFavs = prevState.filter((book) => book.id !== bookId);
-      localStorage.setItem("FavBooks", JSON.stringify(updatedFavs));
-      return updatedFavs;
-    });
-  }
-
-  function removeAllFavoritesHandler() {
-    setUserFavorites([]);
-    localStorage.clear();
-  }
-
-  function bookIsFavoriteHandler(bookId) {
-    return userFavorites.some((book) => book.id === bookId);
-  }
 
   function displayedPageHandler(number) {
     setCurrentPage(number);
@@ -109,15 +67,6 @@ export function UIContextProvider({ children }) {
     setMobileNavVisibility(false);
     setBackdropVisibility(true);
     setModalVisibility(true);
-  }
-
-  function actionButtonOnClickHandler(id) {
-    if (id === "confirm") {
-      removeAllFavoritesHandler();
-      closeAllHandler();
-    } else {
-      closeAllHandler();
-    }
   }
 
   function takeToTopHandler(idOfAgent) {
@@ -163,13 +112,6 @@ export function UIContextProvider({ children }) {
   }
 
   const context = {
-    favorites: userFavorites,
-    totalFavorites: userFavorites.length,
-    loadFavsFromLocStorage: loadFavsFromLocStorageHandler,
-    addFavorite: addFavoriteHandler,
-    removeFavorite: removeFavoriteHandler,
-    removeAllFavorites: removeAllFavoritesHandler,
-    bookIsFavorite: bookIsFavoriteHandler,
     displayedPage: currentPage,
     changeDisplayedPage: displayedPageHandler,
     totalBooksAvail: booksAvailable,
@@ -187,7 +129,6 @@ export function UIContextProvider({ children }) {
     closeAllModals: closeAllHandler,
     openMobileNav: openMobileNavHandler,
     trashIconOnClick: trashIconOnClickHandler,
-    actionButtonOnClick: actionButtonOnClickHandler,
     takeToTop: takeToTopHandler,
     findBookFormVisibilitySetter: findBookFormVisibilityHandler,
     elementHeightSetter: elementHeightHandler,

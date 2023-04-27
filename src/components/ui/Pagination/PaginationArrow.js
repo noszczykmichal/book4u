@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { useRef, useContext, useEffect } from "react";
-import UIContext from "../../../store-context/uiContext";
 
+import UIContext from "../../../store-context/uiContext";
 import classes from "./PaginationArrow.module.css";
 
 function Arrow({ type }) {

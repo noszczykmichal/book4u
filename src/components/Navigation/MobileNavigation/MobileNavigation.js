@@ -16,9 +16,7 @@ function MobileNavigation() {
       in={mobileNavVisible}
       timeout={500}
       classNames={{
-        enter: "",
         enterActive: classes["mobile-navigation--open"],
-        exit: "",
         exitActive: classes["mobile-navigation--closed"],
       }}
       mountOnEnter

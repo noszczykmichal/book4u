@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import UIContext from "../../../store-context/uiContext";
 
+import UIContext from "../../../store-context/uiContext";
 import classes from "./Pagination.module.css";
 import PaginationArrow from "./PaginationArrow";
 
