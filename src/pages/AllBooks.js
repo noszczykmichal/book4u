@@ -44,7 +44,6 @@ function AllBooks() {
       ? `https://gnikdroy.pythonanywhere.com/api/book/?${currentQuery}&page=${displayedPage}`
       : `https://gnikdroy.pythonanywhere.com/api/book/?page=${displayedPage}`;
     setIsLoading(true);
-    uiContextRef.current.loadFavsFromLocStorage();
     fetch(`${url}`)
       .then((response) => {
         // console.log(response.json())

@@ -1,11 +1,13 @@
+import { useSelector } from "react-redux";
 import { useContext } from "react";
-import UIContext from "../../../../store-context/uiContext";
 
+import UIContext from "../../../../store-context/uiContext";
 import classes from "./TrashIcon.module.css";
 
 function TrashIcon() {
+  const favorites = useSelector((state) => state.books.favorites);
   const uiContext = useContext(UIContext);
-  const { favorites, trashIconOnClick } = uiContext;
+  const { trashIconOnClick } = uiContext;
   const isDisabled = favorites.length === 0;
   let attachedClasses = [classes.container];
 

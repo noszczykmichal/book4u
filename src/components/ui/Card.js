@@ -1,7 +1,7 @@
 import { useContext, useEffect, useRef } from "react";
 import PropTypes from "prop-types";
-import UIContext from "../../store-context/uiContext";
 
+import UIContext from "../../store-context/uiContext";
 import classes from "./Card.module.css";
 
 function Card({ animated, children }) {

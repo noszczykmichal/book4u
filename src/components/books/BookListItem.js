@@ -1,19 +1,21 @@
 import PropTypes from "prop-types";
-import { useContext } from "react";
-import UIContext from "../../store-context/uiContext";
+import { useSelector, useDispatch } from "react-redux";
 
 import classes from "./BookListItem.module.css";
 import Card from "../ui/Card";
+import { booksActions } from "../../store-redux/books";
 
 function BookListItem({ bookInfo }) {
-  const uiContext = useContext(UIContext);
-  const { bookIsFavorite, addFavorite, removeFavorite } = uiContext;
-  const isBookFavorite = bookIsFavorite(bookInfo.id);
-  const toggleFavoriteStatus = () => {
-    if (isBookFavorite === false) {
-      return addFavorite(bookInfo);
-    }
-    return removeFavorite(bookInfo.id);
+  const favorites = useSelector((state) => state.books.favorites);
+  const dispatch = useDispatch();
+  const { addToUserFavorites, removeFromFavorites } = booksActions;
+
+  const isBookFavorite = (bookID) =>
+    favorites.some((book) => book.id === bookID);
+  const toggleFavoriteStatus = (bookID) => {
+    return isBookFavorite(bookID)
+      ? dispatch(removeFromFavorites(bookID))
+      : dispatch(addToUserFavorites(bookInfo));
   };
 
   const authorFinder = () => {
@@ -42,7 +44,7 @@ function BookListItem({ bookInfo }) {
         <h4>{authorFinder()}</h4>
         <p>
           Bookshelves:
-          {bookInfo.bookshelves.join(", ")}
+          {` ${bookInfo.bookshelves.join(", ")}`}
         </p>
         <ul aria-label="It's about:" className={classes.book__subjects}>
           {bookInfo.subjects
@@ -76,9 +78,11 @@ function BookListItem({ bookInfo }) {
         <button
           type="button"
           className={classes.book__button}
-          onClick={toggleFavoriteStatus}
+          onClick={() => toggleFavoriteStatus(bookInfo.id)}
         >
-          {isBookFavorite ? "Remove from Favorites" : "To Favorites"}
+          {isBookFavorite(bookInfo.id)
+            ? "Remove from Favorites"
+            : "To Favorites"}
         </button>
       </Card>
     </li>
