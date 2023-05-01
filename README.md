@@ -24,7 +24,9 @@
 
 - [React](https://reactjs.org/blog/2022/03/29/react-v18.html)
 - [React-Router](https://github.com/remix-run/react-router)
-- [React Hooks](https://reactjs.org/docs/hooks-intro.html)
+- [Redux](https://redux.js.org/)
+- [Redux Toolkit](https://redux-toolkit.js.org/)
+- [Redux Persist](https://www.npmjs.com/package/redux-persist)
 - [React Transition Group](https://reactcommunity.org/react-transition-group/)
 - [ESLint](https://www.npmjs.com/package/eslint)
 - [Prettier](https://www.npmjs.com/package/prettier)
@@ -33,7 +35,7 @@
 
 Added in vs 1.3
 
-- Navbar show & hide on scroll
+- Navbar show & hide on scroll, which improves the UX on all mobile devices
 - Custom scrollbar
 
 Added in vs 1.2
@@ -59,10 +61,10 @@ Added in vs 1.1
 ## Screenshots
 
 You can either choose from books downloaded at the app's start up  
-![Example screenshot](./img/screenshot.png)
+<img src="./img/screenshot.png" alt="screenshot of the app" width= "400px">
 
 or narrow down criteria to find something specific.  
-![Example screenshot](./img/screenshot2.png)
+<img src="./img/screenshot2.png" alt="screenshot of the app" width= "400px">
 
 ## Setup
 
