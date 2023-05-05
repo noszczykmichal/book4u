@@ -61,10 +61,10 @@ Added in vs 1.1
 ## Screenshots
 
 You can either choose from books downloaded at the app's start up  
-<img src="./img/screenshot.png" alt="screenshot of the app" width= "400px">
+<img src="./img/screenshot.png" alt="screenshot of the app" width= "300px">
 
 or narrow down criteria to find something specific.  
-<img src="./img/screenshot2.png" alt="screenshot of the app" width= "400px">
+<img src="./img/screenshot2.png" alt="screenshot of the app" width= "300px">
 
 ## Setup
 
