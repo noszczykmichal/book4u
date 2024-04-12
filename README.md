@@ -33,6 +33,10 @@
 
 ## New Features
 
+Added in vs 1.4
+
+-Migrated the project from CRA to Vite to improve safety and fix security vulnerabilities
+
 Added in vs 1.3
 
 - Navbar show & hide on scroll, which improves the UX on all mobile devices
