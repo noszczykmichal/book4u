@@ -1,0 +1,70 @@
+import { useRef, useContext } from "react";
+import { CSSTransition } from "react-transition-group";
+
+import { useAppDispatch } from "../../hooks/useReduxHooks";
+import UIContext from "../../store-context/uiContext";
+import classes from "./Modal.module.css";
+import { booksActions } from "../../store-redux/books";
+import { ActionButtonId } from "../../utils/types";
+
+const Modal = () => {
+  const uiContext = useContext(UIContext);
+  const { isModalVisible, onCloseAllModals } = uiContext;
+  const { clearFavorites } = booksActions;
+  const dispatch = useAppDispatch();
+  const modalRef = useRef(null);
+
+  const buttonClickHandler = (buttonID: ActionButtonId) => {
+    if (buttonID === "confirm") {
+      dispatch(clearFavorites());
+      onCloseAllModals();
+    } else {
+      onCloseAllModals();
+    }
+  };
+
+  return (
+    <CSSTransition
+      nodeRef={modalRef}
+      in={isModalVisible}
+      timeout={500}
+      classNames={{
+        enterActive: classes["modal--open"],
+        exitActive: classes["modal--closed"],
+      }}
+      mountOnEnter
+      unmountOnExit
+    >
+      <div className={classes.modal} ref={modalRef}>
+        <div>
+          <p>This will delete all your favorite books!</p>
+          <p>Do you want to continue?</p>
+        </div>
+        <div className={classes.modal__actions}>
+          <button
+            type="button"
+            className={[
+              classes.modal__action,
+              classes["modal__action--confirm"],
+            ].join(" ")}
+            onClick={() => buttonClickHandler("confirm")}
+          >
+            YES
+          </button>
+          <button
+            type="button"
+            className={[
+              classes.modal__action,
+              classes["modal__action--cancel"],
+            ].join(" ")}
+            onClick={() => buttonClickHandler("cancel")}
+          >
+            NO
+          </button>
+        </div>
+      </div>
+    </CSSTransition>
+  );
+};
+
+export default Modal;
