@@ -12,7 +12,7 @@ import {
 import {
   ContextPropsAndMethods,
   ElementHeightType,
-  PaginationDirection,
+  // PaginationDirection,
   TakeToTopAgent,
   SearchFormObj,
 } from "../utils/types";
@@ -21,8 +21,7 @@ const UIContext = createContext({
   displayedPage: 1,
   setDisplayedPage: (_number: number) => {},
   displayedPageChangeHandler: (
-    _direction: PaginationDirection,
-    _totalPagesCount: number,
+    _param: number | ((prevState: number) => number),
   ) => {},
   totalBooksAvail: 0,
   setTotalBooksAvailable: (_number: number) => {},
@@ -71,19 +70,10 @@ export const UIContextProvider: FC<UIContextProviderProps> = ({ children }) => {
   const [paginationValue, setPaginationValue] = useState(1);
 
   function displayedPageChangeHandler(
-    direction: PaginationDirection,
-    totalPagesCount: number,
+    param: number | ((prevState: number) => number),
   ) {
-    if (direction === "previous") {
-      setDisplayedPage((prevState) => (prevState === 1 ? 1 : prevState - 1));
-    }
-
-    if (direction === "next") {
-      setDisplayedPage((prevState) =>
-        prevState < totalPagesCount ? prevState + 1 : totalPagesCount,
-      );
-    }
-    setPaginationValue(displayedPage);
+    setDisplayedPage(param);
+    setPaginationValue(param);
   }
 
   // Components Handlers

@@ -21,7 +21,14 @@ const PaginationArrow: FC<PaginationArrowProps> = ({ direction }) => {
   }
 
   const clickHandler = () => {
-    displayedPageChangeHandler(direction, totalPagesCount);
+    if (direction === "previous") {
+      return displayedPageChangeHandler((prevState) =>
+        prevState === 1 ? 1 : prevState - 1,
+      );
+    }
+    return displayedPageChangeHandler((prevState) =>
+      prevState < totalPagesCount ? prevState + 1 : totalPagesCount,
+    );
   };
 
   useEffect(() => {

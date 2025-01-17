@@ -11,12 +11,8 @@ import ErrorModal from "../components/ui/ErrorModal";
 
 function AllBooks() {
   const uiContext = useContext(UIContext);
-  const {
-    displayedPage,
-    totalBooksAvail,
-    setDisplayedPage,
-    setPaginatedPageValue,
-  } = uiContext;
+  const { displayedPage, totalBooksAvail, displayedPageChangeHandler } =
+    uiContext;
   const uiContextRef = useRef(uiContext);
   const [isLoading, setIsLoading] = useState(false);
   const [loadedData, setLoadedData] = useState<Book[]>([]);
@@ -33,8 +29,7 @@ function AllBooks() {
     });
 
     if (query) {
-      setDisplayedPage(1);
-      setPaginatedPageValue(1);
+      displayedPageChangeHandler(1);
       setCurrentQuery(query);
       setIsLoading(true);
       setLoadedData([]);

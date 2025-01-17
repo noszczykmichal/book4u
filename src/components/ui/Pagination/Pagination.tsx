@@ -6,14 +6,17 @@ import PaginationArrow from "./PaginationArrow";
 
 const TablePagination = () => {
   const uiContext = useContext(UIContext);
-  const { totalBooksAvail, setPaginatedPageValue, paginationValue } = uiContext;
+  const {
+    totalBooksAvail,
+    setPaginatedPageValue,
+    displayedPageChangeHandler,
+    paginationValue,
+  } = uiContext;
   const totalPagesCount = Math.ceil(totalBooksAvail / 10);
 
   const onKeyDownHandler = (event: KeyboardEvent) => {
-    if (event.key === "Backspace") {
-      setPaginatedPageValue(1);
-    } else if (event.key === "Enter") {
-      setPaginatedPageValue(paginationValue);
+    if (event.key === "Enter") {
+      displayedPageChangeHandler(paginationValue);
     }
   };
 

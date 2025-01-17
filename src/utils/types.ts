@@ -54,8 +54,7 @@ export interface ContextPropsAndMethods {
   displayedPage: number;
   setDisplayedPage: (number: number) => void;
   displayedPageChangeHandler: (
-    direction: PaginationDirection,
-    totalPagesCount: number,
+    _param: number | ((prevState: number) => number),
   ) => void;
   totalBooksAvail: number;
   setTotalBooksAvailable: (number: number) => void;
