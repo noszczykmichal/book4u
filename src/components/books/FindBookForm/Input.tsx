@@ -19,7 +19,9 @@ const Input: FC<InputProps> = ({
 }) => {
   const uiContext = useContext(UIContext);
   const { searchFormValues, updateInputValues } = uiContext;
-  const inputValue = searchFormValues[htmlName];
+  const inputValue = searchFormValues[htmlName]
+    ? searchFormValues[htmlName]
+    : "";
   const [classA, classB] = htmlClass;
 
   return (

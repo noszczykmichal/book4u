@@ -8,7 +8,7 @@ const TablePagination = () => {
   const uiContext = useContext(UIContext);
   const {
     totalBooksAvail,
-    setPaginatedPageValue,
+    setPaginationValue,
     displayedPageChangeHandler,
     paginationValue,
   } = uiContext;
@@ -23,7 +23,7 @@ const TablePagination = () => {
   const paginationInputHandler = (event: FormEvent) => {
     const eventTarget = event.target as HTMLInputElement;
     if (+eventTarget.value >= 1 && +eventTarget.value <= totalPagesCount) {
-      setPaginatedPageValue(+eventTarget.value);
+      setPaginationValue(+eventTarget.value);
     }
   };
 

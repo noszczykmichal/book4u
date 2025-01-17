@@ -32,16 +32,19 @@ const PaginationArrow: FC<PaginationArrowProps> = ({ direction }) => {
   };
 
   useEffect(() => {
-    if (direction === "previous" && displayedPage === 1) {
-      buttonRef?.current?.setAttribute("disabled", "true");
-    } else if (direction === "previous" && displayedPage !== 1) {
-      buttonRef?.current?.removeAttribute("disabled");
+    if (direction === "previous") {
+      if (displayedPage === 1) {
+        return buttonRef?.current?.setAttribute("disabled", "true");
+      }
+
+      return buttonRef?.current?.removeAttribute("disabled");
     }
 
-    if (direction === "next" && displayedPage === totalPagesCount) {
-      buttonRef?.current?.setAttribute("disabled", "true");
-    } else if (direction === "next" && displayedPage !== totalPagesCount) {
-      buttonRef?.current?.removeAttribute("disabled");
+    if (direction === "next") {
+      if (displayedPage === totalPagesCount) {
+        return buttonRef?.current?.setAttribute("disabled", "true");
+      }
+      return buttonRef?.current?.removeAttribute("disabled");
     }
   }, [displayedPage, direction, totalPagesCount]);
 

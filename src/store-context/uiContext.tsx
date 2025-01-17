@@ -19,7 +19,6 @@ import {
 
 const UIContext = createContext({
   displayedPage: 1,
-  setDisplayedPage: (_number: number) => {},
   displayedPageChangeHandler: (
     _param: number | ((prevState: number) => number),
   ) => {},
@@ -46,7 +45,7 @@ const UIContext = createContext({
   ) => {},
   updateInputValues: (_event: FormEvent) => {},
   clearInputValues: () => {},
-  setPaginatedPageValue: (_val: number) => {},
+  setPaginationValue: (_val: number) => {},
 });
 
 interface UIContextProviderProps {
@@ -124,7 +123,7 @@ export const UIContextProvider: FC<UIContextProviderProps> = ({ children }) => {
 
   function updateInputValues(event: FormEvent) {
     const { name, value } = event.target as HTMLInputElement;
-    console.log(name);
+
     setSearchFormValues((prevInputValuesObj) => ({
       ...prevInputValuesObj,
       [name]: value,
@@ -135,13 +134,8 @@ export const UIContextProvider: FC<UIContextProviderProps> = ({ children }) => {
     setSearchFormValues({});
   }
 
-  function setPaginatedPageValue(val: number) {
-    setPaginationValue(val);
-  }
-
   const context = {
     displayedPage,
-    setDisplayedPage,
     displayedPageChangeHandler,
     totalBooksAvail,
     setTotalBooksAvailable,
@@ -163,7 +157,7 @@ export const UIContextProvider: FC<UIContextProviderProps> = ({ children }) => {
     setElementHeight,
     updateInputValues,
     clearInputValues,
-    setPaginatedPageValue,
+    setPaginationValue,
   };
 
   return <UIContext.Provider value={context}>{children}</UIContext.Provider>;

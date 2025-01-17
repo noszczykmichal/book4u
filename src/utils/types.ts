@@ -52,7 +52,6 @@ export type SearchFormObj = {
 
 export interface ContextPropsAndMethods {
   displayedPage: number;
-  setDisplayedPage: (number: number) => void;
   displayedPageChangeHandler: (
     _param: number | ((prevState: number) => number),
   ) => void;
@@ -79,5 +78,5 @@ export interface ContextPropsAndMethods {
   ) => void;
   updateInputValues: (event: FormEvent) => void;
   clearInputValues: () => void;
-  setPaginatedPageValue: (val: number) => void;
+  setPaginationValue: (val: number) => void;
 }
