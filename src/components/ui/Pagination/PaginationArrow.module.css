@@ -14,6 +14,6 @@
   fill: rgb(0, 162, 255);
 }
 
-.arrow--left {
+.arrow--previous {
   transform: rotate(180deg);
 }
