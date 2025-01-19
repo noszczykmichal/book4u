@@ -11,8 +11,7 @@ import ErrorModal from "../components/ui/ErrorModal";
 
 function AllBooks() {
   const uiContext = useContext(UIContext);
-  const { displayedPage, totalBooksAvail, displayedPageChangeHandler } =
-    uiContext;
+  const { displayedPage, setDisplayedPage, totalBooksAvail } = uiContext;
   const uiContextRef = useRef(uiContext);
   const [isLoading, setIsLoading] = useState(false);
   const [loadedData, setLoadedData] = useState<Book[]>([]);
@@ -29,7 +28,7 @@ function AllBooks() {
     });
 
     if (query) {
-      displayedPageChangeHandler(1);
+      setDisplayedPage(1);
       setCurrentQuery(query);
       setIsLoading(true);
       setLoadedData([]);
@@ -48,7 +47,6 @@ function AllBooks() {
     setIsLoading(true);
     fetch(`${url}`)
       .then((response) => {
-        // console.log(response.json())
         if (!response.ok) {
           throw new Error("Sorry, We've run into issues. Please try again.");
         }

@@ -33,7 +33,6 @@ const FindBookForm: FC<FindBookFormProps> = ({ onSearchHandler }) => {
     event.preventDefault();
     const query = validationHandler(searchFormValues);
 
-    // console.log(query);
     onSearchHandler(query);
   };
 

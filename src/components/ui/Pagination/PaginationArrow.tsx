@@ -10,8 +10,7 @@ interface PaginationArrowProps {
 
 const PaginationArrow: FC<PaginationArrowProps> = ({ direction }) => {
   const uiContext = useContext(UIContext);
-  const { totalBooksAvail, displayedPage, displayedPageChangeHandler } =
-    uiContext;
+  const { totalBooksAvail, displayedPage, setDisplayedPage } = uiContext;
   const buttonRef = useRef<HTMLButtonElement>(null);
   let attachedClasses: string[] = [classes.arrow];
   const totalPagesCount = Math.ceil(totalBooksAvail / 10);
@@ -22,11 +21,11 @@ const PaginationArrow: FC<PaginationArrowProps> = ({ direction }) => {
 
   const clickHandler = () => {
     if (direction === "previous") {
-      return displayedPageChangeHandler((prevState) =>
+      return setDisplayedPage((prevState) =>
         prevState === 1 ? 1 : prevState - 1,
       );
     }
-    return displayedPageChangeHandler((prevState) =>
+    return setDisplayedPage((prevState) =>
       prevState < totalPagesCount ? prevState + 1 : totalPagesCount,
     );
   };
