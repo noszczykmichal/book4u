@@ -12,6 +12,15 @@ interface SelectProps {
 const Select: FC<SelectProps> = ({ nameForSelect, options }) => {
   const uiContext = useContext(UIContext);
   const { searchFormValues, updateInputValues } = uiContext;
+  const availableOptions = options.map((optionValue) => {
+    const key = Math.random().toString();
+
+    return (
+      <option key={key} value={optionValue}>
+        {optionValue}
+      </option>
+    );
+  });
 
   return (
     <select
@@ -20,15 +29,7 @@ const Select: FC<SelectProps> = ({ nameForSelect, options }) => {
       onChange={updateInputValues}
       value={searchFormValues[nameForSelect]}
     >
-      {options.map((optionValue) => {
-        const key = Math.random().toString();
-
-        return (
-          <option key={key} value={optionValue}>
-            {optionValue}
-          </option>
-        );
-      })}
+      {availableOptions}
     </select>
   );
 };

@@ -1,4 +1,4 @@
-import { FormEvent, useContext, KeyboardEvent, useRef } from "react";
+import { FormEvent, useContext, useRef, useState } from "react";
 
 import UIContext from "../../../store-context/uiContext";
 import classes from "./Pagination.module.css";
@@ -7,36 +7,30 @@ import PaginationArrow from "./PaginationArrow";
 const TablePagination = () => {
   const uiContext = useContext(UIContext);
   const inputRef = useRef<HTMLInputElement>(null);
-  const {
-    displayedPage,
-    totalBooksAvail,
-    setPaginationValue,
-    displayedPageChangeHandler,
-    // paginationValue,
-  } = uiContext;
+  const { displayedPage, setDisplayedPage, totalBooksAvail } = uiContext;
   const totalPagesCount = Math.ceil(totalBooksAvail / 10);
-
-  const onKeyDownHandler = (event: KeyboardEvent) => {
-    const paginationInputValue = inputRef.current!.value.trim();
-    if (event.key === "Enter" && paginationInputValue !== "") {
-      displayedPageChangeHandler(+paginationInputValue);
-      inputRef.current!.value = "";
-      inputRef.current!.blur();
-    }
-  };
+  const [timerID, setTimerID] = useState<NodeJS.Timeout | null>(null);
 
   const paginationInputHandler = (event: FormEvent) => {
-    const eventTarget = event.target as HTMLInputElement;
-    if (+eventTarget.value >= 1 && +eventTarget.value <= totalPagesCount) {
-      setPaginationValue(+eventTarget.value);
+    if (timerID) {
+      clearTimeout(timerID);
     }
+
+    const timer = setTimeout(() => {
+      const eventTarget = event.target as HTMLInputElement;
+      if (+eventTarget.value >= 1 && +eventTarget.value <= totalPagesCount) {
+        setDisplayedPage(+eventTarget.value);
+      }
+    }, 1000);
+
+    setTimerID(timer);
   };
 
-  const blurHandler = () => {
+  const onBlurHandler = () => {
     inputRef.current!.value = "";
     inputRef.current!.setAttribute("placeholder", displayedPage.toString());
   };
-  const focusHandler = () => {
+  const onFocusHandler = () => {
     inputRef.current!.value = displayedPage.toString();
     inputRef.current!.setAttribute("placeholder", "");
   };
@@ -49,9 +43,8 @@ const TablePagination = () => {
         className={classes.pagination__input}
         onChange={paginationInputHandler}
         placeholder={displayedPage.toString()}
-        onKeyDown={onKeyDownHandler}
-        onBlur={blurHandler}
-        onFocus={focusHandler}
+        onBlur={onBlurHandler}
+        onFocus={onFocusHandler}
         ref={inputRef}
       />
       <span>of</span>

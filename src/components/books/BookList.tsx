@@ -10,11 +10,13 @@ interface BookListProps {
 }
 
 const BookList: FC<BookListProps> = ({ data }) => {
+  const listItems = data.map((book) => (
+    <BookListItem key={book.id} bookInfo={book} />
+  ));
+
   return (
     <ul className={classes["book-list"]} id="book-list">
-      {data.map((book) => (
-        <BookListItem key={book.id} bookInfo={book} />
-      ))}
+      {listItems}
       <BubbleAnchor />
     </ul>
   );

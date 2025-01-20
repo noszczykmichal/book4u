@@ -14,7 +14,7 @@ const Modal = () => {
   const dispatch = useAppDispatch();
   const modalRef = useRef(null);
 
-  const buttonClickHandler = (buttonID: ActionButtonId) => {
+  const buttonClickHandler = (buttonID: ActionButtonId) => () => {
     if (buttonID === "confirm") {
       dispatch(clearFavorites());
       onCloseAllModals();
@@ -22,6 +22,16 @@ const Modal = () => {
       onCloseAllModals();
     }
   };
+
+  const confirmButtonClasses = [
+    classes.modal__action,
+    classes["modal__action--confirm"],
+  ].join(" ");
+
+  const declineButtonClasses = [
+    classes.modal__action,
+    classes["modal__action--cancel"],
+  ].join(" ");
 
   return (
     <CSSTransition
@@ -43,21 +53,15 @@ const Modal = () => {
         <div className={classes.modal__actions}>
           <button
             type="button"
-            className={[
-              classes.modal__action,
-              classes["modal__action--confirm"],
-            ].join(" ")}
-            onClick={() => buttonClickHandler("confirm")}
+            className={confirmButtonClasses}
+            onClick={buttonClickHandler("confirm")}
           >
             YES
           </button>
           <button
             type="button"
-            className={[
-              classes.modal__action,
-              classes["modal__action--cancel"],
-            ].join(" ")}
-            onClick={() => buttonClickHandler("cancel")}
+            className={declineButtonClasses}
+            onClick={buttonClickHandler("cancel")}
           >
             NO
           </button>

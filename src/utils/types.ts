@@ -30,7 +30,6 @@ export interface Book {
 //UI Types
 export type ActionButtonId = "confirm" | "cancel";
 export type ElementHeightType = "toggleBar" | "form";
-export type TakeToTopAgent = "button" | "allBooks";
 export type PaginationDirection = "previous" | "next";
 export type FindBookFormInputNames =
   | "title_contains"
@@ -52,9 +51,7 @@ export type SearchFormObj = {
 
 export interface ContextPropsAndMethods {
   displayedPage: number;
-  displayedPageChangeHandler: (
-    _param: number | ((prevState: number) => number),
-  ) => void;
+  setDisplayedPage: (_param: number | ((prevState: number) => number)) => void;
   totalBooksAvail: number;
   setTotalBooksAvailable: (number: number) => void;
   // Components State
@@ -65,12 +62,11 @@ export interface ContextPropsAndMethods {
   toggleBarCurrentHeight: number;
   formCurrentHeight: number;
   searchFormValues: SearchFormObj;
-  paginationValue: number;
   // Components Handlers
   onCloseAllModals: () => void;
   onMobileNavOpen: () => void;
   onTrashIconOnClick: () => void;
-  onTakeToTopClick: (id: TakeToTopAgent) => void;
+  onTakeToTopClick: () => void;
   setFindBookFormVisibilityHandler: () => void;
   setElementHeight: (
     elementName: ElementHeightType,
@@ -78,5 +74,4 @@ export interface ContextPropsAndMethods {
   ) => void;
   updateInputValues: (event: FormEvent) => void;
   clearInputValues: () => void;
-  setPaginationValue: (val: number) => void;
 }

@@ -5,7 +5,7 @@ import classes from "./MobileNavigation.module.css";
 import NavigationItems from "../NavigationItems/NavigationItems";
 import UIContext from "../../../store-context/uiContext";
 
-function MobileNavigation() {
+const MobileNavigation = () => {
   const uiContext = useContext(UIContext);
   const { isMobileNavVisible } = uiContext;
   const nodeRef = useRef(null);
@@ -27,6 +27,6 @@ function MobileNavigation() {
       </nav>
     </CSSTransition>
   );
-}
+};
 
 export default MobileNavigation;

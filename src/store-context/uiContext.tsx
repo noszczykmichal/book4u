@@ -12,16 +12,12 @@ import {
 import {
   ContextPropsAndMethods,
   ElementHeightType,
-  // PaginationDirection,
-  TakeToTopAgent,
   SearchFormObj,
 } from "../utils/types";
 
 const UIContext = createContext({
   displayedPage: 1,
-  displayedPageChangeHandler: (
-    _param: number | ((prevState: number) => number),
-  ) => {},
+  setDisplayedPage: (_param: number | ((prevState: number) => number)) => {},
   totalBooksAvail: 0,
   setTotalBooksAvailable: (_number: number) => {},
   // Components State
@@ -32,12 +28,11 @@ const UIContext = createContext({
   toggleBarCurrentHeight: 0,
   formCurrentHeight: 0,
   searchFormValues: {} as Partial<SearchFormObj>,
-  paginationValue: 1,
   // Components Handlers
   onCloseAllModals: () => {},
   onMobileNavOpen: () => {},
   onTrashIconOnClick: () => {},
-  onTakeToTopClick: (_id: TakeToTopAgent) => {},
+  onTakeToTopClick: () => {},
   setFindBookFormVisibilityHandler: () => {},
   setElementHeight: (
     _elementName: ElementHeightType,
@@ -45,7 +40,6 @@ const UIContext = createContext({
   ) => {},
   updateInputValues: (_event: FormEvent) => {},
   clearInputValues: () => {},
-  setPaginationValue: (_val: number) => {},
 });
 
 interface UIContextProviderProps {
@@ -66,14 +60,6 @@ export const UIContextProvider: FC<UIContextProviderProps> = ({ children }) => {
   const [searchFormValues, setSearchFormValues] = useState<
     Partial<SearchFormObj>
   >({});
-  const [paginationValue, setPaginationValue] = useState(1);
-
-  function displayedPageChangeHandler(
-    param: number | ((prevState: number) => number),
-  ) {
-    setDisplayedPage(param);
-    setPaginationValue(param);
-  }
 
   // Components Handlers
   function onCloseAllModals() {
@@ -93,11 +79,10 @@ export const UIContextProvider: FC<UIContextProviderProps> = ({ children }) => {
     setModalVisibility(true);
   }
 
-  function onTakeToTopClick(idOfAgent: TakeToTopAgent) {
-    const pixelsToSubtract = idOfAgent === "button" ? 80 : 240;
+  function onTakeToTopClick() {
     const bookListTop = document.getElementById("book-list");
     if (bookListTop) {
-      const position = bookListTop.offsetTop - pixelsToSubtract;
+      const position = bookListTop.offsetTop - 80;
 
       window.scrollTo({
         top: position,
@@ -136,7 +121,7 @@ export const UIContextProvider: FC<UIContextProviderProps> = ({ children }) => {
 
   const context = {
     displayedPage,
-    displayedPageChangeHandler,
+    setDisplayedPage,
     totalBooksAvail,
     setTotalBooksAvailable,
     // Components State
@@ -147,7 +132,6 @@ export const UIContextProvider: FC<UIContextProviderProps> = ({ children }) => {
     toggleBarCurrentHeight,
     formCurrentHeight,
     searchFormValues,
-    paginationValue,
     // Components Handlers
     onCloseAllModals,
     onMobileNavOpen,
@@ -157,7 +141,6 @@ export const UIContextProvider: FC<UIContextProviderProps> = ({ children }) => {
     setElementHeight,
     updateInputValues,
     clearInputValues,
-    setPaginationValue,
   };
 
   return <UIContext.Provider value={context}>{children}</UIContext.Provider>;

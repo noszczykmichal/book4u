@@ -23,12 +23,13 @@ const Input: FC<InputProps> = ({
     ? searchFormValues[htmlName]
     : "";
   const [classA, classB] = htmlClass;
+  const attachedClasses = [classes[classA], classes[classB]].join(" ");
 
   return (
     <input
       type={htmlType}
       name={htmlName as string}
-      className={[classes[classA], classes[classB]].join(" ")}
+      className={attachedClasses}
       placeholder={htmlPlaceholder}
       value={inputValue}
       onChange={updateInputValues}

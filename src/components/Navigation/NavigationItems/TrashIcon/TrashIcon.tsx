@@ -9,16 +9,18 @@ const TrashIcon = () => {
   const uiContext = useContext(UIContext);
   const { onTrashIconOnClick } = uiContext;
   const isDisabled = favorites.length === 0;
-  let attachedClasses: string[] = [classes.container];
+  let attachedClasses = [classes.container].join(" ");
 
   if (isDisabled) {
-    attachedClasses = [classes.container, classes["container--inactive"]];
+    attachedClasses = [classes.container, classes["container--inactive"]].join(
+      " ",
+    );
   }
 
   return (
     <button
       type="button"
-      className={attachedClasses.join(" ")}
+      className={attachedClasses}
       onClick={onTrashIconOnClick}
       disabled={isDisabled}
       aria-label="delete favorite books"

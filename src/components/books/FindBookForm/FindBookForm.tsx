@@ -24,25 +24,25 @@ const FindBookForm: FC<FindBookFormProps> = ({ onSearchHandler }) => {
     searchFormValues,
     clearInputValues,
     setFindBookFormVisibilityHandler,
+    setElementHeight,
   } = uiContext;
   const toggleBarRef = useRef<HTMLDivElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
-  const contextContent = useRef(uiContext);
+  const clearButtonClasses = [
+    classes.actions__button,
+    classes["actions__button--animated"],
+  ].join(" ");
 
   const formHandler = (event: FormEvent) => {
     event.preventDefault();
     const query = validationHandler(searchFormValues);
 
-    // console.log(query);
     onSearchHandler(query);
   };
 
   useEffect(() => {
-    if (toggleBarRef) {
-      contextContent.current.setElementHeight("toggleBar", toggleBarRef);
-    }
-
-    contextContent.current.setElementHeight("form", formRef);
+    setElementHeight("toggleBar", toggleBarRef);
+    setElementHeight("form", formRef);
   }, []);
 
   return (
@@ -51,10 +51,7 @@ const FindBookForm: FC<FindBookFormProps> = ({ onSearchHandler }) => {
         <div className={classes.actions}>
           <button
             type="button"
-            className={[
-              classes.actions__button,
-              classes["actions__button--animated"],
-            ].join(" ")}
+            className={clearButtonClasses}
             onClick={clearInputValues}
           >
             <RefreshIcon />
