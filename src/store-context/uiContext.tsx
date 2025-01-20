@@ -12,7 +12,6 @@ import {
 import {
   ContextPropsAndMethods,
   ElementHeightType,
-  TakeToTopAgent,
   SearchFormObj,
 } from "../utils/types";
 
@@ -33,7 +32,7 @@ const UIContext = createContext({
   onCloseAllModals: () => {},
   onMobileNavOpen: () => {},
   onTrashIconOnClick: () => {},
-  onTakeToTopClick: (_id: TakeToTopAgent) => {},
+  onTakeToTopClick: () => {},
   setFindBookFormVisibilityHandler: () => {},
   setElementHeight: (
     _elementName: ElementHeightType,
@@ -80,11 +79,10 @@ export const UIContextProvider: FC<UIContextProviderProps> = ({ children }) => {
     setModalVisibility(true);
   }
 
-  function onTakeToTopClick(idOfAgent: TakeToTopAgent) {
-    const pixelsToSubtract = idOfAgent === "button" ? 80 : 240;
+  function onTakeToTopClick() {
     const bookListTop = document.getElementById("book-list");
     if (bookListTop) {
-      const position = bookListTop.offsetTop - pixelsToSubtract;
+      const position = bookListTop.offsetTop - 80;
 
       window.scrollTo({
         top: position,

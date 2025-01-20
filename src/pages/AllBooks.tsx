@@ -1,4 +1,4 @@
-import { useEffect, useState, useContext, useRef } from "react";
+import { useEffect, useState, useContext } from "react";
 
 import classes from "./AllBooks.module.css";
 import { Book } from "../utils/types";
@@ -11,8 +11,13 @@ import ErrorModal from "../components/ui/ErrorModal";
 
 function AllBooks() {
   const uiContext = useContext(UIContext);
-  const { displayedPage, setDisplayedPage, totalBooksAvail } = uiContext;
-  const uiContextRef = useRef(uiContext);
+  const {
+    displayedPage,
+    setDisplayedPage,
+    totalBooksAvail,
+    setTotalBooksAvailable,
+    onTakeToTopClick,
+  } = uiContext;
   const [isLoading, setIsLoading] = useState(false);
   const [loadedData, setLoadedData] = useState<Book[]>([]);
   const [currentQuery, setCurrentQuery] = useState("");
@@ -53,11 +58,15 @@ function AllBooks() {
         return response.json();
       })
       .then((data) => {
-        uiContextRef.current.setTotalBooksAvailable(data.count);
+        setTotalBooksAvailable(data.count);
         const results = [...data.results];
         setIsLoading(false);
         setLoadedData(results);
-        uiContextRef.current.onTakeToTopClick("allBooks");
+        // Postponing the execution of the function to ensure the DOM is fully updated;
+        // otherwise a bug occurs in Firefox, and the viewport doesn't scroll to the top
+        setTimeout(() => {
+          onTakeToTopClick();
+        }, 100);
       })
       .catch((error) => {
         setIsLoading(false);

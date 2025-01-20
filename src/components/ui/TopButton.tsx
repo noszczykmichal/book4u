@@ -8,11 +8,7 @@ const BubbleAnchor = () => {
   const { onTakeToTopClick } = uiContext;
 
   return (
-    <button
-      type="button"
-      className={classes.anchor}
-      onClick={() => onTakeToTopClick("button")}
-    >
+    <button type="button" className={classes.anchor} onClick={onTakeToTopClick}>
       Top
     </button>
   );

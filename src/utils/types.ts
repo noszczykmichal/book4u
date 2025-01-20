@@ -30,7 +30,6 @@ export interface Book {
 //UI Types
 export type ActionButtonId = "confirm" | "cancel";
 export type ElementHeightType = "toggleBar" | "form";
-export type TakeToTopAgent = "button" | "allBooks";
 export type PaginationDirection = "previous" | "next";
 export type FindBookFormInputNames =
   | "title_contains"
@@ -67,7 +66,7 @@ export interface ContextPropsAndMethods {
   onCloseAllModals: () => void;
   onMobileNavOpen: () => void;
   onTrashIconOnClick: () => void;
-  onTakeToTopClick: (id: TakeToTopAgent) => void;
+  onTakeToTopClick: () => void;
   setFindBookFormVisibilityHandler: () => void;
   setElementHeight: (
     elementName: ElementHeightType,
