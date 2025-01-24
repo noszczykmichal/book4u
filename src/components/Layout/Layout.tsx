@@ -6,16 +6,14 @@ import Backdrop from "../ui/Backdrop";
 import Modal from "../ui/Modal";
 import classes from "./Layout.module.css";
 
-const Layout: FC<{ children: ReactNode }> = ({ children }) => {
-  return (
-    <>
-      <Backdrop />
-      <Modal />
-      <Toolbar />
-      <MobileNavigation />
-      <main className={classes.main}>{children}</main>
-    </>
-  );
-};
+const Layout: FC<{ children: ReactNode }> = ({ children }) => (
+  <>
+    <Backdrop />
+    <Modal />
+    <Toolbar />
+    <MobileNavigation />
+    <main className={classes.main}>{children}</main>
+  </>
+);
 
 export default Layout;

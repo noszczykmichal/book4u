@@ -1,6 +1,4 @@
-import { FormEvent, RefObject } from "react";
-
-//Api data types
+// Api data types
 export interface Agent {
   id: number;
   person: string;
@@ -27,7 +25,7 @@ export interface Book {
   resources: Resource[];
 }
 
-//UI Types
+// UI Types
 export type ActionButtonId = "confirm" | "cancel";
 export type ElementHeightType = "toggleBar" | "form";
 export type PaginationDirection = "previous" | "next";
@@ -46,32 +44,3 @@ export type SearchFormKeys = FindBookFormInputNames | FindBookFormSelectNames;
 export type SearchFormObj = {
   [key in SearchFormKeys]: string;
 };
-
-//Context Types
-
-export interface ContextPropsAndMethods {
-  displayedPage: number;
-  setDisplayedPage: (_param: number | ((prevState: number) => number)) => void;
-  totalBooksAvail: number;
-  setTotalBooksAvailable: (number: number) => void;
-  // Components State
-  isBackdropVisible: boolean;
-  isMobileNavVisible: boolean;
-  isModalVisible: boolean;
-  isFindBookFormVisible: boolean;
-  toggleBarCurrentHeight: number;
-  formCurrentHeight: number;
-  searchFormValues: SearchFormObj;
-  // Components Handlers
-  onCloseAllModals: () => void;
-  onMobileNavOpen: () => void;
-  onTrashIconOnClick: () => void;
-  onTakeToTopClick: () => void;
-  setFindBookFormVisibilityHandler: () => void;
-  setElementHeight: (
-    elementName: ElementHeightType,
-    referenceObj: RefObject<HTMLElement>,
-  ) => void;
-  updateInputValues: (event: FormEvent) => void;
-  clearInputValues: () => void;
-}

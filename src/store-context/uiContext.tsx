@@ -10,7 +10,7 @@ import {
   FormEvent,
 } from "react";
 import {
-  ContextPropsAndMethods,
+  // ContextPropsAndMethods,
   ElementHeightType,
   SearchFormObj,
 } from "../utils/types";
@@ -44,7 +44,6 @@ const UIContext = createContext({
 
 interface UIContextProviderProps {
   children: ReactNode;
-  value?: ContextPropsAndMethods;
 }
 
 export const UIContextProvider: FC<UIContextProviderProps> = ({ children }) => {

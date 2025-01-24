@@ -1,7 +1,7 @@
 import { useAppSelector } from "../hooks/useReduxHooks";
 import BookList from "../components/books/BookList";
 
-function FavoriteBooks() {
+const FavoriteBooks = () => {
   const favorites = useAppSelector((state) => state.books.favorites);
 
   const content = favorites.length ? (
@@ -16,6 +16,6 @@ function FavoriteBooks() {
       {content}
     </section>
   );
-}
+};
 
 export default FavoriteBooks;

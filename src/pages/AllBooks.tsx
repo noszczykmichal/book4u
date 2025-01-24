@@ -9,7 +9,7 @@ import Preloader from "../components/ui/Preloader";
 import UIContext from "../store-context/uiContext";
 import ErrorModal from "../components/ui/ErrorModal";
 
-function AllBooks() {
+const AllBooks = () => {
   const uiContext = useContext(UIContext);
   const {
     displayedPage,
@@ -87,6 +87,6 @@ function AllBooks() {
       {errorData.errorMessage && <ErrorModal errorDetails={errorData} />}
     </section>
   );
-}
+};
 
 export default AllBooks;

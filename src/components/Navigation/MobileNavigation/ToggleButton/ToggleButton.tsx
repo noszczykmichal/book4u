@@ -7,7 +7,12 @@ const ToggleButton = () => {
   const uiContext = useContext(UIContext);
   const { onMobileNavOpen } = uiContext;
   return (
-    <button type="button" className={classes.toggle} onClick={onMobileNavOpen}>
+    <button
+      type="button"
+      aria-label="mobile navigation toggle button"
+      className={classes.toggle}
+      onClick={onMobileNavOpen}
+    >
       <div className={classes.toggle__bar} />
       <div className={classes.toggle__bar} />
       <div className={classes.toggle__bar} />

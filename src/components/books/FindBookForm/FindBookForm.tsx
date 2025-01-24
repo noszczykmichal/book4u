@@ -46,7 +46,7 @@ const FindBookForm: FC<FindBookFormProps> = ({ onSearchHandler }) => {
   }, []);
 
   return (
-    <Card animated={true}>
+    <Card animated>
       <div className={classes["toggle-bar"]} ref={toggleBarRef}>
         <div className={classes.actions}>
           <button
