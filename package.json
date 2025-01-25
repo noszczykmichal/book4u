@@ -15,7 +15,7 @@
     "vite-tsconfig-paths": "^5.1.4"
   },
   "scripts": {
-    "start": "vite",
+    "dev": "vite",
     "build": "tsc && vite build",
     "serve": "vite preview",
     "lint": "eslint .",

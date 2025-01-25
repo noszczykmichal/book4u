@@ -15,7 +15,10 @@ export default defineConfig(() => {
       eslint(),
       viteTsconfigPaths(),
       checker({
-        typescript: true,
+        eslint: {
+          // for example, lint .ts and .tsx
+          lintCommand: 'eslint "./src/**/*.{ts,tsx}"',
+        },
       }),
       sassDts({
         // By default only the `development` mode is enabled, which means that the `d.ts` files are generated only:

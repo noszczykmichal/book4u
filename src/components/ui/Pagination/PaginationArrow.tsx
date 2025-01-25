@@ -45,10 +45,17 @@ const PaginationArrow: FC<PaginationArrowProps> = ({ direction }) => {
       }
       return buttonRef?.current?.removeAttribute("disabled");
     }
+
+    return () => {};
   }, [displayedPage, direction, totalPagesCount]);
 
   return (
-    <button type="button" className={classes.container} ref={buttonRef}>
+    <button
+      type="button"
+      className={classes.container}
+      ref={buttonRef}
+      aria-label={`${direction === "previous" ? "previous" : "next"} page`}
+    >
       <svg
         xmlns="http://www.w3.org/2000/svg"
         width="24"
