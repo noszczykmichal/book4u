@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import { useContext, useRef, useEffect, FC, FormEvent } from "react";
 
 import {
@@ -24,8 +23,8 @@ const FindBookForm: FC<FindBookFormProps> = ({ onSearchHandler }) => {
     searchFormValues,
     clearInputValues,
     setFindBookFormVisibilityHandler,
-    setElementHeight,
   } = uiContext;
+  const uiContextRef = useRef(uiContext);
   const toggleBarRef = useRef<HTMLDivElement>(null);
   const formRef = useRef<HTMLFormElement>(null);
   const clearButtonClasses = [
@@ -41,8 +40,8 @@ const FindBookForm: FC<FindBookFormProps> = ({ onSearchHandler }) => {
   };
 
   useEffect(() => {
-    setElementHeight("toggleBar", toggleBarRef);
-    setElementHeight("form", formRef);
+    uiContextRef.current.setElementHeight("toggleBar", toggleBarRef);
+    uiContextRef.current.setElementHeight("form", formRef);
   }, []);
 
   return (
@@ -73,7 +72,7 @@ const FindBookForm: FC<FindBookFormProps> = ({ onSearchHandler }) => {
         </p>
       </div>
       <form className={classes.form} onSubmit={formHandler} ref={formRef}>
-        <label className={classes.form__label}>
+        <label htmlFor="title_contains" className={classes.form__label}>
           Title Contains:
           <Input
             htmlType="text"
@@ -82,7 +81,7 @@ const FindBookForm: FC<FindBookFormProps> = ({ onSearchHandler }) => {
           />
         </label>
 
-        <label className={classes.form__label}>
+        <label htmlFor="description_contains" className={classes.form__label}>
           Description Contains:
           <Input
             htmlType="text"
@@ -96,7 +95,7 @@ const FindBookForm: FC<FindBookFormProps> = ({ onSearchHandler }) => {
           <Select nameForSelect="has_agent_type" options={agentsTypeConfig} />
         </label>
 
-        <label className={classes.form__label}>
+        <label htmlFor="agent_name_contains" className={classes.form__label}>
           Agents person name contains:
           <Input
             htmlType="text"
@@ -105,7 +104,10 @@ const FindBookForm: FC<FindBookFormProps> = ({ onSearchHandler }) => {
           />
         </label>
 
-        <label className={classes.form__label}>
+        <label
+          htmlFor="agent_birth_date_range_min"
+          className={classes.form__label}
+        >
           Agents person birth date is in range:
           <div className={classes["range-container"]}>
             <Input
@@ -124,7 +126,10 @@ const FindBookForm: FC<FindBookFormProps> = ({ onSearchHandler }) => {
           </div>
         </label>
 
-        <label className={classes.form__label}>
+        <label
+          htmlFor="agent_death_date_range_min"
+          className={classes.form__label}
+        >
           Agents person death date is in range:
           <div className={classes["range-container"]}>
             <Input
@@ -143,7 +148,7 @@ const FindBookForm: FC<FindBookFormProps> = ({ onSearchHandler }) => {
           </div>
         </label>
 
-        <label className={classes.form__label}>
+        <label htmlFor="downloads_range_min" className={classes.form__label}>
           Downloads is in range:
           <div className={classes["range-container"]}>
             <Input
@@ -162,7 +167,7 @@ const FindBookForm: FC<FindBookFormProps> = ({ onSearchHandler }) => {
           </div>
         </label>
 
-        <label className={classes.form__label}>
+        <label htmlFor="languages" className={classes.form__label}>
           Select language:
           <Select nameForSelect="languages" options={languagesArray} />
         </label>

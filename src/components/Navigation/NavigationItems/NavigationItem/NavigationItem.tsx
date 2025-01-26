@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
 import { FC, ReactNode, useContext } from "react";
 import { NavLink } from "react-router-dom";
 
@@ -16,8 +14,10 @@ const NavigationItem: FC<NavigationItemProps> = ({ link, children }) => {
   const { onCloseAllModals } = uiContext;
 
   return (
-    <li className={classes["navigation-item"]} onClick={onCloseAllModals}>
-      <NavLink to={link}>{children}</NavLink>
+    <li className={classes["navigation-item"]}>
+      <NavLink to={link} onClick={onCloseAllModals}>
+        {children}
+      </NavLink>
     </li>
   );
 };

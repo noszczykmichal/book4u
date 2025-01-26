@@ -24,6 +24,7 @@ const TrashIcon = () => {
       onClick={onTrashIconOnClick}
       disabled={isDisabled}
       aria-label="delete favorite books"
+      tabIndex={0}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"

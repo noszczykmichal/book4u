@@ -1,19 +1,13 @@
-/* eslint-disable react/jsx-no-constructed-context-values */
-/* eslint-disable no-unused-vars */
-
 import {
   createContext,
   useState,
+  useMemo,
   FC,
   ReactNode,
   RefObject,
   FormEvent,
 } from "react";
-import {
-  // ContextPropsAndMethods,
-  ElementHeightType,
-  SearchFormObj,
-} from "../utils/types";
+import { ElementHeightType, SearchFormObj } from "../utils/types";
 
 const UIContext = createContext({
   displayedPage: 1,
@@ -118,29 +112,42 @@ export const UIContextProvider: FC<UIContextProviderProps> = ({ children }) => {
     setSearchFormValues({});
   }
 
-  const context = {
-    displayedPage,
-    setDisplayedPage,
-    totalBooksAvail,
-    setTotalBooksAvailable,
-    // Components State
-    isBackdropVisible,
-    isMobileNavVisible,
-    isModalVisible,
-    isFindBookFormVisible,
-    toggleBarCurrentHeight,
-    formCurrentHeight,
-    searchFormValues,
-    // Components Handlers
-    onCloseAllModals,
-    onMobileNavOpen,
-    onTrashIconOnClick,
-    onTakeToTopClick,
-    setFindBookFormVisibilityHandler,
-    setElementHeight,
-    updateInputValues,
-    clearInputValues,
-  };
+  const context = useMemo(
+    () => ({
+      displayedPage,
+      setDisplayedPage,
+      totalBooksAvail,
+      setTotalBooksAvailable,
+      // Components State
+      isBackdropVisible,
+      isMobileNavVisible,
+      isModalVisible,
+      isFindBookFormVisible,
+      toggleBarCurrentHeight,
+      formCurrentHeight,
+      searchFormValues,
+      // Components Handlers
+      onCloseAllModals,
+      onMobileNavOpen,
+      onTrashIconOnClick,
+      onTakeToTopClick,
+      setFindBookFormVisibilityHandler,
+      setElementHeight,
+      updateInputValues,
+      clearInputValues,
+    }),
+    [
+      displayedPage,
+      formCurrentHeight,
+      isBackdropVisible,
+      isFindBookFormVisible,
+      isMobileNavVisible,
+      isModalVisible,
+      searchFormValues,
+      toggleBarCurrentHeight,
+      totalBooksAvail,
+    ],
+  );
 
   return <UIContext.Provider value={context}>{children}</UIContext.Provider>;
 };
