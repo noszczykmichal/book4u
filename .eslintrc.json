@@ -3,15 +3,24 @@
     "browser": true,
     "es2021": true
   },
-  "extends": ["react-app", "airbnb", "plugin:prettier/recommended"],
+  "extends": [
+    "react-app",
+    "airbnb",
+    "airbnb-typescript",
+    "plugin:import/typescript",
+    "plugin:prettier/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
     },
     "ecmaVersion": "latest",
-    "sourceType": "module"
+    "sourceType": "module",
+    "project": ["./tsconfig.json", "./tsconfig.node.json"]
   },
-  "plugins": ["react", "prettier"],
+  "plugins": ["react", "@typescript-eslint", "prettier"],
+  "ignorePatterns": ["*d.ts"],
   "rules": {
     "quotes": [
       "error",
@@ -20,6 +29,7 @@
         "avoidEscape": true
       }
     ],
+    "@typescript-eslint/quotes": ["error", "double", { "avoidEscape": true }],
     "prettier/prettier": [
       "error",
       {
@@ -28,7 +38,7 @@
     ],
     "react/jsx-uses-react": ["off"],
     "react/react-in-jsx-scope": ["off"],
-    "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+    "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }],
     "react/jsx-props-no-spreading": ["warn"],
     "no-shadow": "off",
     "jsx-a11y/label-has-associated-control": [
@@ -38,6 +48,25 @@
         "controlComponents": ["Input", "Select"],
         "assert": "both",
         "depth": 3
+      }
+    ],
+    "react/function-component-definition": [
+      "off",
+      {
+        "namedComponents": "arrow-function",
+        "unnamedComponents": "arrow-function"
+      }
+    ],
+    "no-unused-vars": ["error", { "argsIgnorePattern": "^_" }],
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      { "argsIgnorePattern": "^_" }
+    ],
+    "react/require-default-props": "off",
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": ["vite.config.*", "*.config.*"]
       }
     ]
   }

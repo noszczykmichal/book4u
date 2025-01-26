@@ -5,7 +5,7 @@ import classes from "./Logo.module.css";
 const Logo = () => {
   return (
     <div className={classes.logo}>
-      <Link to="/">
+      <Link to="/" tabIndex={0}>
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="24"

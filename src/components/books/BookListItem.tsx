@@ -21,11 +21,10 @@ const BookListItem: FC<BookListItemProps> = ({ bookInfo }) => {
   const isBookFavorite = (bookID: number) =>
     favorites.some((book: BookListItemProps["bookInfo"]) => book.id === bookID);
 
-  const toggleFavoriteStatus = (bookID: number) => () => {
-    return isBookFavorite(bookID)
+  const toggleFavoriteStatus = (bookID: number) => () =>
+    isBookFavorite(bookID)
       ? dispatch(removeFromFavorites(bookID))
       : dispatch(addToUserFavorites(bookInfo));
-  };
 
   const authorFinder = (() => {
     const bookAgents = [...bookInfo.agents];

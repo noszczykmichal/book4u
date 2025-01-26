@@ -89,8 +89,6 @@ export const languagesArray = [
 export const validationHandler = (searchFormState: Partial<SearchFormObj>) => {
   let query = "";
 
-  console.log("searchFormState: ", searchFormState);
-
   Object.keys(searchFormState).forEach((input) => {
     const key = input as keyof SearchFormObj;
     const value = searchFormState[key];
