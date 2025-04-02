@@ -56,12 +56,16 @@ export const UIContextProvider: FC<UIContextProviderProps> = ({ children }) => {
 
   // Components Handlers
   function onCloseAllModals() {
+    const bodyClasses = document.body.classList;
+    bodyClasses.remove("overflow");
+
     setIsBackdropVisible(false);
     setMobileNavVisibility(false);
     setModalVisibility(false);
   }
 
   function onMobileNavOpen() {
+    document.body.classList.add("overflow");
     setIsBackdropVisible(true);
     setMobileNavVisibility(true);
   }
