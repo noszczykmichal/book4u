@@ -1,7 +1,7 @@
 import { useContext } from "react";
 
-import UIContext from "../../../../store-context/uiContext";
-import classes from "./ToggleButton.module.css";
+import UIContext from "@/store-context/uiContext";
+import classes from "@/components/Navigation/MobileNavigation/ToggleButton/ToggleButton.module.css";
 
 const ToggleButton = () => {
   const uiContext = useContext(UIContext);

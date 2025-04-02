@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 
-import classes from "./Toolbar.module.css";
-import NavigationItems from "../NavigationItems/NavigationItems";
-import ToggleButton from "../MobileNavigation/ToggleButton/ToggleButton";
-import Logo from "./Logo/Logo";
-import useScrollDirection from "../../../hooks/useScrollDirection";
-import useHandleScroll from "../../../hooks/useHandleScroll";
+import NavigationItems from "@/components/Navigation/NavigationItems/NavigationItems";
+import ToggleButton from "@/components/Navigation/MobileNavigation/ToggleButton/ToggleButton";
+import Logo from "@/components/Navigation/Toolbar/Logo/Logo";
+import useScrollDirection from "@/hooks/useScrollDirection";
+import useHandleScroll from "@/hooks/useHandleScroll";
+import classes from "@/components/Navigation/Toolbar/Toolbar.module.css";
 
 const Toolbar = () => {
   const scrollDirection = useScrollDirection({ initialDirection: "down" });

@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-import classes from "./Logo.module.css";
+import classes from "@/components/Navigation/Toolbar/Logo/Logo.module.css";
 
 const Logo = () => {
   return (

@@ -1,5 +1,5 @@
-import { useAppSelector } from "../hooks/useReduxHooks";
-import BookList from "../components/books/BookList";
+import { useAppSelector } from "@/hooks/useReduxHooks";
+import BookList from "@/components/books/BookList/BookList";
 
 const FavoriteBooks = () => {
   const favorites = useAppSelector((state) => state.books.favorites);

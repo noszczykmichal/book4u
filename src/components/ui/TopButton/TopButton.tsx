@@ -1,7 +1,7 @@
 import { useContext } from "react";
 
-import UIContext from "../../store-context/uiContext";
-import classes from "./TopButton.module.css";
+import UIContext from "@/store-context/uiContext";
+import classes from "@/components/ui/TopButton/TopButton.module.css";
 
 const BubbleAnchor = () => {
   const uiContext = useContext(UIContext);

@@ -1,8 +1,8 @@
 import { FC, useContext } from "react";
 
-import classes from "./Input.module.css";
-import UIContext from "../../../store-context/uiContext";
-import { FindBookFormInputNames } from "../../../utils/types";
+import UIContext from "@/store-context/uiContext";
+import { FindBookFormInputNames } from "@/utils/types";
+import classes from "@/components/books/FindBookForm/Input/Input.module.css";
 
 interface InputProps {
   htmlName: FindBookFormInputNames;

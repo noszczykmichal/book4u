@@ -1,4 +1,4 @@
-import { SearchFormObj } from "./types";
+import { SearchFormObj } from "@/utils/types";
 
 export const agentsTypeConfig = [
   "",

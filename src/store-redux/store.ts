@@ -3,7 +3,7 @@ import storage from "redux-persist/lib/storage";
 import { persistReducer, persistStore } from "redux-persist";
 import thunk from "redux-thunk";
 
-import booksReducer from "./books";
+import booksReducer from "@/store-redux/books";
 
 const rootReducer = combineReducers({
   books: booksReducer,

@@ -1,7 +1,7 @@
-import classes from "./NavigationItems.module.css";
-import NavigationItem from "./NavigationItem/NavigationItem";
-import Counter from "./Counter/Counter";
-import TrashIcon from "./TrashIcon/TrashIcon";
+import NavigationItem from "@/components/Navigation/NavigationItems/NavigationItem/NavigationItem";
+import Counter from "@/components/Navigation/NavigationItems/Counter/Counter";
+import TrashIcon from "@/components/Navigation/NavigationItems/TrashIcon/TrashIcon";
+import classes from "@/components/Navigation/NavigationItems/NavigationItems.module.css";
 
 const NavigationItems = () => {
   return (

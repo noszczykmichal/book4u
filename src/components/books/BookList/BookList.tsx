@@ -1,9 +1,9 @@
 import { FC } from "react";
 
-import classes from "./BookList.module.css";
-import { Book } from "../../utils/types";
-import BookListItem from "./BookListItem";
-import BubbleAnchor from "../ui/TopButton";
+import { Book } from "@/utils/types";
+import BookListItem from "@/components/books/BookList/BookListItem/BookListItem";
+import BubbleAnchor from "@/components/ui/TopButton/TopButton";
+import classes from "@/components/books/BookList/BookList.module.css";
 
 interface BookListProps {
   data: Book[];

@@ -1,7 +1,7 @@
 import { useContext, useEffect, useRef, FC, ReactNode } from "react";
 
-import UIContext from "../../store-context/uiContext";
-import classes from "./Card.module.css";
+import UIContext from "@/store-context/uiContext";
+import classes from "@/components/ui/Card/Card.module.css";
 
 interface CardProps {
   animated?: boolean;

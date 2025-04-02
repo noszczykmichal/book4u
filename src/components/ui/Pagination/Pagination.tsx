@@ -1,8 +1,8 @@
 import { FormEvent, useContext, useRef, useState } from "react";
 
-import UIContext from "../../../store-context/uiContext";
-import classes from "./Pagination.module.css";
-import PaginationArrow from "./PaginationArrow";
+import UIContext from "@/store-context/uiContext";
+import PaginationArrow from "@/components/ui/Pagination/PaginationArrow";
+import classes from "@/components/ui/Pagination/Pagination.module.css";
 
 const TablePagination = () => {
   const uiContext = useContext(UIContext);

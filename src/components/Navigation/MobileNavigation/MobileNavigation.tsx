@@ -1,9 +1,9 @@
 import { useContext, useRef } from "react";
 import { CSSTransition } from "react-transition-group";
 
-import classes from "./MobileNavigation.module.css";
-import NavigationItems from "../NavigationItems/NavigationItems";
-import UIContext from "../../../store-context/uiContext";
+import NavigationItems from "@/components/Navigation/NavigationItems/NavigationItems";
+import UIContext from "@/store-context/uiContext";
+import classes from "@/components/Navigation/MobileNavigation/MobileNavigation.module.css";
 
 const MobileNavigation = () => {
   const uiContext = useContext(UIContext);

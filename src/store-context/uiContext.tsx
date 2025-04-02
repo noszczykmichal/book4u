@@ -7,7 +7,7 @@ import {
   RefObject,
   FormEvent,
 } from "react";
-import { ElementHeightType, SearchFormObj } from "../utils/types";
+import { ElementHeightType, SearchFormObj } from "@/utils/types";
 
 const UIContext = createContext({
   displayedPage: 1,

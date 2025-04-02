@@ -1,8 +1,8 @@
 import { useRef, useContext, useEffect, FC } from "react";
 
-import UIContext from "../../../store-context/uiContext";
-import { PaginationDirection } from "../../../utils/types";
-import classes from "./PaginationArrow.module.css";
+import UIContext from "@/store-context/uiContext";
+import { PaginationDirection } from "@/utils/types";
+import classes from "@/components/ui/Pagination/PaginationArrow.module.css";
 
 interface PaginationArrowProps {
   direction: PaginationDirection;

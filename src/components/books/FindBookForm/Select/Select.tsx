@@ -1,8 +1,8 @@
 import { FC, useContext } from "react";
 
-import UIContext from "../../../store-context/uiContext";
-import classes from "./Select.module.css";
-import { FindBookFormSelectNames } from "../../../utils/types";
+import UIContext from "@/store-context/uiContext";
+import { FindBookFormSelectNames } from "@/utils/types";
+import classes from "@/components/books/FindBookForm/Select/Select.module.css";
 
 interface SelectProps {
   nameForSelect: FindBookFormSelectNames;

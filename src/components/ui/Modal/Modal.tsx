@@ -1,11 +1,11 @@
 import { useRef, useContext } from "react";
 import { CSSTransition } from "react-transition-group";
 
-import { useAppDispatch } from "../../hooks/useReduxHooks";
-import UIContext from "../../store-context/uiContext";
-import classes from "./Modal.module.css";
-import { booksActions } from "../../store-redux/books";
-import { ActionButtonId } from "../../utils/types";
+import { useAppDispatch } from "@/hooks/useReduxHooks";
+import UIContext from "@/store-context/uiContext";
+import { booksActions } from "@/store-redux/books";
+import { ActionButtonId } from "@/utils/types";
+import classes from "@/components/ui/Modal/Modal.module.css";
 
 const Modal = () => {
   const uiContext = useContext(UIContext);

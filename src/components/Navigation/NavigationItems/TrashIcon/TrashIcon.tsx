@@ -1,8 +1,8 @@
 import { useContext } from "react";
 
-import { useAppSelector } from "../../../../hooks/useReduxHooks";
-import UIContext from "../../../../store-context/uiContext";
-import classes from "./TrashIcon.module.css";
+import { useAppSelector } from "@/hooks/useReduxHooks";
+import UIContext from "@/store-context/uiContext";
+import classes from "@/components/Navigation/NavigationItems/TrashIcon/TrashIcon.module.css";
 
 const TrashIcon = () => {
   const favorites = useAppSelector((state) => state.books.favorites);
