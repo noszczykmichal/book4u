@@ -1,13 +1,13 @@
 import { useEffect, useState, useContext, useRef } from "react";
 
-import classes from "./AllBooks.module.css";
-import { Book } from "../utils/types";
-import FindBookForm from "../components/books/FindBookForm/FindBookForm";
-import BookList from "../components/books/BookList";
-import Pagination from "../components/ui/Pagination/Pagination";
-import Preloader from "../components/ui/Preloader";
-import UIContext from "../store-context/uiContext";
-import ErrorModal from "../components/ui/ErrorModal";
+import { Book } from "@/utils/types";
+import FindBookForm from "@/components/books/FindBookForm/FindBookForm";
+import BookList from "@/components/books/BookList/BookList";
+import Pagination from "@/components/ui/Pagination/Pagination";
+import Preloader from "@/components/ui/Preloader/Preloader";
+import UIContext from "@/store-context/uiContext";
+import ErrorModal from "@/components/ui/ErrorModal/ErrorModal";
+import classes from "@/pages/AllBooks.module.css";
 
 const AllBooks = () => {
   const uiContext = useContext(UIContext);

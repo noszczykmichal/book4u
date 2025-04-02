@@ -1,10 +1,10 @@
 import { FC } from "react";
 
-import classes from "./BookListItem.module.css";
-import { useAppSelector, useAppDispatch } from "../../hooks/useReduxHooks";
-import { Book } from "../../utils/types";
-import Card from "../ui/Card";
-import { booksActions } from "../../store-redux/books";
+import { useAppSelector, useAppDispatch } from "@/hooks/useReduxHooks";
+import { Book } from "@/utils/types";
+import Card from "@/components/ui/Card/Card";
+import { booksActions } from "@/store-redux/books";
+import classes from "@/components/books/BookList/BookListItem/BookListItem.module.css";
 
 interface BookListItemProps {
   bookInfo: Book;

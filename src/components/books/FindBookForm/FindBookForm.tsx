@@ -4,14 +4,14 @@ import {
   agentsTypeConfig,
   languagesArray,
   validationHandler,
-} from "../../../utils/FormDataAndValidation";
-import classes from "./FindBookForm.module.css";
-import Card from "../../ui/Card";
-import UIContext from "../../../store-context/uiContext";
-import GearIcon from "./GearIcon";
-import Select from "./Select";
-import RefreshIcon from "./RefreshIcon";
-import Input from "./Input";
+} from "@/utils/FormDataAndValidation";
+import Card from "@/components/ui/Card/Card";
+import UIContext from "@/store-context/uiContext";
+import GearIcon from "@/components/books/FindBookForm/GearIcon/GearIcon";
+import Select from "@/components/books/FindBookForm/Select/Select";
+import RefreshIcon from "@/components/books/FindBookForm/RefreshIcon/RefreshIcon";
+import Input from "@/components/books/FindBookForm/Input/Input";
+import classes from "@/components/books/FindBookForm/FindBookForm.module.css";
 
 interface FindBookFormProps {
   onSearchHandler: (query: string | null) => void;

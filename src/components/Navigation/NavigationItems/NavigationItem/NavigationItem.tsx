@@ -1,8 +1,8 @@
 import { FC, ReactNode, useContext } from "react";
 import { NavLink } from "react-router-dom";
 
-import classes from "./NavigationItem.module.css";
-import UIContext from "../../../../store-context/uiContext";
+import UIContext from "@/store-context/uiContext";
+import classes from "@/components/Navigation/NavigationItems/NavigationItem/NavigationItem.module.css";
 
 interface NavigationItemProps {
   link: string;

@@ -1,4 +1,4 @@
-import classes from "./GearIcon.module.css";
+import classes from "@/components/books/FindBookForm/GearIcon/GearIcon.module.css";
 
 const GearIcon = () => {
   return (

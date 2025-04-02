@@ -1,4 +1,4 @@
-import classes from "./Preloader.module.css";
+import classes from "@/components/ui/Preloader/Preloader.module.css";
 
 const Preloader = () => {
   return (

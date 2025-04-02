@@ -4,11 +4,11 @@ import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import { PersistGate } from "redux-persist/es/integration/react";
 
-import "./index.css";
-import App from "./App";
-import { UIContextProvider } from "./store-context/uiContext";
-import store, { persistor } from "./store-redux/store";
-import Preloader from "./components/ui/Preloader";
+import "@/index.css";
+import App from "@/App";
+import { UIContextProvider } from "@/store-context/uiContext";
+import store, { persistor } from "@/store-redux/store";
+import Preloader from "@/components/ui/Preloader/Preloader";
 
 const root = ReactDOM.createRoot(document.getElementById("root")!);
 root.render(

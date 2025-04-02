@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { Book } from "../utils/types";
+import { Book } from "@/utils/types";
 
 interface BooksState {
   favorites: Book[];

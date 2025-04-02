@@ -1,4 +1,4 @@
-import classes from "./RefreshIcon.module.css";
+import classes from "@/components/books/FindBookForm/RefreshIcon/RefreshIcon.module.css";
 
 const RefreshIcon = () => {
   return (

@@ -3,8 +3,8 @@
 import { useContext, useRef } from "react";
 import { CSSTransition } from "react-transition-group";
 
-import UIContext from "../../store-context/uiContext";
-import classes from "./Backdrop.module.css";
+import UIContext from "@/store-context/uiContext";
+import classes from "@/components/ui/Backdrop/Backdrop.module.css";
 
 const Backdrop = () => {
   const uiContext = useContext(UIContext);

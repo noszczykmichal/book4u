@@ -1,6 +1,6 @@
 import { FC } from "react";
 
-import classes from "./ErrorModal.module.css";
+import classes from "@/components/ui/ErrorModal/ErrorModal.module.css";
 
 interface ErrorModalProps {
   errorDetails: {
